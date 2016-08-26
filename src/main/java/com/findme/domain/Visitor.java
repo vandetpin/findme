@@ -15,4 +15,19 @@ public class Visitor extends User{
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "id.visitor", cascade=CascadeType.ALL)
 	private Set<VisitorAppointment> visitorAppointment = new HashSet<VisitorAppointment>(0);
+
+	public Visitor() {
+		
+	}
+
+	public Set<VisitorAppointment> getVisitorAppointment() {
+		return visitorAppointment;
+	}
+
+	public void setVisitorAppointment(Set<VisitorAppointment> visitorAppointment) {
+		this.visitorAppointment = visitorAppointment;
+	}
+	
+	
+	
 }
