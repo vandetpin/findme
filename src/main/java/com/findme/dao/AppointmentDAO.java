@@ -7,4 +7,6 @@ import com.findme.domain.Appointment;
 
 @Repository
 public interface AppointmentDAO extends CrudRepository<Appointment, Long> {
+	
+	
 }
