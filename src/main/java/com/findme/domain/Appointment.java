@@ -25,7 +25,7 @@ public class Appointment implements java.io.Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int appid;
+	private Long appid;
 	private String name;
 	private String description;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -35,11 +35,11 @@ public class Appointment implements java.io.Serializable {
 	private int capacity;
 	private int status;
 
-	public int getAppid() {
+	public Long getAppid() {
 		return appid;
 	}
 
-	public void setAppid(int appid) {
+	public void setAppid(Long appid) {
 		this.appid = appid;
 	}
 
@@ -113,7 +113,7 @@ public class Appointment implements java.io.Serializable {
 		int result = 1;
 		result = prime * result + ((appEndTime == null) ? 0 : appEndTime.hashCode());
 		result = prime * result + ((appStartTime == null) ? 0 : appStartTime.hashCode());
-		result = prime * result + appid;
+		result = (int) (prime * result + appid);
 		result = prime * result + capacity;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
