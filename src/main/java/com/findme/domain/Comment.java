@@ -1,5 +1,7 @@
 package com.findme.domain;
 
+import java.util.Date;
+
 import javax.persistence.Embeddable;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -10,7 +12,7 @@ public class Comment {
 	private String commentBy;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private String commentDate;
+	private Date commentDate;
 	
 	public Comment(){}
 
@@ -30,12 +32,13 @@ public class Comment {
 		this.commentBy = commentBy;
 	}
 
-	public String getCommentDate() {
+	public Date getCommentDate() {
 		return commentDate;
 	}
 
-	public void setCommentDate(String commentDate) {
+	public void setCommentDate(Date commentDate) {
 		this.commentDate = commentDate;
 	}
+
 	
 }

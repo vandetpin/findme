@@ -26,7 +26,7 @@ public class Professional extends User{
 	@ElementCollection
 	private List<Comment> comments;
 	
-	@OneToMany(mappedBy="professional")
+	@OneToMany(mappedBy="owner")
 	private List<Appointment> appointment;
 	
 	

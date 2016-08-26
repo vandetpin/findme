@@ -5,12 +5,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.SecondaryTable;
+import javax.persistence.OneToOne;
 
 @Entity
-@SecondaryTable(name="UserRole",
-pkJoinColumns=@PrimaryKeyJoinColumn(name="username"))
 public class UserAccount {
 	@Id
 	@GeneratedValue
@@ -18,13 +15,13 @@ public class UserAccount {
 
 	@Column(unique = true)
 	private String username;
-
+	
 	private String password;
 
-	@Column(name = "is_active")
 	private boolean isActive;
 	
-	private String role;
+	@OneToOne
+	private UserRole role;
 
 	public UserAccount() {
 	}
@@ -61,12 +58,12 @@ public class UserAccount {
 		this.isActive = isActive;
 	}
 
-	public String getRole() {
+	public UserRole getRole() {
 		return role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(UserRole role) {
 		this.role = role;
 	}
-	
+
 }
