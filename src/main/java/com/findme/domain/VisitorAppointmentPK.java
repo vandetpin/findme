@@ -4,16 +4,40 @@ import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
 
 @Embeddable
-public class VisitorAppointmentId implements java.io.Serializable {
+public class VisitorAppointmentPK implements java.io.Serializable {
 	
 	@ManyToOne
 	private Visitor visitor;
 	@ManyToOne
 	private Appointment appointment;
 	
-	public VisitorAppointmentId() {
+	public VisitorAppointmentPK() {
 	}
 	
+	public Visitor getVisitor() {
+		return visitor;
+	}
+
+
+
+	public void setVisitor(Visitor visitor) {
+		this.visitor = visitor;
+	}
+
+
+
+	public Appointment getAppointment() {
+		return appointment;
+	}
+
+
+
+	public void setAppointment(Appointment appointment) {
+		this.appointment = appointment;
+	}
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -30,7 +54,7 @@ public class VisitorAppointmentId implements java.io.Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		VisitorAppointmentId other = (VisitorAppointmentId) obj;
+		VisitorAppointmentPK other = (VisitorAppointmentPK) obj;
 		if (appointment == null) {
 			if (other.appointment != null)
 				return false;

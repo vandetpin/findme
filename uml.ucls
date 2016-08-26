@@ -73,8 +73,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <class id="9" language="java" name="com.findme.domain.VisitorAppointmentId" project="findme" 
-    file="/findme/src/main/java/com/findme/domain/VisitorAppointmentId.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="9" language="java" name="com.findme.domain.VisitorAppointmentPK" project="findme" 
+    file="/findme/src/main/java/com/findme/domain/VisitorAppointmentPK.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="113" width="144" x="610" y="-158"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      

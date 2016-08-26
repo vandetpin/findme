@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 			joinColumns = @JoinColumn(name = "appointmentId")) })
 public class VisitorAppointment implements java.io.Serializable {
 	@EmbeddedId
-	private VisitorAppointmentId id = new VisitorAppointmentId();
+	private VisitorAppointmentPK id = new VisitorAppointmentPK();
 	private Integer isApproved;
 	
 	@Temporal(TemporalType.TIMESTAMP)
