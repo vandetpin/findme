@@ -35,7 +35,7 @@
                 </div>
 	            <div class="row">
                    <hr/>
-                    <div class="col-sm-4">
+                    <div class="col-xs-12 col-sm-4">
                         <div class="well">
                             <div class="list-group">
                                   <a href="#" class="list-group-item ">List of Appointments</a>
@@ -44,7 +44,7 @@
                             </div>
                         </div>
                     </div>
-	                <div class="col-sm-8">
+	                <div class="col-xs-12 col-sm-8">
 	                    <table class="table table-responsive table-hover">
 	                        <tr>
 	                            <th>Appointment</th>
@@ -57,7 +57,7 @@
 	                </div>
 	            </div>
 	        </div>
-	        <div class="col-sm-4">
+	        <div class="col-xs-12 col-sm-4">
 	            <div class="panel panel-default">
                     <div class="panel-heading">New Appointment</div>
                     <div class="panel-body"> 

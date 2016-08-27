@@ -12,12 +12,14 @@ import com.findme.service.VisitorService;
 @Controller
 @RequestMapping("/visitors")
 public class VisitorController {
+	private static final Logger LOG = Logger.getLogger(VisitorController.class);
 
 	@Autowired
 	private VisitorService visitorService;
 	
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public String getAll(Model model) {	
-		return "visitorlist";
+		
+		return "vistor_dashboard";
 	}
 }
