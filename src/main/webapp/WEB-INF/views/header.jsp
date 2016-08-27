@@ -6,8 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>FindMe Appointment Portal for Everyone</title>
-<link href="<c:url value='/static/css/bootstrap.min.css'></c:url>" rel="stylesheet">
-<link href="<c:url value='/static/css/font-awesome.min.css'></c:url>" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<link href="<c:url value='/static/css/jquery.datetimepicker.min.css'></c:url>" rel="stylesheet">
 <link href="<c:url value='/static/css/app.css'></c:url>" rel="stylesheet">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

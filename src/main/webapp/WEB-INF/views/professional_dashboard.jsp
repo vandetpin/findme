@@ -1,21 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Professional - Home</title>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="../static/css/jquery.datetimepicker.min.css"/>
-</head>
-
-<body>
-	
-	<!-- Header should go here -->
+<%@ include file="header.jsp"%>
 	
 	<div class="container">
+		<hr />
 	    <div class="row">
 	        <div class="col-xs-12 col-sm-9">
                 <div class="row">
@@ -32,8 +18,8 @@
                         <button class="btn btn-primary btn-block">New Appointment</button>
                     </div>
                 </div>
+                <hr />
 	            <div class="row">
-                   <br /> <br />
                     <div class="col-xs-12 col-sm-4">
                         <div class="well">
                             <div class="list-group">
@@ -88,15 +74,10 @@
                 </div>
 	        </div>
 	    </div>
-	</div>
-	
-	<!-- Footer should go here -->
-	
-	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script src="static/js/jquery.datetimepicker.min.js"></script>
-	 <script type="text/javascript">
+	</div><script type="text/javascript">
 	 	$('#enddate').datetimepicker();
 	 </script>
-</body>
-</html>
+	
+	<%@ include file="footer.jsp"%>
+
+	 
