@@ -13,5 +13,9 @@ public class AppointmentServiceImpl implements AppointmentService {
 	public Iterable<Appointment> findAll() {
 		return appointmentDAO.findAll();
 	}
+	
+	public Iterable<Appointment> findById(Long id) {
+		return null;
+	}
 
 }

@@ -5,15 +5,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Visitor - Home</title>
-
+    <title>Professional - Home</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	
-	<link rel="stylesheet" type="text/css" href="static/css/jquery.datetimepicker.min.css"/ >
-	
+	<link rel="stylesheet" type="text/css" href="../static/css/jquery.datetimepicker.min.css"/>
 </head>
-
 
 <body>
 	
@@ -48,10 +44,21 @@
                         </div>
                     </div>
 	                <div class="col-xs-12 col-sm-8">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12">
-                                
+	                	<div class="row">
+	                	    <div class="col-xs-12 col-sm-12">
+	                	    		<h4>Search Appointment Now</h4> <hr />
+	                	    		<div class="input-group">
+	                	    			<span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
+  										<input id="startdate" type="text" class="form-control" placeholder="Start Date/Time" aria-describedby="basic-addon1">
+  										<input id="enddate" type="text" class="form-control" placeholder="End Date/Time" aria-describedby="basic-addon1">
+  										<span class="input-group-addon" id="basic-addon1">
+  											<button class="btn btn-default" type="button">Search!</button>
+  										</span>
+									</div>
+									<br />
                             </div>
+	                	</div>
+                        <div class="row">
                             <div class="col-xs-12 col-sm-12">
                                 <table class="table table-responsive table-hover">
 	                                <tr>
@@ -88,5 +95,8 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script src="static/js/jquery.datetimepicker.min.js"></script>
+	 <script type="text/javascript">
+	 	$('#enddate').datetimepicker();
+	 </script>
 </body>
 </html>
