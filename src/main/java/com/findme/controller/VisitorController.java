@@ -18,6 +18,7 @@ public class VisitorController {
 	
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public String getAll(Model model) {	
+		
 		return "visitorlist";
 	}
 }
