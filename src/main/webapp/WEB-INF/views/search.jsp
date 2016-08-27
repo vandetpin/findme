@@ -1,7 +1,12 @@
 <%@ include file="header.jsp"%>
 
 
-
+<div class="row">
+            <div class="col-lg-12">
+                <h3>Search Result</h3>
+            </div>
+        </div>
+	
 
 <div class="row text-center">
 

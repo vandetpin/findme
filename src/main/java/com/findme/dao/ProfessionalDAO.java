@@ -8,4 +8,5 @@ import com.findme.domain.Professional;
 
 @Repository
 public interface ProfessionalDAO extends CrudRepository<Professional, Long> {
+	Iterable<Professional> findByFirstNameOrLastNameContaining(String firstName, String lastName);
 }

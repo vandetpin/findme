@@ -20,4 +20,11 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 		return professionalDAO.findAll();
 	}
 
+	@Override
+	public Iterable<Professional> findByFirstNameOrLastNameContaining(String firstName, String lastName) {		
+		return professionalDAO.findByFirstNameOrLastNameContaining(firstName, lastName);
+	}
+
+	
+
 }

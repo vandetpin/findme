@@ -18,8 +18,15 @@ public class SearchController {
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
     public String homePage(ModelMap model, @RequestParam("s") String s) {	
 		
+		model.addAttribute("professional",professionalService.findByFirstNameOrLastNameContaining(s, s));
+		
         return "search";
     }
+	
+	@RequestMapping(value="/search/advance", method=RequestMethod.GET) 
+	public String advanceSearch(ModelMap model) {
+		return "advancesearch";
+	}
 	
 	
 	
