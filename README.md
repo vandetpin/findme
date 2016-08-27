@@ -16,3 +16,6 @@ go to browser  localhost:8080
 
 ### import user
 run sql/import.sql
+
+### map your resource folder to image folder in application.properties
+

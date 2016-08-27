@@ -1,4 +1,4 @@
-package com.findme.domain;
+package com.findme.controller;
 
 import java.util.Date;
 
@@ -15,16 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-@Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(
-   name="userType",
-   discriminatorType=DiscriminatorType.STRING
-)
-public abstract class User {
-	@Id @GeneratedValue
+public  class User {
 	private Long Id;
 	
 	private String firstName;
@@ -33,20 +24,13 @@ public abstract class User {
 	private String emailAddress;
 	private String phoneNumber;
 	
-	@Embedded
-    private Address address;
 	
 	/**F|M*/
     private Character gender;
 	
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date dateOfBirth;
+	private String dateOfBirth;
 	
 	private String otherInfo;
-	
-	@OneToOne(cascade= CascadeType.PERSIST)
-	private UserAccount userAccount;
 	
 	public User(){}
 
@@ -98,14 +82,6 @@ public abstract class User {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
 	public Character getGender() {
 		return gender;
 	}
@@ -114,11 +90,11 @@ public abstract class User {
 		this.gender = gender;
 	}
 
-	public Date getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
@@ -130,12 +106,4 @@ public abstract class User {
 		this.otherInfo = otherInfo;
 	}
 
-	public UserAccount getUserAccount() {
-		return userAccount;
-	}
-
-	public void setUserAccount(UserAccount userAccount) {
-		this.userAccount = userAccount;
-	}
-	
 }

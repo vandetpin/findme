@@ -7,6 +7,11 @@ import javax.persistence.Id;
 
 @Entity
 public class UserRole {
+	public static final String ROLE_ADMIN = "ROLE_ADMIN";
+	public static final String ROLE_USER = "ROLE_USER";
+	public static final String ROLE_VISITOR = "ROLE_VISITOR";
+	public static final String ROLE_PROFESSIONAL = "ROLE_PROFESSIONAL";
+	
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -17,6 +22,14 @@ public class UserRole {
 
 	public UserRole() {
 	}
+	
+	public UserRole(String username, String role) {
+		super();
+		this.username = username;
+		this.role = role;
+	}
+
+
 
 	public Long getId() {
 		return id;

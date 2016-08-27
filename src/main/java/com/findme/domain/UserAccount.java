@@ -1,14 +1,20 @@
 package com.findme.domain;
 
 
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class UserAccount {
+	
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -20,8 +26,8 @@ public class UserAccount {
 
 	private boolean isActive;
 	
-	@OneToOne
-	private UserRole role;
+	@OneToMany(cascade=CascadeType.PERSIST)
+	private Set<UserRole> roles = new HashSet<>();
 
 	public UserAccount() {
 	}
@@ -58,12 +64,16 @@ public class UserAccount {
 		this.isActive = isActive;
 	}
 
-	public UserRole getRole() {
-		return role;
+	public Set<UserRole> getRoles() {
+		return Collections.unmodifiableSet(roles);
 	}
 
-	public void setRole(UserRole role) {
-		this.role = role;
+	public void addRole(UserRole role) {
+		roles.add(role);
+	}
+	
+	public void removeRole(UserRole role) {
+		roles.remove(role);
 	}
 
 }

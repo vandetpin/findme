@@ -8,6 +8,7 @@ public interface VisitorService {
 	
 	Iterable<Appointment> findByProfessional(Professional owner);
 	Iterable<VisitorAppointment> findAll();
+	Visitor create(Visitor visitor);
 	
 	
 	

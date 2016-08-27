@@ -14,6 +14,9 @@
             <div class="login-container">
                 <div class="login-card">
                     <div class="login-form">
+                    	<c:if test="${not empty successMessage}">
+                    		<div class="alert alert-success alert-dismissible" role="alert">${successMessage}</div>
+                    	</c:if>
                         <c:url var="loginUrl" value="/login" />
                         <form action="${loginUrl}" method="post" class="form-horizontal">
                             <c:if test="${param.error != null}">
