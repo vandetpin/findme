@@ -3,7 +3,7 @@
         <div id="addAppoint" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <form class="form-horizontal" method="post" enctype="multipart/form-data" action="add/">
+                    <form class="form-horizontal" method="post" enctype="multipart/form-data" action="professionals/appointment/add">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title">Please Enter the Appointment Detail Information</h4> </div>
@@ -57,9 +57,12 @@
                 <div class="row">
                     <div class="col-xs-6 col-md-2"> <a href="#" class="thumbnail"><img src="<c:url value='/static/img/placeholder.png'></c:url>" alt="..."></a> </div>
                     <div class="col-xs-12 col-md-7">
-                        <h3>Name Goes Here</h3>
-                        <dl> <dt>{Name}</dt>
-                            <dd>{Property}</dd>
+                        <h3>&nbsp;&nbsp;&nbsp; ${professional.lastName} ${professional.firstName}</h3>
+                        <dl class="row"> <dt class="col-sm-3 text-right">Email:</dt>
+                            <dd class="col-sm-9">${professional.emailAddress}</dd> <dt class="col-sm-3 text-right">Phone:</dt>
+                            <dd class="col-sm-9">${professional.phoneNumber}</dd> <dt class="col-sm-3 text-right">Address:</dt>
+                            <dd class="col-sm-9">${professional.address.street}, ${professional.address.city}, ${professional.address.state} ${professional.address.zip}</dd> <dt class="col-sm-3 text-right">Profession:</dt>
+                            <dd class="col-sm-9">${professional.otherInfo}</dd>
                         </dl>
                     </div>
                     <div class="col-xs-6 col-sm-3">
@@ -95,7 +98,7 @@
                                             <div class="input-group"> <span class="input-group-addon" id="basic-addon1">Search Appointment</i></span>
                                                 <input id="startDate" type="text" class="form-control" placeholder="Start Date/Time" aria-describedby="basic-addon1"> <span class="input-group-addon" id="basic-addon1">To</span>
                                                 <input id="endDate" type="text" class="form-control" placeholder="End Date/Time" aria-describedby="basic-addon1"> <span class="input-group-btn">
-	                	    					<button class="btn btn-primary" type="button"><i class="fa fa-search"></i> Go</button>
+	                	    					<button id="searchAppointProfBtn" class="btn btn-primary" type="button"><i class="fa fa-search"></i> Go</button>
 	                	    				</span> </div>
                                             <br /> </div>
                                     </div>
@@ -104,33 +107,11 @@
                                     <br />
                                     <div class="col-xs-12 col-sm-12">
                                         <div class="row">
-                                            <div id="appointmentList" class="col-xs-12 col-sm-12" hidden="hidden">
-                                                <table class="table table-responsive table-hover">
-                                                    <tr>
-                                                        <th>Appointment</th>
-                                                        <th>Start Date/Time</th>
-                                                        <th>End Date/Time</th>
-                                                        <th>Capacity</th>
-                                                    </tr>
-                                                    <!-- Your Code Goes here -->
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div id="scheduleList" class="col-xs-12 col-sm-12" hidden="hidden">
-                                                <table class="table table-responsive table-hover">
-                                                    <tr>
-                                                        <th>Client Name</th>
-                                                        <th>Start Date/Time</th>
-                                                        <th>Message</th>
-                                                        <th>Status</th>
-                                                    </tr>
-                                                </table>
-                                            </div>
+                                            <div id="appointmentList" class="col-xs-12 col-sm-12"> </div>
                                         </div>
                                         <!-- If No Appointment found -->
                                         <div class="row">
-                                            <div id="noRecordFound" class="col-xs-12 col-sm-12">
+                                            <div id="noRecordFound1" class="col-xs-12 col-sm-12" hidden="hidden">
                                                 <hr />
                                                 <h4>No Appointment found in the record!</h4>
                                                 <h5>Please click New Appointment button at the top to create an appointment.</h5>
@@ -147,7 +128,7 @@
                                     <div class="col-xs-12 col-sm-12">
                                         <div class="col-xs-12 col-sm-12">
                                             <div class="input-group"> <span class="input-group-addon" id="basic-addon1">Search Client</i></span>
-                                                <input id="startDate" type="text" class="form-control" placeholder="Search by First / Middel / Last Name ..." aria-describedby="basic-addon1"><span class="input-group-btn">
+                                                <input id="searchClientNameProf" type="text" class="form-control" placeholder="Search by First / Last Name ..." aria-describedby="basic-addon1"><span class="input-group-btn">
 	                	    					<button class="btn btn-primary" type="button"><i class="fa fa-search"></i> Go</button>
 	                	    				</span> </div>
                                             <br /> </div>
@@ -157,24 +138,13 @@
                                     <br />
                                     <div class="col-xs-12 col-sm-12">
                                         <div class="row">
-                                            <div id="appointmentList" class="col-xs-12 col-sm-12" hidden="hidden">
-                                                <table class="table table-responsive table-hover">
-                                                    <tr>
-                                                        <th>Appointment</th>
-                                                        <th>Start Date/Time</th>
-                                                        <th>End Date/Time</th>
-                                                        <th>Capacity</th>
-                                                    </tr>
-                                                    <!-- Your Code Goes here -->
-                                                </table>
-                                            </div>
+                                            <div id="scheduleList" class="col-xs-12 col-sm-12" hidden="hidden"> </div>
                                         </div>
                                         <!-- If No Appointment found -->
                                         <div class="row">
-                                            <div id="noRecordFound" class="col-xs-12 col-sm-12">
+                                            <div id="noRecordFound2" class="col-xs-12 col-sm-12">
                                                 <hr />
-                                                <h4>No Appointment found in the record!</h4>
-                                                <h5>Please click New Appointment button at the top to create an appointment.</h5>
+                                                <h4>No Clients found in the record!</h4>
                                                 <br />
                                                 <br />
                                                 <br />

@@ -18,7 +18,7 @@ import com.findme.service.ProfessionalService;
 import com.findme.service.UserAccountService;
 
 @Controller
-@RequestMapping("/professionalss")
+@RequestMapping("/professionals")
 public class ProfessionalController {
 	private static final Logger LOG = Logger.getLogger(ProfessionalController.class);
 
@@ -37,6 +37,7 @@ public class ProfessionalController {
 		Long professionalId = userAccountService.findUserByUsername(username).getId();
 		Professional professional = professionalService.findById(professionalId);
 		model.addAttribute("professional", professional);
+		System.out.println(professional.getFirstName());
 		return "professional_dashboard";
 	}
 	

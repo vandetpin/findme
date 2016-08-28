@@ -1,11 +1,37 @@
 $(function () {
     //***********************************************************************************************************
     // Professional Page Script Goes here
-    //********************************************
+    $('#appointmentList').ready(function () {
+        $.ajax({
+            url: 'professionals/api/appointments'
+            , method: 'get'
+            , dataType: 'json'
+            , success: function (data) {
+                if (data.length > 0) {
+                    $('#noRecordFound1').hide();
+                    $('#appointmentList').show();
+                    $('#appointmentList').children().remove();
+                    $('#appointmentList').append('<table id="appointmentListTable" class="table table-responsive table-hover"><tr class="info"><th>Appointment</th><th>Start Date/Time</th><th>End Date/Time</th><th>Capacity</th><th>Status</th></tr></table>');
+                    $(data).each(function (index, JAppointment) {
+                        $('#appointmentListTable').append('<tr><td>' + JAppointment.name + '</td> <td>' + JAppointment.startDate + '</td><td>' + JAppointment.endDate + '</td><td>' + JAppointment.capacity + '</td><td>' + JAppointment.status + '</td></tr>');
+                    });
+                    $('#appointmentList').append('<br /> <br />')
+                }
+                else {
+                    $('#noRecordFound1').show();
+                    $('#appointmentList').hide();
+                }
+            }
+            , error: function () {
+                alert('Unable to get Information From the Server');
+            }
+        });
+    });
+    //******************************************** 
     // Date Function Here
     jQuery(function () {
         jQuery('#startDate').datetimepicker({
-            format: 'Y/m/d H:m:s'
+            format: 'Y-m-d H:m:s'
             , onShow: function (ct) {
                 this.setOptions({
                     maxDate: jQuery('#endDate').val() ? jQuery('#endDate').val() : false
@@ -14,7 +40,7 @@ $(function () {
             , timepicker: true
         });
         jQuery('#endDate').datetimepicker({
-            format: 'Y/m/d H:m:s'
+            format: 'Y-m-d H:m:s'
             , onShow: function (ct) {
                 this.setOptions({
                     minDate: jQuery('#startDate').val() ? jQuery('#startDate').val() : false
@@ -44,23 +70,122 @@ $(function () {
         });
     });
     //********************************************
-    // New Appointment --- Button
-    $('#').click(function () {
+    // Search Appointment by Dates
+    $('#searchAppointProfBtn').click(function () {
         var startDate = $('#startDate').val();
         var endDate = $('#endDate').val();
-        $.ajax({
-            url: '/findme/professionals/api/appointments'
-            , data: {
-                startDate: startDate
-                , endDate: endDate
-            }
-            , method: 'post'
-            , dataType: 'json'
-            , success: function (data) {
-                alert(data);
-            }
-            , error: function () {}
-        })
+        if (startDate == '' && endDate == '') {
+            alert('One of the dates fields are Empty, Loading all Appointments');
+            $.ajax({
+                url: 'professionals/api/appointments'
+                , method: 'get'
+                , dataType: 'json'
+                , success: function (data) {
+                    if (data.length > 0) {
+                        $('#noRecordFound1').hide();
+                        $('#appointmentList').show();
+                        $('#appointmentList').children().remove();
+                        $('#appointmentList').append('<table id="appointmentListTable" class="table table-responsive table-hover"><tr class="info"><th>Appointment</th><th>Start Date/Time</th><th>End Date/Time</th><th>Capacity</th><th>Status</th></tr></table>');
+                        $(data).each(function (index, JAppointment) {
+                            $('#appointmentListTable').append('<tr><td>' + JAppointment.name + '</td> <td>' + JAppointment.startDate + '</td><td>' + JAppointment.endDate + '</td><td>' + JAppointment.capacity + '</td><td>' + JAppointment.status + '</td></tr>');
+                        });
+                        $('#appointmentList').append('<br /> <br />')
+                    }
+                    else {
+                        $('#noRecordFound1').show();
+                        $('#appointmentList').hide();
+                    }
+                }
+                , error: function () {
+                    alert('Unable to get Information From the Server');
+                }
+            });
+        }
+        else {
+            $.ajax({
+                url: 'professionals/api/appointments'
+                , data: {
+                    startDate: startDate
+                    , endDate: endDate
+                }
+                , method: 'get'
+                , dataType: 'json'
+                , success: function (data) {
+                    if (data.length > 0) {
+                        $('#noRecordFound1').hide();
+                        $('#appointmentList').show();
+                        $('#appointmentList').children().remove();
+                        $('#appointmentList').append('<table id="appointmentListTable" class="table table-responsive table-hover"><tr class="info"><th>Appointment</th><th>Start Date/Time</th><th>End Date/Time</th><th>Capacity</th><th>Status</th></tr></table>');
+                        $(data).each(function (index, JAppointment) {
+                            $('#appointmentListTable').append('<tr><td>' + JAppointment.name + '</td> <td>' + JAppointment.startDate + '</td><td>' + JAppointment.endDate + '</td><td>' + JAppointment.capacity + '</td><td>' + JAppointment.status + '</td></tr>');
+                        });
+                        $('#appointmentList').append('<br /> <br />')
+                    }
+                    else {
+                        $('#noRecordFound1').show();
+                        $('#appointmentList').hide();
+                    }
+                }
+                , error: function () {
+                    alert('Unable to get Information From the Server');
+                }
+            });
+        }
+    });
+    //*******************************************
+    //Search Appointment by Name
+    $('#searchAppointProfBtn').click(function () {
+        var name = $('#searchClientNameProf').val();
+        if (name == '') {
+            alert('Search Fields are Empty, Loading all Clients');
+            $.ajax({
+                url: 'professionals/api/appointments'
+                , method: 'get'
+                , dataType: 'json'
+                , success: function (data) {
+                    if (data.length > 0) {
+                        $('#noRecordFound1').hide();
+                        $('#scheduleList').show();
+                        $('#scheduleList').children().remove();
+                        $('#scheduleList').append('<table id="scheduleListTable" class="table table-responsive table-hover"><tr><th>Client Name</th><th>Start<th>Message</th><th>Status</th></tr></table>');
+                        $(data).each(function (index, JAppointment) {});
+                    }
+                    else {
+                        $('#noRecordFound2').show();
+                        $('#scheduleList').hide();
+                    }
+                }
+                , error: function () {
+                    alert('Unable to get Information From the Server');
+                }
+            });
+        }
+        else {
+            $.ajax({
+                url: 'professionals/api/appointments'
+                , data: {
+                    name: name
+                }
+                , method: 'get'
+                , dataType: 'json'
+                , success: function (data) {
+                    $('#noRecordFound1').hide();
+                    $('#scheduleList').show();
+                    $('#scheduleList').children().remove();
+                    if (data.length > 0) {
+                        $('#scheduleList').append('<table id="scheduleListTable" class="table table-responsive table-hover"><tr><th>Client Name</th><th>Start<th>Message</th><th>Status</th></tr></table>');
+                        $(data).each(function (index, JAppointment) {});
+                    }
+                    else {
+                        $('#noRecordFound2').show();
+                        $('#scheduleList').hide();
+                    }
+                }
+                , error: function () {
+                    alert('Unable to get Information From the Server');
+                }
+            });
+        }
     });
     //*******************************************
     // Tab Function Goes Here
