@@ -50,6 +50,11 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 		return AppointmentMapper.map(professionalDAO.findByIdAndAppointmentStartDateAndEndDate(professionalId, startDate, endDate));
 	}
 
+	@Override
+	public Professional findById(Long id) {
+		return professionalDAO.findById(id).get(0);
+	}
+
 	
 
 }

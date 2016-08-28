@@ -147,7 +147,7 @@
                                     <div class="col-xs-12 col-sm-12">
                                         <div class="col-xs-12 col-sm-12">
                                             <div class="input-group"> <span class="input-group-addon" id="basic-addon1">Search Client</i></span>
-                                                <input id="startDate" type="text" class="form-control" placeholder="Search by First/Middel/Last Name ..." aria-describedby="basic-addon1"><span class="input-group-btn">
+                                                <input id="startDate" type="text" class="form-control" placeholder="Search by First / Middel / Last Name ..." aria-describedby="basic-addon1"><span class="input-group-btn">
 	                	    					<button class="btn btn-primary" type="button"><i class="fa fa-search"></i> Go</button>
 	                	    				</span> </div>
                                             <br /> </div>

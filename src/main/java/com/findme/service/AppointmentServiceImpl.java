@@ -18,4 +18,10 @@ public class AppointmentServiceImpl implements AppointmentService {
 		return null;
 	}
 
+	@Override
+	public void create(Appointment appointment) {
+		// Save
+		appointmentDAO.save(appointment);
+	}
+
 }

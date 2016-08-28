@@ -5,4 +5,6 @@ import com.findme.domain.Appointment;
 public interface AppointmentService {
 
 	public Iterable<Appointment> findAll();
+	public void create(Appointment appointment);
+	
 }

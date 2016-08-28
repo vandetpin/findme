@@ -5,7 +5,7 @@ $(function () {
     // Date Function Here
     jQuery(function () {
         jQuery('#startDate').datetimepicker({
-            format: 'Y/m/d H:m'
+            format: 'Y/m/d H:m:s'
             , onShow: function (ct) {
                 this.setOptions({
                     maxDate: jQuery('#endDate').val() ? jQuery('#endDate').val() : false
@@ -14,7 +14,7 @@ $(function () {
             , timepicker: true
         });
         jQuery('#endDate').datetimepicker({
-            format: 'Y/m/d H:m'
+            format: 'Y/m/d H:m:s'
             , onShow: function (ct) {
                 this.setOptions({
                     minDate: jQuery('#startDate').val() ? jQuery('#startDate').val() : false
@@ -25,7 +25,7 @@ $(function () {
     });
     jQuery(function () {
         jQuery('#startDateModal').datetimepicker({
-            format: 'Y/m/d H:m'
+            format: 'Y/m/d H:m:s'
             , onShow: function (ct) {
                 this.setOptions({
                     maxDate: jQuery('#endDateModal').val() ? jQuery('#endDateModal').val() : false
@@ -34,7 +34,7 @@ $(function () {
             , timepicker: true
         });
         jQuery('#endDateModal').datetimepicker({
-            format: 'Y/m/d H:m'
+            format: 'Y/m/d H:m:s'
             , onShow: function (ct) {
                 this.setOptions({
                     minDate: jQuery('#startDateModal').val() ? jQuery('#startDateModal').val() : false
@@ -49,14 +49,16 @@ $(function () {
         var startDate = $('#startDate').val();
         var endDate = $('#endDate').val();
         $.ajax({
-            url: ''
+            url: '/findme/professionals/api/appointments'
             , data: {
                 startDate: startDate
                 , endDate: endDate
             }
             , method: 'post'
             , dataType: 'json'
-            , success: function (data) {}
+            , success: function (data) {
+                alert(data);
+            }
             , error: function () {}
         })
     });
