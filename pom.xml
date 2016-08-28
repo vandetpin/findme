@@ -3,8 +3,8 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.findme</groupId>
   <packaging>war</packaging>
-  <version>${project.version}</version>
-  <name>${project.name}</name>
+  <version>1.0.0</version>
+  <name>findme</name>
   <url>http://maven.apache.org</url>
  
     <properties>
@@ -170,6 +170,22 @@
 	<build>
         <pluginManagement>
             <plugins>
+            	<plugin>
+			        <groupId>org.codehaus.mojo</groupId>
+			        <artifactId>properties-maven-plugin</artifactId>
+			        <version>1.0-alpha-2</version>
+			        <executions>
+			            <execution>
+			                <phase>generate-resources</phase>
+			                <goals>
+			                    <goal>write-project-properties</goal>
+			                </goals>
+			                <configuration>
+			                    <outputFile>${project.build.outputDirectory}/application.properties</outputFile>
+			                </configuration>
+			            </execution>
+			        </executions>
+			    </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -190,26 +206,11 @@
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                     </configuration>
                 </plugin>
-				<plugin>
-			        <groupId>org.codehaus.mojo</groupId>
-			        <artifactId>properties-maven-plugin</artifactId>
-			        <version>1.0-alpha-2</version>
-			        <executions>
-			            <execution>
-			                <phase>generate-resources</phase>
-			                <goals>
-			                    <goal>write-project-properties</goal>
-			                </goals>
-			                <configuration>
-			                    <outputFile>${project.build.outputDirectory}/application.properties</outputFile>
-			                </configuration>
-			            </execution>
-			        </executions>
-			    </plugin>
+				
             </plugins>
         </pluginManagement>
-        <finalName>${project.name}</finalName>
+        <finalName>findme</finalName>
     </build>
-   <artifactId>${project.name}</artifactId>
+   <artifactId>findme</artifactId>
 </project>
 	
