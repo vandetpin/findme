@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class UserAccount {
@@ -28,6 +29,9 @@ public class UserAccount {
 	
 	@OneToMany(cascade=CascadeType.PERSIST)
 	private Set<UserRole> roles = new HashSet<>();
+	
+	@OneToOne
+	private User user;
 
 	public UserAccount() {
 	}
@@ -74,6 +78,14 @@ public class UserAccount {
 	
 	public void removeRole(UserRole role) {
 		roles.remove(role);
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

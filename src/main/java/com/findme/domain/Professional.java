@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -20,14 +21,14 @@ public class Professional extends User{
 
 	private boolean isActive;
 	
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	private ProfessionalType type;
 	
 	@ElementCollection
 	private List<Comment> comments;
 	
 	@OneToMany(mappedBy="owner")
-	private List<Appointment> appointment;
+	private List<Appointment> appointments;
 	
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -62,12 +63,12 @@ public class Professional extends User{
 		this.comments = comments;
 	}
 
-	public List<Appointment> getAppointment() {
-		return appointment;
+	public List<Appointment> getAppointments() {
+		return appointments;
 	}
 
-	public void setAppointment(List<Appointment> appointment) {
-		this.appointment = appointment;
+	public void setAppointments(List<Appointment> appointments) {
+		this.appointments = appointments;
 	}
 
 	public List<Visitor> getVisitors() {

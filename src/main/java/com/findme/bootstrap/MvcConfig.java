@@ -1,5 +1,7 @@
 package com.findme.bootstrap;
 
+import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Properties;
 
 import javax.annotation.Resource;
@@ -14,6 +16,8 @@ import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -26,6 +30,8 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+import com.findme.utils.Formatter;
 
  
 @Configuration
@@ -129,5 +135,20 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 	private String getProperty(String arg ) {
 		return env.getRequiredProperty(arg);
 	}
+	
+	// -------------- Message Converters ----------------------
+
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        SkipNullObjectMapper skipNullMapper = new SkipNullObjectMapper();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        skipNullMapper.setDateFormat(formatter);
+
+        skipNullMapper.init();
+        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+        converter.setObjectMapper(skipNullMapper);
+        converters.add(converter);
+
+    }
 	
 }

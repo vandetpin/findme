@@ -13,8 +13,8 @@
 					<h3>${professional.firstName}${professional.lastName}</h3>
 					<p>${professional.otherInfo}</p>
 					<p>
-						<a href="/home/details/${professional.Id}" class="btn btn-primary">Details</a>
-						<a href="/home/register/${professional.Id}"
+						<a href="/home/details/${professional.id}" class="btn btn-primary">Details</a>
+						<a href="/home/register/${professional.id}"
 							class="btn btn-default">Register</a>
 					</p>
 				</div>

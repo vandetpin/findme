@@ -8,4 +8,5 @@ import com.findme.domain.UserAccount;
 
 @Repository
 public interface UserAccountDAO extends CrudRepository<UserAccount, Long> {
+	UserAccount findByUsername(String username);
 }
