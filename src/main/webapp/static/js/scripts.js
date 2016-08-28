@@ -60,4 +60,12 @@ $(function () {
             , error: function () {}
         })
     });
+    //*******************************************
+    // Tab Function Goes Here
+    $('#proffesionalTabList').children().click(function () {
+        $(this).parent().children().removeClass('active');
+        $(this).parent().children().children().remove();
+        $(this).prepend('<span class="glyphicon glyphicon-chevron-right"></span> ');
+        $(this).addClass('active');
+    });
 });
