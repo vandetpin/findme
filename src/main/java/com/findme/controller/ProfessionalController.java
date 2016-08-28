@@ -18,7 +18,7 @@ import com.findme.service.ProfessionalService;
 import com.findme.service.UserAccountService;
 
 @Controller
-@RequestMapping("/professional")
+@RequestMapping("/professionalss")
 public class ProfessionalController {
 	private static final Logger LOG = Logger.getLogger(ProfessionalController.class);
 

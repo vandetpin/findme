@@ -1,10 +1,12 @@
 package com.findme.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.findme.dao.AppointmentDAO;
 import com.findme.domain.Appointment;
 
+@Service
 public class AppointmentServiceImpl implements AppointmentService {
 	
 	@Autowired

@@ -19,6 +19,5 @@ public interface ProfessionalDAO extends CrudRepository<Professional, Long> {
 	@Query("SELECT a FROM Professional p JOIN p.appointments a WHERE p.id =:id AND a.appStartTime >=:startDate AND a.appEndTime <=:endDate ")
 	Iterable<Appointment> findByIdAndAppointmentStartDateAndEndDate(@Param("id") Long professionalId,
 			@Param("startDate") Date startDate, @Param("endDate") Date endDate);
-
-	List<Professional> findById(Long id);
+	
 }

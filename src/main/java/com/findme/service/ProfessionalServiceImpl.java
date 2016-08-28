@@ -52,7 +52,7 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 
 	@Override
 	public Professional findById(Long id) {
-		return professionalDAO.findById(id).get(0);
+		return professionalDAO.findOne(id);
 	}
 
 	
