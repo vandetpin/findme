@@ -13,6 +13,9 @@ public class JAppointment implements Serializable{
 	private Date endDate;
 	private int capacity;
 	private int status;
+	
+	private JProfessional professional;
+	
 	public Long getId() {
 		return id;
 	}
@@ -54,6 +57,12 @@ public class JAppointment implements Serializable{
 	}
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	public JProfessional getProfessional() {
+		return professional;
+	}
+	public void setProfessional(JProfessional professional) {
+		this.professional = professional;
 	}
 	
 }

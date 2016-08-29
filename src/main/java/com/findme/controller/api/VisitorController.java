@@ -18,25 +18,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.findme.json.JAppointment;
+import com.findme.json.JAppointmentDetail;
 import com.findme.json.JVisitorAppointment;
 import com.findme.service.ProfessionalService;
 import com.findme.service.UserAccountService;
+import com.findme.service.VisitorService;
 import com.findme.utils.Formatter;
 
-@Controller("professionalControllerAPI")
-@RequestMapping("/professionals")
-public class ProfessionalController {
-	private static final Logger LOG = Logger.getLogger(ProfessionalController.class);
+@Controller("visitorControllerAPI")
+@RequestMapping("/visitors")
+public class VisitorController {
+	private static final Logger LOG = Logger.getLogger(VisitorController.class);
 
 	@Autowired
-	private ProfessionalService professionalService;
+	private VisitorService visitorService;
 	
 	@Autowired
 	private UserAccountService userAccountService;
 	
 	
 	/**
-	 * Get List appointments by professional
+	 * Get List appointments of a client
 	 * 
 	 * @param startDate optional 'yyyy-MM-dd HH:mm:ss'
 	 * @param startDate optional 'yyyy-MM-dd HH:mm:ss'
@@ -44,42 +46,24 @@ public class ProfessionalController {
 	 * @throws ParseException
 	 */
 	@RequestMapping(value="/api/appointments", method=RequestMethod.GET)
-	public ResponseEntity<Collection<JAppointment>> getAppointmentById(
-			@RequestParam(value="startDate", required = false) String requestStartDate, @RequestParam(value="endDate", required = false) String requestEndDate) throws ParseException {
+	public ResponseEntity<Collection<JAppointmentDetail>> getAppointmentById(
+			@RequestParam(value="startDate", required = false) String requestStartDate, 
+			@RequestParam(value="endDate", required = false) String requestEndDate) throws ParseException {
 		
 		//TODO do a generic method get professionalId
 		String username = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
-		Long professionalId = userAccountService.findUserByUsername(username).getId();
+		Long userId = userAccountService.findUserByUsername(username).getId();
 		
 		//TODO apply Spring validation
 		if(!StringUtils.isEmpty(requestEndDate) && !StringUtils.isEmpty(requestStartDate)) {
 			Date startDate = Formatter.dateTimeFormat.parse(requestStartDate);
 			Date endDate = Formatter.dateTimeFormat.parse(requestEndDate);
 			
-			return new ResponseEntity<>(professionalService.findByProfessional(professionalId, startDate, endDate), HttpStatus.OK);
+			return new ResponseEntity<>(visitorService.findByVisitor(userId, startDate, endDate), HttpStatus.OK);
 		}
 		
-		return new ResponseEntity<>(professionalService.findByProfessional(professionalId), HttpStatus.OK);
+		return new ResponseEntity<>(visitorService.findByVisitor(userId), HttpStatus.OK);
 		
 	}
 	
-	/**
-	 * 
-	 * Search professional's client by their firstName, lastName
-	 * 
-	 * @param firstName
-	 * @param lastName
-	 * @return
-	 */
-	@RequestMapping(value="/api/visitors", method=RequestMethod.GET)
-	public ResponseEntity<Collection<JVisitorAppointment>> getVisitorByFirstNameOrLastName(
-			@RequestParam(value="firstName") String visitorFirstName, 
-			@RequestParam(value="lastName") String visitorLastName) {
-		
-		//TODO do a generic method get professionalId
-		String username = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
-		Long professionalId = userAccountService.findUserByUsername(username).getId();
-		
-		return new ResponseEntity<>(professionalService.findVisitorByIdAndFirstNameOrLastNameContaining(professionalId, visitorFirstName, visitorLastName), HttpStatus.OK);
-	} 
 }

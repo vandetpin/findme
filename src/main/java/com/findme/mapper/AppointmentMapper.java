@@ -35,6 +35,9 @@ public final class AppointmentMapper {
 			to.setId(from.getAppid());
 			to.setName(from.getName());
 			to.setStatus(from.getStatus());
+			
+			// professional
+			to.setProfessional(ProfessionalMapper.map(from.getOwner()));
 		}
 		
 		return to;

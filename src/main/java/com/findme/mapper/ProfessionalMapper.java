@@ -6,14 +6,16 @@ import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
 
+import com.findme.domain.Professional;
 import com.findme.domain.Visitor;
+import com.findme.json.JProfessional;
 import com.findme.json.JVisitor;
 
-public class VisitorMapper {
-	public static Collection<JVisitor> map(Iterable<Visitor> list) {
+public class ProfessionalMapper {
+	public static Collection<JProfessional> map(Iterable<Professional> list) {
 		if(list != null) {
-			List<JVisitor> tos = new ArrayList<>();
-			for(Visitor from : list) {
+			List<JProfessional> tos = new ArrayList<>();
+			for(Professional from : list) {
 				tos.add(map(from));
 			}
 			
@@ -24,10 +26,10 @@ public class VisitorMapper {
 		
 	}
 	
-	public static JVisitor map(Visitor from) {
-		JVisitor to = null;
+	public static JProfessional map(Professional from) {
+		JProfessional to = null;
 		if(from != null) {
-			to = new JVisitor();
+			to = new JProfessional();
 			to.setId(from.getId());
 			to.setFirstName(from.getFirstName());
 			to.setLastName(from.getLastName());
@@ -35,5 +37,4 @@ public class VisitorMapper {
 		
 		return to;
 	}
-	
 }
