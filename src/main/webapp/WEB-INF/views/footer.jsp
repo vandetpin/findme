@@ -9,10 +9,10 @@
             		<div>
             			<ul class="list-inline">
             				<li><a ref="<c:url value='/home'></c:url>"><i class="fa fa-home" aria-hidden="true"></i> Home </a></li>
-            				<li><a href="<c:url value='/Services'></c:url>">Services</a></li>
-							<li><a href="<c:url value='/Contact'></c:url>">Contact Us</a></li>
-							<li><a href="<c:url value='/About'></c:url>">About Us</a></li>
-							<li><a href="<c:url value='/Search'></c:url>">Search</a></li>
+            				<li><a href="<c:url value='/services'></c:url>">Services</a></li>
+							<li><a href="<c:url value='/contact'></c:url>">Contact Us</a></li>
+							<li><a href="<c:url value='/about'></c:url>">About Us</a></li>
+							<li><a href="<c:url value='/search'></c:url>">Search</a></li>
             			</ul>
             		</div>
             	</div>

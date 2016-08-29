@@ -82,7 +82,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-9">
+                    <div class="col-xs-12 col-sm-9" style="border-left: 1px #efefef solid;">
                         <div class="tab-content">
                             <div id="professionalAppoin" class="tab-pane fade in active" role="tabpanel">
                                 <div class="row">

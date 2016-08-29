@@ -82,14 +82,14 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12">
                 <div class="row">
-                    <div class="col-xs-6 col-sm-3">
+                    <div class="col-xs-6 col-sm-2">
                         <div class="">
                             <div id="proffesionalTabList" class="list-group" role="tablist"> <a class="active list-group-item" role="tab" data-toggle="tab" href="#professionalAppoin"><span class="glyphicon glyphicon-chevron-right"></span> List of Appointments</a> <a class="list-group-item" role="tab" data-toggle="tab" href="#professionalClient">List of Clients</a>
                                 <!-- Your Code Goes here -->
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-9">
+                    <div class="col-xs-12 col-sm-10" style="border-left: 1px #efefef solid;">
                         <div class="tab-content">
                             <div id="professionalAppoin" class="tab-pane fade in active" role="tabpanel">
                                 <div class="row">
@@ -127,9 +127,9 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12">
                                         <div class="col-xs-12 col-sm-12">
-                                            <div id="searchClientsProfBtn" class="input-group"> <span class="input-group-addon" id="basic-addon1">Search Client</i></span>
-                                                <input id="searchClientNameProf" type="text" class="form-control" placeholder="Search by First / Last Name ..." aria-describedby="basic-addon1"><span class="input-group-btn">
-	                	    					<button class="btn btn-primary" type="button"><i class="fa fa-search"></i> Go</button>
+                                            <div class="input-group"> <span class="input-group-addon" id="basic-addon1">Search Client</i></span>
+                                                <input id="searchClientsProfText" type="text" class="form-control" placeholder="Search by First / Last Name ..." aria-describedby="basic-addon1"><span class="input-group-btn">
+	                	    					<button id="searchClientsProfBtn" class="btn btn-primary" type="button"><i class="fa fa-search"></i> Go</button>
 	                	    				</span> </div>
                                             <br /> </div>
                                     </div>
@@ -138,7 +138,7 @@
                                     <br />
                                     <div class="col-xs-12 col-sm-12">
                                         <div class="row">
-                                            <div id="scheduleList" class="col-xs-12 col-sm-12" hidden="hidden"> </div>
+                                            <div id="clientProfList" class="col-xs-12 col-sm-12" hidden="hidden"> </div>
                                         </div>
                                         <!-- If No Appointment found -->
                                         <div class="row">

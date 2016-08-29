@@ -1,6 +1,7 @@
 $(function () {
     //***********************************************************************************************************
     // Professional Page Script Goes here
+    // Auto Load Function
     $('#appointmentList').ready(function () {
         $.ajax({
             url: 'professionals/api/appointments'
@@ -35,6 +36,43 @@ $(function () {
                 alert('Unable to get Information From the Server1');
             }
         });
+    });
+    
+    $('#clientProfList').ready(function(){
+        $.ajax({
+                url: 'professionals/api/visitors'
+                , data : {firstName:'', lastName:''}
+                , method: 'get'
+                , dataType: 'json'
+                , success: function (data) {
+                    if (data.length > 0) {
+                        if (data.length > 0) {
+                        $('#noRecordFound2').hide();
+                        $('#clientProfList').show();
+                        $('#clientProfList').children().remove();
+                        $('#clientProfList').append('<table id="scheduleListTable" class="table table-responsive table-hover"><tr><th>Appointment Name</th><th>Client Name</th><th>Start Date/Time</th><th>End Time/Date</th><th>Status</th><th></th></tr></table>');
+                        $(data).each(function (index, JAppointment) {
+                            $(JAppointment.appointments).each(function (index, appointments){
+                                var jstatus1, jstatus2;
+                                if(appointments.appointment.status == 1){
+                                    jstatus2 = "Active";
+                                    jstatus1 = '<a href="professional/appointment/' + JAppointment.id +'/'+ JAppointment.status +'" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>';
+                                }else if(appointments.appointment.status == 0){
+                                    jstatus2 = "Cancel";
+                                    jstatus1 = '<a href="professional/appointment/' + JAppointment.id +'/'+ JAppointment.status +'" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i>  Active</a>';
+                                }
+                                $('#scheduleListTable').append('<tr><th>' + appointments.appointment.name +'</th><th>' + JAppointment.visitor.firstName + ' ' +  JAppointment.visitor.lastName + '</th><th>' + appointments.appointment.startDate + '</th><th>' + appointments.appointment.endDate + '</th><th>' + jstatus2 +'</th><th>' + jstatus1 +'</th> </tr>');
+                            });
+                        });
+                    }
+                    else {
+                        $('#noRecordFound2').show();
+                        $('#clientProfList').hide();
+                    }}
+                }, error: function () {
+                    alert('Unable to get Information From the Server');
+                }
+            });
     });
     //******************************************** 
     // Date Function Here
@@ -162,24 +200,37 @@ $(function () {
     //*******************************************
     //Search Client by Name
     $('#searchClientsProfBtn').click(function () {
-        var name = $('#searchClientNameProf').val();
+        var name = $('#searchClientsProfText').val();
         if (name == '') {
             alert('Search Fields are Empty, Loading all Clients');
             $.ajax({
-                url: 'professionals/api/appointments'
+                url: 'professionals/api/visitors'
+                , data : {firstName:'', lastName:''} 
                 , method: 'get'
                 , dataType: 'json'
                 , success: function (data) {
                     if (data.length > 0) {
-                        $('#noRecordFound1').hide();
-                        $('#scheduleList').show();
-                        $('#scheduleList').children().remove();
-                        $('#scheduleList').append('<table id="scheduleListTable" class="table table-responsive table-hover"><tr><th>Client Name</th><th>Start<th>Message</th><th>Status</th></tr></table>');
-                        $(data).each(function (index, JAppointment) {});
+                        $('#noRecordFound2').hide();
+                        $('#clientProfList').show();
+                        $('#clientProfList').children().remove();
+                        $('#clientProfList').append('<table id="scheduleListTable" class="table table-responsive table-hover"><tr><th>Appointment Name</th><th>Client Name</th><th>Start Date/Time</th><th>End Time/Date</th><th>Status</th><th></th></tr></table>');
+                        $(data).each(function (index, JAppointment) {
+                            $(JAppointment.appointments).each(function (index, appointments){
+                                var jstatus1, jstatus2;
+                                if(appointments.appointment.status == 1){
+                                    jstatus2 = "Active";
+                                    jstatus1 = '<a href="professional/appointment/' + JAppointment.id +'/'+ JAppointment.status +'" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>';
+                                }else if(appointments.appointment.status == 0){
+                                    jstatus2 = "Cancel";
+                                    jstatus1 = '<a href="professional/appointment/' + JAppointment.id +'/'+ JAppointment.status +'" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i>  Active</a>';
+                                }
+                                $('#scheduleListTable').append('<tr><th>' + appointments.appointment.name +'</th><th>' + JAppointment.visitor.firstName + ' ' +  JAppointment.visitor.lastName + '</th><th>' + appointments.appointment.startDate + '</th><th>' + appointments.appointment.endDate + '</th><th>' + jstatus2 +'</th><th>' + jstatus1 +'</th> </tr>');
+                            });
+                        });
                     }
                     else {
                         $('#noRecordFound2').show();
-                        $('#scheduleList').hide();
+                        $('#clientProfList').hide();
                     }
                 }
                 , error: function () {
@@ -189,23 +240,33 @@ $(function () {
         }
         else {
             $.ajax({
-                url: 'professionals/api/appointments'
-                , data: {
-                    name: name
-                }
+                url: 'professionals/api/visitors'
+                , data: {firstName: name, lastName: name}
                 , method: 'get'
                 , dataType: 'json'
                 , success: function (data) {
-                    $('#noRecordFound1').hide();
-                    $('#scheduleList').show();
-                    $('#scheduleList').children().remove();
                     if (data.length > 0) {
-                        $('#scheduleList').append('<table id="scheduleListTable" class="table table-responsive table-hover"><tr><th>Client Name</th><th>Start<th>Message</th><th>Status</th></tr></table>');
-                        $(data).each(function (index, JAppointment) {});
+                        $('#noRecordFound2').hide();
+                        $('#clientProfList').show();
+                        $('#clientProfList').children().remove();
+                        $('#clientProfList').append('<table id="scheduleListTable" class="table table-responsive table-hover"><tr><th>Appointment Name</th><th>Client Name</th><th>Start Date/Time</th><th>End Time/Date</th><th>Status</th><th></th></tr></table>');
+                        $(data).each(function (index, JAppointment) { 
+                            $(JAppointment.appointments).each(function (index, appointments){ 
+                                var jstatus1, jstatus2;
+                                if(appointments.appointment.status == 1){
+                                    jstatus2 = "Active";
+                                    jstatus1 = '<a href="professional/appointment/' + JAppointment.id +'/'+ JAppointment.status +'" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>';
+                                }else if(appointments.appointment.status == 0){
+                                    jstatus2 = "Cancel";
+                                    jstatus1 = '<a href="professional/appointment/' + JAppointment.id +'/'+ JAppointment.status +'" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i>  Active</a>';
+                                }
+                                $('#scheduleListTable').append('<tr><th>' + appointments.appointment.name +'</th><th>' + JAppointment.visitor.firstName + ' ' +  JAppointment.visitor.lastName + '</th><th>' + appointments.appointment.startDate + '</th><th>' + appointments.appointment.endDate + '</th><th>' + jstatus2 +'</th><th>' + jstatus1 +'</th> </tr>');
+                            });
+                        });
                     }
                     else {
                         $('#noRecordFound2').show();
-                        $('#scheduleList').hide();
+                        $('#clientProfList').hide();
                     }
                 }
                 , error: function () {
