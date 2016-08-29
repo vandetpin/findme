@@ -12,7 +12,6 @@ import com.findme.domain.Professional;
 import com.findme.domain.Visitor;
 
 import java.lang.Long;
-import java.util.List;
 
 @Repository
 public interface ProfessionalDAO extends CrudRepository<Professional, Long> {
@@ -24,5 +23,8 @@ public interface ProfessionalDAO extends CrudRepository<Professional, Long> {
 	
 	@Query("SELECT DISTINCT v FROM Professional p JOIN p.visitors v WHERE p.id =:id AND v.firstName LIKE %:firstName% OR v.lastName LIKE %:lastName%")
 	Iterable<Visitor> findVisitorByIdAndFirstNameOrLastNameContaining(@Param("id") Long professionalId, @Param("firstName") String visitorFirstName, @Param("lastName") String visitorLastName);
+	
+	@Query("SELECT DISTINCT a FROM Professional p JOIN p.appointments a WHERE p.id =:id AND a.appid =:appointmentId ")
+	Appointment findAppointmentByIdAndAppointmentId(@Param("id") Long id, @Param("appointmentId") Long appointmentId);
 	
 }

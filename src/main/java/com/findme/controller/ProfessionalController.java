@@ -59,12 +59,17 @@ public class ProfessionalController {
 		return "redirect:/professionals";
 	}
 	
-	@RequestMapping(value="/appointment/{id}/{status}", method = RequestMethod.POST)
-	public String editAppointmentStatus(HttpServletRequest request, @PathVariable Long id, @PathVariable int status) {
+	@RequestMapping(value="/appointment/{id}/{status}", method = RequestMethod.GET)
+	public String editAppointmentStatus(HttpServletRequest request, @PathVariable("id") Long appointmentId, @PathVariable Integer status) {
 		String username = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
 		Long professionalId = userAccountService.findUserByUsername(username).getId();
-		Professional professional = professionalService.findById(professionalId);
-		//appointmentService.find
+		
+		//check if the appointment found in the professional
+		Appointment appoinment = professionalService.findAppointmentByIdAndAppointmentId(professionalId, appointmentId);
+		if(appoinment != null) {
+			appointmentService.updateStatus(appointmentId, status);
+		}
+		
 		return "redirect:/professionals";
 	}
 	

@@ -24,5 +24,5 @@ public interface ProfessionalService {
 	
 	Collection<JVisitorAppointment> findVisitorByIdAndFirstNameOrLastNameContaining(Long professionalId, String visitorFirstName, String visitorLastName);
 	
-	
+	Appointment findAppointmentByIdAndAppointmentId(Long id, Long appointmentId);
 }

@@ -64,4 +64,9 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 		return VisitorAppointmentMapper.map(professionalDAO.findVisitorByIdAndFirstNameOrLastNameContaining(
 				professionalId, visitorFirstName, visitorLastName));
 	}
+
+	@Override
+	public Appointment findAppointmentByIdAndAppointmentId(Long id, Long appointmentId) {
+		return professionalDAO.findAppointmentByIdAndAppointmentId(id, appointmentId);
+	}
 }

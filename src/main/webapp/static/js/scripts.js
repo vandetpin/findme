@@ -16,10 +16,10 @@ $(function () {
                         var jstatus1, jstatus2;
                         if(JAppointment.status == 1){
                             jstatus2 = "Active";
-                            jstatus1 = '<a href="professional/appointment/' + JAppointment.id +'/'+ JAppointment.status +'" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>';
+                            jstatus1 = '<a href="professionals/appointment/' + JAppointment.id +'/0" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>';
                         }else if(JAppointment.status == 0){
                             jstatus2 = "Cancel";
-                            jstatus1 = '<a href="professional/appointment/' + JAppointment.id +'/'+ JAppointment.status +'" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i>  Active</a>';
+                            jstatus1 = '<a href="professionals/appointment/' + JAppointment.id +'/1" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i>  Active</a>';
                         }
                         
                         $('#appointmentListTable').append('<tr><td>' + JAppointment.name + '</td> <td>' + JAppointment.startDate + '</td><td>' + JAppointment.endDate + '</td><td>' + JAppointment.capacity + '</td><td>' + jstatus2 + '</td><td>' + jstatus1 + '</td></tr>');
