@@ -1,9 +1,6 @@
 $(function () {
     //***********************************************************************************************************
     // Professional Page Script Goes here
-    if ($("body:has(#appointmentList)")) {
-        alert('Has it');
-    }
     $('#appointmentList').ready(function () {
         $.ajax({
             url: 'professionals/api/appointments'

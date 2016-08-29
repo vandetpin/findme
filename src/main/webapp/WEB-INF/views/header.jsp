@@ -38,12 +38,23 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="<c:url value='/About'></c:url>">About</a></li>
+				<li><a href="<c:url value='/Home'></c:url>"> <i class="fa fa-home" aria-hidden="true"></i> Home</a></li>		
 				<li><a href="<c:url value='/Services'></c:url>">Services</a></li>
-				<li><a href="<c:url value='/Contact'></c:url>">Contact</a></li>
+				<li><a href="<c:url value='/Contact'></c:url>">Contact Us</a></li>
+				<li><a href="<c:url value='/About'></c:url>">About Us</a></li>
 				<li><a href="<c:url value='/Search'></c:url>">Search</a></li>
-				<li><a href="<c:url value='/Register'></c:url>">SignUp/Login</a></li>
 			</ul>
+			<ul class="nav navbar-nav navbar-right">
+			<c:choose>
+				<c:when test="${loggedUser != null}">
+					<li><a class="" href="#login">Welcome ${loggedUser.firstName } ${loggedUser.lastName}!</a></li>
+					<li><button type="button" class="btn btn-danger navbar-btn">Sign out</button></li> 
+				</c:when>
+				<c:otherwise>
+					<li><button type="button" class="btn btn-primary navbar-btn">Sign In</button></li> 
+				</c:otherwise>
+			</c:choose>
+        	</ul>
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
