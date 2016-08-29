@@ -23,4 +23,47 @@ public class VisitorAppointment implements java.io.Serializable {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdDate;
+	
+	public VisitorAppointment(){}
+
+	public VisitorAppointmentPK getId() {
+		return id;
+	}
+
+	public void setId(VisitorAppointmentPK id) {
+		this.id = id;
+	}
+
+	public Integer getIsApproved() {
+		return isApproved;
+	}
+
+	public void setIsApproved(Integer isApproved) {
+		this.isApproved = isApproved;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+	
+	public Visitor getVisitor() {
+		return getId().getVisitor();
+	}
+	
+	public void setVisitor(Visitor visitor) {
+		getId().setVisitor(visitor);
+	}
+	
+	public Appointment getAppointment() {
+		return getId().getAppointment();
+	}
+	
+	public void setAppointment(Appointment appointment) {
+		getId().setAppointment(appointment);
+	}
+	
 }

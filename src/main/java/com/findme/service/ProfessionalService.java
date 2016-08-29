@@ -3,9 +3,13 @@ package com.findme.service;
 import java.util.Collection;
 import java.util.Date;
 
+import org.springframework.data.repository.query.Param;
+
 import com.findme.domain.Appointment;
 import com.findme.domain.Professional;
+import com.findme.domain.Visitor;
 import com.findme.json.JAppointment;
+import com.findme.json.JVisitorAppointment;
 
 public interface ProfessionalService {
 	Iterable<Professional> findAll();
@@ -17,4 +21,8 @@ public interface ProfessionalService {
 	Collection<JAppointment> findByProfessional(Long professionalId, Date startDate, Date endDate);
 	
 	Professional findById(Long id);
+	
+	Collection<JVisitorAppointment> findVisitorByIdAndFirstNameOrLastNameContaining(Long professionalId, String visitorFirstName, String visitorLastName);
+	
+	
 }

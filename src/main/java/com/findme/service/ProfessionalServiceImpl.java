@@ -15,8 +15,11 @@ import org.springframework.stereotype.Service;
 import com.findme.dao.ProfessionalDAO;
 import com.findme.domain.Appointment;
 import com.findme.domain.Professional;
+import com.findme.domain.Visitor;
 import com.findme.json.JAppointment;
+import com.findme.json.JVisitorAppointment;
 import com.findme.mapper.AppointmentMapper;
+import com.findme.mapper.VisitorAppointmentMapper;
 
 @Service
 @Transactional
@@ -55,6 +58,10 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 		return professionalDAO.findOne(id);
 	}
 
-	
-
+	@Override
+	public Collection<JVisitorAppointment> findVisitorByIdAndFirstNameOrLastNameContaining(Long professionalId,
+			String visitorFirstName, String visitorLastName) {
+		return VisitorAppointmentMapper.map(professionalDAO.findVisitorByIdAndFirstNameOrLastNameContaining(
+				professionalId, visitorFirstName, visitorLastName));
+	}
 }

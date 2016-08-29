@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.findme.json.JAppointment;
+import com.findme.json.JVisitorAppointment;
 import com.findme.service.ProfessionalService;
 import com.findme.service.UserAccountService;
 import com.findme.utils.Formatter;
@@ -61,4 +62,24 @@ public class ProfessionalController {
 		return new ResponseEntity<>(professionalService.findByProfessional(professionalId), HttpStatus.OK);
 		
 	}
+	
+	/**
+	 * 
+	 * Search professional's client by their firstName, lastName
+	 * 
+	 * @param firstName
+	 * @param lastName
+	 * @return
+	 */
+	@RequestMapping(value="/api/visitors", method=RequestMethod.GET)
+	public ResponseEntity<Collection<JVisitorAppointment>> getVisitorByFirstNameOrLastName(
+			@RequestParam(value="firstName") String visitorFirstName, 
+			@RequestParam(value="lastName") String visitorLastName) {
+		
+		//TODO do a generic method get professionalId
+		String username = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+		Long professionalId = userAccountService.findUserByUsername(username).getId();
+		
+		return new ResponseEntity<>(professionalService.findVisitorByIdAndFirstNameOrLastNameContaining(professionalId, visitorFirstName, visitorLastName), HttpStatus.OK);
+	} 
 }
