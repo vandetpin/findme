@@ -51,7 +51,7 @@ $(function () {
     });
     jQuery(function () {
         jQuery('#startDateModal').datetimepicker({
-            format: 'Y/m/d H:m:s'
+            format: 'Y-m-d H:m:s'
             , onShow: function (ct) {
                 this.setOptions({
                     maxDate: jQuery('#endDateModal').val() ? jQuery('#endDateModal').val() : false
@@ -60,7 +60,7 @@ $(function () {
             , timepicker: true
         });
         jQuery('#endDateModal').datetimepicker({
-            format: 'Y/m/d H:m:s'
+            format: 'Y-m-d H:m:s'
             , onShow: function (ct) {
                 this.setOptions({
                     minDate: jQuery('#startDateModal').val() ? jQuery('#startDateModal').val() : false
@@ -87,6 +87,7 @@ $(function () {
                         $('#appointmentList').children().remove();
                         $('#appointmentList').append('<table id="appointmentListTable" class="table table-responsive table-hover"><tr class="info"><th>Appointment</th><th>Start Date/Time</th><th>End Date/Time</th><th>Capacity</th><th>Status</th></tr></table>');
                         $(data).each(function (index, JAppointment) {
+                            // Need Status 
                             $('#appointmentListTable').append('<tr><td>' + JAppointment.name + '</td> <td>' + JAppointment.startDate + '</td><td>' + JAppointment.endDate + '</td><td>' + JAppointment.capacity + '</td><td>' + JAppointment.status + '</td></tr>');
                         });
                         $('#appointmentList').append('<br /> <br />')
@@ -133,8 +134,8 @@ $(function () {
         }
     });
     //*******************************************
-    //Search Appointment by Name
-    $('#searchAppointProfBtn').click(function () {
+    //Search Client by Name
+    $('#searchClientsProfBtn').click(function () {
         var name = $('#searchClientNameProf').val();
         if (name == '') {
             alert('Search Fields are Empty, Loading all Clients');

@@ -3,7 +3,7 @@
         <div id="addAppoint" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <form class="form-horizontal" method="post" enctype="multipart/form-data" action="professionals/appointment/add">
+                    <form class="form-horizontal" method="post" action="professionals/appointment/add">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title">Please Enter the Appointment Detail Information</h4> </div>
@@ -14,17 +14,17 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Appointment Name</label>
                                         <div class="col-xs-9 col-sm-5">
-                                            <input type="text" class="form-control" name="firstName" placeholder="First name" required> </div>
+                                            <input type="text" class="form-control" name="name" placeholder="Appointment name" required> </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Start Date</label>
                                         <div class="col-xs-9 col-sm-5">
-                                            <input id="startDateModal" type="text" class="form-control" name="startDate" placeholder="Start Date/Time" required> </div>
+                                            <input id="startDateModal" type="text" class="form-control" name="appStartTime" placeholder="Start Date/Time" required> </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">End Date</label>
                                         <div class="col-xs-9 col-sm-5">
-                                            <input id="endDateModal" type="text" class="form-control" name="endDate" placeholder="End Date/Time" required> </div>
+                                            <input id="endDateModal" type="text" class="form-control" name="appEndTime" placeholder="End Date/Time" required> </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Capacity</label>
@@ -34,7 +34,7 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Description</label>
                                         <div class="col-xs-9 col-sm-5">
-                                            <textarea name="description" class="form-control" placeholder="Appointment description ...." rows="3" required></textarea>
+                                            <textarea name="description" class="form-control" placeholder="Appointment description ...." rows="4" required></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -127,7 +127,7 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12">
                                         <div class="col-xs-12 col-sm-12">
-                                            <div class="input-group"> <span class="input-group-addon" id="basic-addon1">Search Client</i></span>
+                                            <div id="searchClientsProfBtn" class="input-group"> <span class="input-group-addon" id="basic-addon1">Search Client</i></span>
                                                 <input id="searchClientNameProf" type="text" class="form-control" placeholder="Search by First / Last Name ..." aria-describedby="basic-addon1"><span class="input-group-btn">
 	                	    					<button class="btn btn-primary" type="button"><i class="fa fa-search"></i> Go</button>
 	                	    				</span> </div>
