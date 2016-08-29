@@ -11,9 +11,18 @@ $(function () {
                     $('#noRecordFound1').hide();
                     $('#appointmentList').show();
                     $('#appointmentList').children().remove();
-                    $('#appointmentList').append('<table id="appointmentListTable" class="table table-responsive table-hover"><tr class="info"><th>Appointment</th><th>Start Date/Time</th><th>End Date/Time</th><th>Capacity</th><th>Status</th></tr></table>');
+                    $('#appointmentList').append('<table id="appointmentListTable" class="table table-responsive table-hover"><tr class="info"><th>Appointment</th><th>Start Date/Time</th><th>End Date/Time</th><th>Capacity</th><th>Status</th><th></th></tr></table>');
                     $(data).each(function (index, JAppointment) {
-                        $('#appointmentListTable').append('<tr><td>' + JAppointment.name + '</td> <td>' + JAppointment.startDate + '</td><td>' + JAppointment.endDate + '</td><td>' + JAppointment.capacity + '</td><td>' + JAppointment.status + '</td></tr>');
+                        var jstatus1, jstatus2;
+                        if(JAppointment.status == 1){
+                            jstatus2 = "Active";
+                            jstatus1 = '<a href="professional/appointment/' + JAppointment.id +'/'+ JAppointment.status +'" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>';
+                        }else if(JAppointment.status == 0){
+                            jstatus2 = "Cancel";
+                            jstatus1 = '<a href="professional/appointment/' + JAppointment.id +'/'+ JAppointment.status +'" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i>  Active</a>';
+                        }
+                        
+                        $('#appointmentListTable').append('<tr><td>' + JAppointment.name + '</td> <td>' + JAppointment.startDate + '</td><td>' + JAppointment.endDate + '</td><td>' + JAppointment.capacity + '</td><td>' + jstatus2 + '</td><td>' + jstatus1 + '</td></tr>');
                     });
                     $('#appointmentList').append('<br /> <br />')
                 }
@@ -85,12 +94,20 @@ $(function () {
                         $('#noRecordFound1').hide();
                         $('#appointmentList').show();
                         $('#appointmentList').children().remove();
-                        $('#appointmentList').append('<table id="appointmentListTable" class="table table-responsive table-hover"><tr class="info"><th>Appointment</th><th>Start Date/Time</th><th>End Date/Time</th><th>Capacity</th><th>Status</th></tr></table>');
+                        $('#appointmentList').append('<table id="appointmentListTable" class="table table-responsive table-hover"><tr class="info"><th>Appointment</th><th>Start Date/Time</th><th>End Date/Time</th><th>Capacity</th><th>Status</th><th></th></tr></table>');
                         $(data).each(function (index, JAppointment) {
-                            // Need Status 
-                            $('#appointmentListTable').append('<tr><td>' + JAppointment.name + '</td> <td>' + JAppointment.startDate + '</td><td>' + JAppointment.endDate + '</td><td>' + JAppointment.capacity + '</td><td>' + JAppointment.status + '</td></tr>');
+                            var jstatus1, jstatus2;
+                            if(JAppointment.status == 1){
+                                jstatus2 = "Active";
+                                jstatus1 = '<a href="professional/appointment/' + JAppointment.id +'/'+ JAppointment.status +'" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>';
+                            }else if(JAppointment.status == 0){
+                                jstatus2 = "Cancel";
+                                jstatus1 = '<a href="professional/appointment/' + JAppointment.id +'/'+ JAppointment.status +'" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i>  Active</a>';
+                            }
+
+                            $('#appointmentListTable').append('<tr><td>' + JAppointment.name + '</td> <td>' + JAppointment.startDate + '</td><td>' + JAppointment.endDate + '</td><td>' + JAppointment.capacity + '</td><td>' + jstatus2 + '</td><td>' + jstatus1 + '</td></tr>');
                         });
-                        $('#appointmentList').append('<br /> <br />')
+                        $('#appointmentList').append('<br /> <br />');
                     }
                     else {
                         $('#noRecordFound1').show();
@@ -116,11 +133,20 @@ $(function () {
                         $('#noRecordFound1').hide();
                         $('#appointmentList').show();
                         $('#appointmentList').children().remove();
-                        $('#appointmentList').append('<table id="appointmentListTable" class="table table-responsive table-hover"><tr class="info"><th>Appointment</th><th>Start Date/Time</th><th>End Date/Time</th><th>Capacity</th><th>Status</th></tr></table>');
+                        $('#appointmentList').append('<table id="appointmentListTable" class="table table-responsive table-hover"><tr class="info"><th>Appointment</th><th>Start Date/Time</th><th>End Date/Time</th><th>Capacity</th><th>Status</th><th></th></tr></table>');
                         $(data).each(function (index, JAppointment) {
-                            $('#appointmentListTable').append('<tr><td>' + JAppointment.name + '</td> <td>' + JAppointment.startDate + '</td><td>' + JAppointment.endDate + '</td><td>' + JAppointment.capacity + '</td><td>' + JAppointment.status + '</td></tr>');
+                            var jstatus1, jstatus2;
+                            if(JAppointment.status == 1){
+                                jstatus2 = "Active";
+                                jstatus1 = '<a href="professional/appointment/' + JAppointment.id +'/'+ JAppointment.status +'" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>';
+                            }else if(JAppointment.status == 0){
+                                jstatus2 = "Cancel";
+                                jstatus1 = '<a href="professional/appointment/' + JAppointment.id +'/'+ JAppointment.status +'" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i>  Active</a>';
+                            }
+
+                            $('#appointmentListTable').append('<tr><td>' + JAppointment.name + '</td> <td>' + JAppointment.startDate + '</td><td>' + JAppointment.endDate + '</td><td>' + JAppointment.capacity + '</td><td>' + jstatus2 + '</td><td>' + jstatus1 + '</td></tr>');
                         });
-                        $('#appointmentList').append('<br /> <br />')
+                        $('#appointmentList').append('<br /> <br />');
                     }
                     else {
                         $('#noRecordFound1').show();

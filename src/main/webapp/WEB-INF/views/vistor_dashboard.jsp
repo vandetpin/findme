@@ -53,28 +53,21 @@
         <!-- /.modal -->
         <hr />
         <div class="row">
-            <div class="col-xs-12 col-sm-9">
+            <div class="col-xs-12 col-sm-12">
                 <div class="row">
                     <div class="col-xs-6 col-md-2"> <a href="#" class="thumbnail"><img src="<c:url value='/static/img/placeholder.png'></c:url>" alt="..."></a> </div>
-                    <div class="col-xs-12 col-md-7">
+                    <div class="col-xs-12 col-md-8">
                         <h3>&nbsp;&nbsp;&nbsp; Name</h3>
-                        <dl class="row"> <dt class="col-sm-3 text-right">Email:</dt>
-                            <dd class="col-sm-9">-</dd> <dt class="col-sm-3 text-right">Phone:</dt>
-                            <dd class="col-sm-9">-</dd> <dt class="col-sm-3 text-right">Address:</dt>
-                            <dd class="col-sm-9">-</dd> <dt class="col-sm-3 text-right">Profession:</dt>
-                            <dd class="col-sm-9">-</dd>
+                        <dl class="row"> <dt class="col-xs-5 col-sm-2 text-right">Email:</dt>
+                            <dd class="col-xs-7 col-sm-10">-</dd> <dt class="col-xs-5 col-sm-2 text-right">Phone:</dt>
+                            <dd class="col-xs-7 col-sm-10">-</dd> <dt class="col-xs-5 col-sm-2 text-right">Address:</dt>
+                            <dd class="col-xs-7 col-sm-10">-</dd> <dt class="col-xs-5 col-sm-2 text-right">Client Info:</dt>
+                            <dd class="col-xs-7 col-sm-10">-</dd>
                         </dl>
                     </div>
-                    <div class="col-xs-6 col-sm-3">
+                    <div class="col-xs-6 col-sm-2">
                         <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#addClientAppoint">New Appointment</button>
                     </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">New Appointment</div>
-                    <div class="panel-body">
-                        <p>There are {number} new appointments you need to approve</p> <a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-hand-right"></span> List the Appointments</a> </div>
                 </div>
             </div>
         </div>
