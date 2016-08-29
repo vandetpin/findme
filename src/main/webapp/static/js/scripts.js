@@ -1,6 +1,9 @@
 $(function () {
     //***********************************************************************************************************
     // Professional Page Script Goes here
+    if ($("body:has(#appointmentList)")) {
+        alert('Has it');
+    }
     $('#appointmentList').ready(function () {
         $.ajax({
             url: 'professionals/api/appointments'
@@ -23,7 +26,7 @@ $(function () {
                 }
             }
             , error: function () {
-                alert('Unable to get Information From the Server');
+                alert('Unable to get Information From the Server1');
             }
         });
     });
@@ -195,5 +198,27 @@ $(function () {
         $(this).parent().children().children().remove();
         $(this).prepend('<span class="glyphicon glyphicon-chevron-right"></span> ');
         $(this).addClass('active');
+    });
+    //*************************************************************************************************************
+    // Client Dashboard Page goes here
+    jQuery(function () {
+        jQuery('#startDateVisitor').datetimepicker({
+            format: 'Y-m-d H:m:s'
+            , onShow: function (ct) {
+                this.setOptions({
+                    maxDate: jQuery('#endDateVisitor').val() ? jQuery('#endDateVisitor').val() : false
+                })
+            }
+            , timepicker: true
+        });
+        jQuery('#endDateVisitor').datetimepicker({
+            format: 'Y-m-d H:m:s'
+            , onShow: function (ct) {
+                this.setOptions({
+                    minDate: jQuery('#startDateVisitor').val() ? jQuery('#startDateVisitor').val() : false
+                })
+            }
+            , timepicker: true
+        });
     });
 });

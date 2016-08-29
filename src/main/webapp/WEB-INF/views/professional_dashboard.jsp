@@ -1,56 +1,56 @@
 <%@ include file="header.jsp"%>
     <div class="container">
         <div id="addAppoint" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <form class="form-horizontal" method="post" action="professionals/appointment/add">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">Please Enter the Appointment Detail Information</h4> </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12">
-                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Appointment Name</label>
-                                        <div class="col-xs-9 col-sm-5">
-                                            <input type="text" class="form-control" name="name" placeholder="Appointment name" required> </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Start Date</label>
-                                        <div class="col-xs-9 col-sm-5">
-                                            <input id="startDateModal" type="text" class="form-control" name="appStartTime" placeholder="Start Date/Time" required> </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">End Date</label>
-                                        <div class="col-xs-9 col-sm-5">
-                                            <input id="endDateModal" type="text" class="form-control" name="appEndTime" placeholder="End Date/Time" required> </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Capacity</label>
-                                        <div class="col-xs-6 col-sm-3">
-                                            <input type="number" min="1" class="form-control" name="capacity" placeholder="Capacity" required> </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Description</label>
-                                        <div class="col-xs-9 col-sm-5">
-                                            <textarea name="description" class="form-control" placeholder="Appointment description ...." rows="4" required></textarea>
-                                        </div>
-                                    </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="professionals/appointment/add">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Please Enter the Appointment Detail Information</h4> </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Appointment Name</label>
+                                <div class="col-xs-9 col-sm-5">
+                                    <input type="text" class="form-control" name="name" placeholder="Appointment name" required> </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Start Date</label>
+                                <div class="col-xs-9 col-sm-5">
+                                    <input id="startDateModal" type="text" class="form-control" name="appStartTime" placeholder="Start Date/Time" required> </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">End Date</label>
+                                <div class="col-xs-9 col-sm-5">
+                                    <input id="endDateModal" type="text" class="form-control" name="appEndTime" placeholder="End Date/Time" required> </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Capacity</label>
+                                <div class="col-xs-6 col-sm-3">
+                                    <input type="number" min="1" class="form-control" name="capacity" placeholder="Capacity" required> </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Description</label>
+                                <div class="col-xs-9 col-sm-5">
+                                    <textarea name="description" class="form-control" placeholder="Appointment description ...." rows="4" required></textarea>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Add Appointment</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Add Appointment</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                </div>
+            </form>
         </div>
-        <!-- /.modal -->
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
         <hr />
         <div class="row">
             <div class="col-xs-12 col-sm-9">
