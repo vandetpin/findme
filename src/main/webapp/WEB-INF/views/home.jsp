@@ -1,11 +1,13 @@
 <%@ include file="header.jsp"%>
-    <div class="container">
-        <div class="row ">
-            <div class="col-lg-12">
-                <h4>Search Profession here to make an appointments</h4>
-                <form role="form" method="get" action="<c:url value='/search'></c:url>">
-                    <div class="input-group">
-                        <input type="text" class="form-control input-lg" placeholder="Search ..."> <span class="input-group-btn">
+
+
+<div class="container">
+	<div class="row ">
+        <div class="col-lg-12"> 
+        	<form role="form" method="get" action="<c:url value='/search'></c:url>">
+	            <div class="input-group">
+	              	<input type="text" name="s" class="form-control input-lg" placeholder="Search ...">
+	              	<span class="input-group-btn">
 	                <button class="btn btn-primary btn-lg" type="submit"><i class="fa fa-search"></i> Search</button>
 	                <a href="<c:url value='/search/advance'></c:url>" class="btn btn-default btn-lg" type="button"><i class="fa fa-search-plus"></i> Advance</a>
 	              </span> </div>
