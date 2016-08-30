@@ -77,7 +77,7 @@
                 <div class="row">
                     <div class="col-xs-6 col-sm-2">
                         <div class="">
-                            <div id="visitorTabList" class="list-group" role="tablist"> <a class="active list-group-item" role="tab" data-toggle="tab" href="#visitorAppoin"><span class="glyphicon glyphicon-chevron-right"></span> List of Appointments</a>
+                            <div id="visitorTabList" class="list-group" role="tablist"> <a class="active list-group-item" role="tab" data-toggle="tab" href="#professionalAppoin"><span class="glyphicon glyphicon-chevron-right"></span> List of Appointments</a> <a class="list-group-item" role="tab" data-toggle="tab" href="#professionalListTab"> List of Professional</a>
                                 <!-- Your Code Goes here -->
                             </div>
                         </div>
@@ -116,6 +116,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <div id="professionalListTab" class="tab-pane fade in active" role="tabpanel"> Ts=est</div>
                         </div>
                     </div>
                 </div>

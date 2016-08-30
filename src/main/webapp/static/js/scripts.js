@@ -35,7 +35,7 @@ $(function () {
             }
             , error: function (jqXHR, exception) {
                 if (jqXHR.status != 403) {
-                    alert('Unable to get Information From the Server, Something wrong happened ... ');
+                    alert('Unable to get Information about professional From the Server, Something wrong happened ... ');
                     $(location).attr('href', 'login');
                 }
             }
@@ -306,8 +306,10 @@ $(function () {
                 }
             }
             , error: function () {
-                alert('Unable to get Information From the Server, Something wrong happened ... ');
-                $(location).attr('href', 'login');
+                if (jqXHR.status != 403) {
+                    alert('Unable to get Information about Visitor From the Server, Something wrong happened ... ');
+                    $(location).attr('href', 'login');
+                }
             }
         });
     });
@@ -376,9 +378,27 @@ $(function () {
                 }
             }
             , error: function () {
-                alert('Unable to get Information From the Server, Something wrong happened ... ');
+                alert('Unable to get Information about Visitor From the Server, Something wrong happened ... ');
                 $(location).attr('href', 'login');
             }
         });
+    });
+    //*******************************************
+    // Tab Function Goes Here
+    $('#visitorTabList').children().click(function () {
+        $(this).parent().children().removeClass('active');
+        $(this).parent().children().children().remove();
+        $(this).prepend('<span class="glyphicon glyphicon-chevron-right"></span> ');
+        $(this).addClass('active');
+    });
+    //*********************************************************************************************************************
+    //Admin Page Script goes here 
+    //*******************************************
+    // Tab Function Goes Here
+    $('#adminPageListTabs').children().click(function () {
+        $(this).parent().children().removeClass('active');
+        $(this).parent().children().children().remove();
+        $(this).prepend('<span class="glyphicon glyphicon-chevron-right"></span> ');
+        $(this).addClass('active');
     });
 });

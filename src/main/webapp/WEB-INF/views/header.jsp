@@ -46,7 +46,7 @@
 				<c:choose>
 					<c:when test="${loggedUser != null}">
 						<li><a class="" href="#login">Welcome ${loggedUser.firstName } ${loggedUser.lastName}!</a></li>
-						<li><a href="<c:url value="/logout" />"><span class="glyphicon glyphicon-log-out"></span> Login</a></li> 
+						<li><a href="<c:url value="/logout" />"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li> 
 					</c:when>
 					<c:otherwise>
 						<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
