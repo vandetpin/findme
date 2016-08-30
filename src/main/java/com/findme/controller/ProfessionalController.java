@@ -53,7 +53,7 @@ public class ProfessionalController {
 	
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public String getAll(Model model) {	
-		String username = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+		String username = WebUtils.getCurrentUserName();
 		Long professionalId = userAccountService.findUserByUsername(username).getId();
 		Professional professional = professionalService.findById(professionalId);
 		model.addAttribute("professional", professional);
@@ -62,7 +62,7 @@ public class ProfessionalController {
 	
 	@RequestMapping(value="/appointment/add", method = RequestMethod.POST)
 	public String addProfessional(HttpServletRequest request, Appointment appointment) {	
-		String username = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+		String username = WebUtils.getCurrentUserName();
 		Long professionalId = userAccountService.findUserByUsername(username).getId();
 		Professional professional = professionalService.findById(professionalId);
 		appointment.setOwner(professional);
@@ -73,7 +73,7 @@ public class ProfessionalController {
 	
 	@RequestMapping(value="/appointment/{id}/{status}", method = RequestMethod.GET)
 	public String editAppointmentStatus(HttpServletRequest request, @PathVariable("id") Long appointmentId, @PathVariable Integer status) {
-		String username = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+		String username = WebUtils.getCurrentUserName();
 		Long professionalId = userAccountService.findUserByUsername(username).getId();
 		
 		//check if the appointment found in the professional

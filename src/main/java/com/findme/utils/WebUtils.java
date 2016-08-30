@@ -7,6 +7,9 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -52,4 +55,18 @@ public final class WebUtils {
         }
         return new URL(request.getScheme(), request.getServerName(), port, "");
     }
+    
+    /**
+     * Get current username that already loged in, otherwise it will reutrn null
+     * 
+     * @return
+     */
+    public static String getCurrentUserName() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication(); 
+		if(auth.getPrincipal() instanceof User ) {
+			return ((User)auth.getPrincipal()).getUsername();
+		}
+		
+		return null;
+	}
 }
