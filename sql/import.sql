@@ -20,8 +20,8 @@ INSERT INTO `UserRole` (`id`,`role`,`username`) VALUES (10,'ROLE_USER','user2');
 INSERT INTO `UserRole` (`id`,`role`,`username`) VALUES (11,'ROLE_VISITOR','user2');
 
 -- Profesional ---
-INSERT INTO `User` (`userType`,`Id`,`city`,`state`,`street`,`zip`,`dateOfBirth`,`emailAddress`,`firstName`,`gender`,`lastName`,`otherInfo`,`phoneNumber`,`profilePicture`,`isActive`,`type`,`userAccount_id`) VALUES ('PROFESSIONAL',1,'Fairfield','Iowa','4th Street','52557','1960-10-10','prof@gg.com','TM teacher','F','1','short info','902387023','https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg', 1,'TM_TEACHER',3);
-INSERT INTO `User` (`userType`,`Id`,`city`,`state`,`street`,`zip`,`dateOfBirth`,`emailAddress`,`firstName`,`gender`,`lastName`,`otherInfo`,`phoneNumber`,`profilePicture`,`isActive`,`type`,`userAccount_id`) VALUES ('PROFESSIONAL',2,'Fairfield','Iowa','4th Street','52557','1960-10-10','prof@gg.com','Doctor','M','1','short info','902387023','https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg', 1,'DOCTOR',4);
+INSERT INTO `User` (`userType`,`Id`,`city`,`state`,`street`,`zip`,`dateOfBirth`,`emailAddress`,`firstName`,`gender`,`lastName`,`otherInfo`,`phoneNumber`,`profilePicture`,`isActive`,`type`,`userAccount_id`) VALUES ('PROFESSIONAL',1,'Fairfield','Iowa','4th Street','52557','1960-10-10','prof@gg.com','TM teacher','F','1','short info','902387023','https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg', 1, 4 ,3);
+INSERT INTO `User` (`userType`,`Id`,`city`,`state`,`street`,`zip`,`dateOfBirth`,`emailAddress`,`firstName`,`gender`,`lastName`,`otherInfo`,`phoneNumber`,`profilePicture`,`isActive`,`type`,`userAccount_id`) VALUES ('PROFESSIONAL',2,'Fairfield','Iowa','4th Street','52557','1960-10-10','prof@gg.com','Doctor','M','1','short info','902387023','https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg', 1, 0, 4);
 UPDATE UserAccount SET user_id = 1 WHERE id = 3;
 UPDATE UserAccount SET user_id = 2 WHERE id = 4;
 

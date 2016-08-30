@@ -66,8 +66,8 @@
                         <h3>To Register</h3>
                         <hr />
                         <p>If you want to register as new: </p>
-                        <p> Professional - <a href="# " class="btn btn-primary btn-xs ">Please click here </a> </p> 
-                        <p> Visitors - <a href="# " class="btn btn-primary btn-xs ">Please click here </a> </p> </p> <br />
+                        <p> Professional - <a href="<c:url value='/professionals/signup'></c:url>" class="btn btn-primary btn-xs ">Please click here </a> </p> 
+                        <p> Visitors - <a href="<c:url value='/visitors/signup'></c:url>" class="btn btn-primary btn-xs ">Please click here </a> </p> </p> <br />
                         <p>If you are having any problem or wanting to contact FindMe Administration in person or on a phone call, please click here. </p> 
                     </div>
                         

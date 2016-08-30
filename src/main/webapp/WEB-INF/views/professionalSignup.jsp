@@ -6,13 +6,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Visitor Signup</title>
+	<title>Professional Signup</title>
     <link href="<c:url value='../static/css/bootstrap.css' />"  rel="stylesheet"></link>
     <link href="<c:url value='../static/css/app.css' />" rel="stylesheet"></link>
 </head>
 <body>
 	<div class="container">
-		<h1 class="text-center">Visitor signup</h1>
+		<h1 class="text-center">Professional signup</h1>
 		<form class="form-horizontal" method="post" enctype="multipart/form-data" action="?${_csrf.parameterName}=${_csrf.token}" >
 			<fieldset>
 				<legend>Basic information</legend>
@@ -64,6 +64,18 @@
 						<select class="form-control" name="gender">
 							<option value="M">Male</option>
 							<option value="F">Female</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3 control-label">type</label>
+					<div class="col-md-9">
+						<select class="form-control" name="professionalType">
+							<option value="0">Doctor</option>
+							<option value="1">Layer</option>
+							<option value="2">Barber</option>
+							<option value="3">Music Teacher</option>
+							<option value="4">TM Teacher</option>
 						</select>
 					</div>
 				</div>

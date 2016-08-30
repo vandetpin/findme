@@ -7,15 +7,19 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
 @DiscriminatorValue("VISITOR")
 public class Visitor extends User{
-
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "id.visitor", cascade=CascadeType.ALL)
 	private Set<VisitorAppointment> visitorAppointment = new HashSet<VisitorAppointment>(0);
 

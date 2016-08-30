@@ -15,6 +15,9 @@ import org.springframework.stereotype.Service;
 import com.findme.dao.ProfessionalDAO;
 import com.findme.domain.Appointment;
 import com.findme.domain.Professional;
+import com.findme.domain.ProfessionalType;
+import com.findme.domain.UserAccount;
+import com.findme.domain.UserRole;
 import com.findme.domain.Visitor;
 import com.findme.json.JAppointment;
 import com.findme.json.JVisitorAppointment;
@@ -68,5 +71,25 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 	@Override
 	public Appointment findAppointmentByIdAndAppointmentId(Long id, Long appointmentId) {
 		return professionalDAO.findAppointmentByIdAndAppointmentId(id, appointmentId);
+	}
+	
+	@Override
+	public Professional create(Professional professional) {
+		// Assign roles to professional
+		UserAccount user = professional.getUserAccount();
+		user.addRole(new UserRole(user.getUsername(), UserRole.ROLE_USER));
+		user.addRole(new UserRole(user.getUsername(), UserRole.ROLE_PROFESSIONAL));
+		user.setActive(true);
+		
+		// professional should be verify and allow by Admin user
+		professional.setActive(false);
+		professional.setUserAccount(user);
+		
+		return professionalDAO.save(professional);
+	}
+	
+	@Override
+	public void updateStatus(Long id, Boolean isActive) {
+		professionalDAO.updateStatus(id, isActive);
 	}
 }

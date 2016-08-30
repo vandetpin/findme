@@ -21,7 +21,7 @@ public class Professional extends User{
 
 	private boolean isActive;
 	
-	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.ORDINAL)
 	private ProfessionalType type;
 	
 	@ElementCollection

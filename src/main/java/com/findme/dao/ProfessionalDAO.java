@@ -2,6 +2,7 @@ package com.findme.dao;
 
 import java.util.Date;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -26,5 +27,12 @@ public interface ProfessionalDAO extends CrudRepository<Professional, Long> {
 	
 	@Query("SELECT DISTINCT a FROM Professional p JOIN p.appointments a WHERE p.id =:id AND a.appid =:appointmentId ")
 	Appointment findAppointmentByIdAndAppointmentId(@Param("id") Long id, @Param("appointmentId") Long appointmentId);
+	
+	@Query("SELECT p FROM Professional p WHERE p.isActive = 1")
+	Iterable<Professional> findAll();
+	
+	@Modifying
+	@Query("UPDATE Professional p SET p.isActive =:isActive WHERE p.id =:id")
+	void updateStatus(@Param(value="id") Long id, @Param(value="isActive") Boolean isActive);
 	
 }
