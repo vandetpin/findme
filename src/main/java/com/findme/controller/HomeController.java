@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -31,6 +32,13 @@ public class HomeController {
         return "home";
     }
 	
+	
+	@RequestMapping(value="/home/details/{id}", method=RequestMethod.GET)
+	public String detailsById(ModelMap model, @PathVariable("id") Long id) {
+		model.addAttribute("professional",professionalService.findById(id));
+		model.addAttribute("totalClient",professionalService.findByProfessional(id));
+		return "details";
+	}
 	
 	
 }

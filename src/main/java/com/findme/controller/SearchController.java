@@ -18,13 +18,15 @@ public class SearchController {
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
     public String homePage(ModelMap model, @RequestParam("s") String s) {	
 		
-		model.addAttribute("professional",professionalService.findByFirstNameOrLastNameContaining(s, s));
+		System.out.println(s);
+		model.addAttribute("professionals",professionalService.findByFirstNameOrLastNameContaining(s, s));
+		
 		
         return "search";
     }
 	
 	@RequestMapping(value="/search/advance", method=RequestMethod.GET) 
-	public String advanceSearch(ModelMap model) {
+	public String advanceSearch(ModelMap model, @RequestParam("byname") String byname, @RequestParam("bycity") String bycity, @RequestParam("bytype") String bytype) {			
 		return "advancesearch";
 	}
 	
