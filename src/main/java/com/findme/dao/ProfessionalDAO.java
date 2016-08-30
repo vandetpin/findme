@@ -17,6 +17,8 @@ import java.util.List;
 
 @Repository
 public interface ProfessionalDAO extends CrudRepository<Professional, Long> {
+	
+	@Query("SELECT p FROM Professional p WHERE p.isActive = 1 AND (p.firstName LIKE %:firstName% OR p.lastName LIKE %:lastName% )")
 	Iterable<Professional> findByFirstNameOrLastNameContaining(String firstName, String lastName);
 	
 	
