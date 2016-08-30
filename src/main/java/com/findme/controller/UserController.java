@@ -22,12 +22,6 @@ public class UserController {
         return "login";
     }
  
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String adminPage(ModelMap model) {
-        model.addAttribute("user", WebUtils.getCurrentUserName());
-        return "admin";
-    }
- 
     @RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
     public String accessDeniedPage(ModelMap model) {
         model.addAttribute("user", WebUtils.getCurrentUserName());

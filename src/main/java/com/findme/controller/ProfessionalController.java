@@ -66,7 +66,7 @@ public class ProfessionalController {
 		Long professionalId = userAccountService.findUserByUsername(username).getId();
 		Professional professional = professionalService.findById(professionalId);
 		appointment.setOwner(professional);
-		appointment.setStatus(1);
+		appointment.setStatus(0);
 		appointmentService.create(appointment);
 		return "redirect:/professionals";
 	}

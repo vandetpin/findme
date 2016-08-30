@@ -44,6 +44,10 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 				<c:choose>
+					<c:when test="${loggedAdmin != null && loggedAdmin == 'admin'}">
+						<li><a class="" href="#login">Welcome Administrator!</a></li>
+						<li><a href="<c:url value="/logout" />"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li> 
+					</c:when>
 					<c:when test="${loggedUser != null}">
 						<li><a class="" href="#login">Welcome ${loggedUser.firstName } ${loggedUser.lastName}!</a></li>
 						<li><a href="<c:url value="/logout" />"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li> 

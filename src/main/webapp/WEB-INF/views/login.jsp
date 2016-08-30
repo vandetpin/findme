@@ -58,19 +58,20 @@
                                 <input type="password" class="form-control input-lg" id="password" name="password" placeholder="Password" required> </div>
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             <br />
-                            <button class="btn btn-primary btn-block btn-lg" type="submit" ">Login</button>
+                            <button class="btn btn-primary btn-block btn-lg" type="submit">Login</button>
                             <!-- /input-group -->
                         </form>
                     </div>
-                    <div class="col-xs-12 col-sm-4 " style="border-left: 1px #efefef solid; height: 45%; ">
+                    <div class="col-xs-12 col-sm-4" style="border-left: 1px #efefef solid; height: 45%; ">
                         <h3>To Register</h3>
                         <hr />
                         <p>If you want to register as new: </p>
-                        <p> Professional - <a href="<c:url value='/professionals/signup'></c:url>" class="btn btn-primary btn-xs ">Please click here </a> </p> 
-                        <p> Visitors - <a href="<c:url value='/visitors/signup'></c:url>" class="btn btn-primary btn-xs ">Please click here </a> </p> </p> <br />
-                        <p>If you are having any problem or wanting to contact FindMe Administration in person or on a phone call, please click here. </p> 
+                        <p> Professional - <a href="<c:url value='/professionals/signup'></c:url>" class="btn btn-primary btn-xs ">Please click here </a> </p>
+                        <p> Visitors - <a href="<c:url value='/visitors/signup'></c:url>" class="btn btn-primary btn-xs ">Please click here </a> </p>
+                        </p>
+                        <br />
+                        <p class="text-info">If you are having any problem or wanting to contact FindMe Administration in person or on a phone call, <a href="<c:url value='/visitors/signup'></c:url>" class="btn btn-primary btn-xs ">Please click here </a> </p>
                     </div>
-                        
                 </div>
             </div>
         </body>

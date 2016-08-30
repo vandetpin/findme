@@ -2,6 +2,7 @@ package com.findme.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,7 +17,8 @@ import com.findme.utils.WebUtils;
 
 @Controller
 public class HomeController {
-	
+	private static final Logger LOG = Logger.getLogger(HomeController.class);
+	 
 	@Autowired
 	ProfessionalService professionalService;
 	
@@ -26,11 +28,14 @@ public class HomeController {
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
     public String homePage(ModelMap model, HttpSession session) {
 		String username = WebUtils.getCurrentUserName();
-		if(username != null) {
-			User user = userAccountService.findUserByUsername(username);
-			session.setAttribute("loggedUser", user);
+		if(username != null){
+			if(username.equals("admin")) {
+				session.setAttribute("loggedAdmin", "admin");
+			}else{
+				User user = userAccountService.findUserByUsername(username);
+				session.setAttribute("loggedUser", user);
+			}
 		}
-		
 		model.addAttribute("professionals",professionalService.findAll());
         return "home";
     }

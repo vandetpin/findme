@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.findme.domain.Professional;
 import com.findme.service.ProfessionalService;
 import com.findme.service.UserAccountService;
+import com.findme.utils.WebUtils;
 
 @Controller("adminController")
 @RequestMapping("/admin")
@@ -39,13 +41,11 @@ public class AdminController {
 		return "redirect:/admin";
 	}
 	
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String homePage(ModelMap model, HttpSession session) {
-		String username = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
-		com.findme.domain.User user = userAccountService.findUserByUsername(username);
-		session.setAttribute("loggedUser", user);
-		model.addAttribute("professionals",professionalService.findAll());
-        return "home";
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+    public String adminPage(ModelMap model) {		
+		Iterable<Professional> professionals = professionalService.findAll();
+        model.addAttribute("professionals", professionals);
+        return "admin";
     }
 	
 }

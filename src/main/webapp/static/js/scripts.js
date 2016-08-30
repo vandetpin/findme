@@ -34,7 +34,8 @@ $(function () {
                 }
             }
             , error: function (jqXHR, exception) {
-                if (jqXHR.status != 403) {
+                if (jqXHR.status != 403 && jqXHR.status == 404) {
+                    alert(jqXHR.status);
                     alert('Unable to get Information about professional From the Server, Something wrong happened ... ');
                     $(location).attr('href', 'login');
                 }
@@ -80,8 +81,8 @@ $(function () {
                 }
             }
             , error: function (jqXHR, exception) {
-                if (jqXHR.status != 403) {
-                    alert('Unable to get Information From the Server, Something wrong happened ... ');
+                if (jqXHR.status != 403 && jqXHR.status == 404) {
+                    alert('Unable to get Information about client From the Server, Something wrong happened ... ');
                     $(location).attr('href', 'login');
                 }
             }
@@ -306,7 +307,7 @@ $(function () {
                 }
             }
             , error: function () {
-                if (jqXHR.status != 403) {
+                if (jqXHR.status != 403 && jqXHR.status == 404) {
                     alert('Unable to get Information about Visitor From the Server, Something wrong happened ... ');
                     $(location).attr('href', 'login');
                 }
