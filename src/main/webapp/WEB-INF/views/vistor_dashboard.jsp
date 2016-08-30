@@ -57,12 +57,12 @@
                 <div class="row">
                     <div class="col-xs-6 col-md-2"> <a href="#" class="thumbnail"><img src="<c:url value='/static/img/placeholder.png'></c:url>" alt="..."></a> </div>
                     <div class="col-xs-12 col-md-8">
-                        <h3>&nbsp;&nbsp;&nbsp; Name</h3>
-                        <dl class="row"> <dt class="col-xs-5 col-sm-2 text-right">Email:</dt>
-                            <dd class="col-xs-7 col-sm-10">-</dd> <dt class="col-xs-5 col-sm-2 text-right">Phone:</dt>
-                            <dd class="col-xs-7 col-sm-10">-</dd> <dt class="col-xs-5 col-sm-2 text-right">Address:</dt>
-                            <dd class="col-xs-7 col-sm-10">-</dd> <dt class="col-xs-5 col-sm-2 text-right">Client Info:</dt>
-                            <dd class="col-xs-7 col-sm-10">-</dd>
+                        <h3>&nbsp;&nbsp;&nbsp; ${visitor.lastName} ${visitor.firstName}</h3>
+                        <dl class="row"> <dt class="col-sm-3 text-right">Email:</dt>
+                            <dd class="col-sm-9">${visitor.emailAddress}</dd> <dt class="col-sm-3 text-right">Phone:</dt>
+                            <dd class="col-sm-9">${visitor.phoneNumber}</dd> <dt class="col-sm-3 text-right">Address:</dt>
+                            <dd class="col-sm-9">${visitor.address.street}, ${visitor.address.city}, ${visitor.address.state} ${visitor.address.zip}</dd> <dt class="col-sm-3 text-right">Profession:</dt>
+                            <dd class="col-sm-9">${visitor.otherInfo}</dd>
                         </dl>
                     </div>
                     <div class="col-xs-6 col-sm-2">
@@ -75,14 +75,14 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12">
                 <div class="row">
-                    <div class="col-xs-6 col-sm-3">
+                    <div class="col-xs-6 col-sm-2">
                         <div class="">
                             <div id="visitorTabList" class="list-group" role="tablist"> <a class="active list-group-item" role="tab" data-toggle="tab" href="#visitorAppoin"><span class="glyphicon glyphicon-chevron-right"></span> List of Appointments</a>
                                 <!-- Your Code Goes here -->
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-9" style="border-left: 1px #efefef solid;">
+                    <div class="col-xs-12 col-sm-10" style="border-left: 1px #efefef solid;">
                         <div class="tab-content">
                             <div id="professionalAppoin" class="tab-pane fade in active" role="tabpanel">
                                 <div class="row">
@@ -91,7 +91,7 @@
                                             <div class="input-group"> <span class="input-group-addon" id="basic-addon1">Search Appointment</i></span>
                                                 <input id="startDateVisitor" type="text" class="form-control" placeholder="Start Date/Time" aria-describedby="basic-addon1"> <span class="input-group-addon" id="basic-addon1">To</span>
                                                 <input id="endDateVisitor" type="text" class="form-control" placeholder="End Date/Time" aria-describedby="basic-addon1"> <span class="input-group-btn">
-	                	    					<button id="searchClinentAppointClientBtn" class="btn btn-primary" type="button"><i class="fa fa-search"></i> Go</button>
+	                	    					<button id="searchClinentAppointBtn" class="btn btn-primary" type="button"><i class="fa fa-search"></i> Go</button>
 	                	    				</span> </div>
                                             <br /> </div>
                                     </div>

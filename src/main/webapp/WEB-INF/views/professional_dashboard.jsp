@@ -1,5 +1,5 @@
 <%@ include file="header.jsp"%>
-    <div class="container">
+    <div id="professionalPage" class="container">
         <div id="addAppoint" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

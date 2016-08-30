@@ -15,7 +15,5 @@ public interface VisitorService {
 	Visitor create(Visitor visitor);
 	Collection<JAppointmentDetail> findByVisitor(Long id);
 	Collection<JAppointmentDetail> findByVisitor(Long id, Date startDate, Date endDate);
-	
-	
-	
+	Visitor findById(Long id);
 }

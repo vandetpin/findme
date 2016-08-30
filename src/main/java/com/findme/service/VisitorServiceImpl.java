@@ -61,4 +61,9 @@ public class VisitorServiceImpl implements VisitorService {
 //		return AppointmentDetailMapper.map(visitorDAO.findByIdAndAppointmentStartDateAndEndDate(id, startDate, endDate));
 	}
 
+	@Override
+	public Visitor findById(Long id) {
+		return visitorDAO.findOne(id);
+	}
+
 }

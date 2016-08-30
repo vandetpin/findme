@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,7 @@ import com.findme.domain.UserAccount;
 import com.findme.domain.Visitor;
 import com.findme.exception.BusinessException;
 import com.findme.service.UploadService;
+import com.findme.service.UserAccountService;
 import com.findme.service.VisitorService;
 import com.findme.utils.WebUtils;
 
@@ -30,10 +33,16 @@ public class VisitorController {
 	
 	@Autowired
 	private UploadService uploadService;
+	
+	@Autowired
+	private UserAccountService userAccountService;
 
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public String getAll(Model model) {	
-		
+		String username = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+		Long visitorId = userAccountService.findUserByUsername(username).getId();
+		Visitor visitor = visitorService.findById(visitorId);
+		model.addAttribute("visitor", visitor);
 		return "vistor_dashboard";
 	}
 	
