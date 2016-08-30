@@ -17,13 +17,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.findme.dao.ProfessionalDAO;
 import com.findme.json.JAppointment;
 import com.findme.json.JAppointmentDetail;
+import com.findme.json.JProfessionalAppointment;
 import com.findme.json.JVisitorAppointment;
 import com.findme.service.ProfessionalService;
 import com.findme.service.UserAccountService;
 import com.findme.service.VisitorService;
 import com.findme.utils.Formatter;
+import com.findme.utils.WebUtils;
 
 @Controller("visitorControllerAPI")
 @RequestMapping("/visitors")
@@ -36,6 +39,8 @@ public class VisitorController {
 	@Autowired
 	private UserAccountService userAccountService;
 	
+	@Autowired
+	private ProfessionalService professionalService;
 	
 	/**
 	 * Get List appointments of a client
@@ -66,4 +71,11 @@ public class VisitorController {
 		
 	}
 	
+	
+	@RequestMapping(value="/api/professionals", method=RequestMethod.GET)
+	public ResponseEntity<Collection<JProfessionalAppointment>> getProfessionalByVisitor(){
+		String username = WebUtils.getCurrentUserName();
+		Long visitorId = userAccountService.findUserByUsername(username).getId();
+		return new ResponseEntity<>(professionalService.findProfessionalByVisitorId(visitorId), HttpStatus.OK);
+	}
 }

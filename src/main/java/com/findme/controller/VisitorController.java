@@ -69,4 +69,6 @@ public class VisitorController {
 		request.getSession().setAttribute(WebUtils.SUCCESS_MESSAGE, "Sign up successful, please login.");
 		return "redirect:/login";
 	}
+	
+	
 }

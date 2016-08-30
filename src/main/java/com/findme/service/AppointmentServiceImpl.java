@@ -34,4 +34,9 @@ public class AppointmentServiceImpl implements AppointmentService {
 		appointmentDAO.updateStatus(id, status);
 	}
 
+	@Override
+	public Iterable<Appointment> findByProfessionalIdAndAppointmentStatus(Long id, int status) {
+		return appointmentDAO.findByProfessionalIdANDAppointmentStatus(id, status);
+	}
+
 }

@@ -20,8 +20,10 @@ import com.findme.domain.UserAccount;
 import com.findme.domain.UserRole;
 import com.findme.domain.Visitor;
 import com.findme.json.JAppointment;
+import com.findme.json.JProfessionalAppointment;
 import com.findme.json.JVisitorAppointment;
 import com.findme.mapper.AppointmentMapper;
+import com.findme.mapper.ProfessionalAppointmentMapper;
 import com.findme.mapper.VisitorAppointmentMapper;
 
 @Service
@@ -92,4 +94,11 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 	public void updateStatus(Long id, Boolean isActive) {
 		professionalDAO.updateStatus(id, isActive);
 	}
+
+	@Override
+	public Collection<JProfessionalAppointment> findProfessionalByVisitorId(Long id) {
+		return ProfessionalAppointmentMapper.map(professionalDAO.findByVisitorsId(id));
+	}
+	
+	
 }

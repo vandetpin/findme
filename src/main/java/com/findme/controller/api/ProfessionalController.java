@@ -13,15 +13,18 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.findme.json.JAppointment;
+import com.findme.json.JProfessionalAppointment;
 import com.findme.json.JVisitorAppointment;
 import com.findme.service.ProfessionalService;
 import com.findme.service.UserAccountService;
 import com.findme.utils.Formatter;
+import com.findme.utils.WebUtils;
 
 @Controller("professionalControllerAPI")
 @RequestMapping("/professionals")
@@ -82,4 +85,5 @@ public class ProfessionalController {
 		
 		return new ResponseEntity<>(professionalService.findVisitorByIdAndFirstNameOrLastNameContaining(professionalId, visitorFirstName, visitorLastName), HttpStatus.OK);
 	} 
+	
 }

@@ -13,10 +13,13 @@ import com.findme.domain.Professional;
 import com.findme.domain.Visitor;
 
 import java.lang.Long;
+import java.util.List;
 
 @Repository
 public interface ProfessionalDAO extends CrudRepository<Professional, Long> {
 	Iterable<Professional> findByFirstNameOrLastNameContaining(String firstName, String lastName);
+	
+	
 
 	@Query("SELECT a FROM Professional p JOIN p.appointments a WHERE p.id =:id AND a.appStartTime >=:startDate AND a.appEndTime <=:endDate ")
 	Iterable<Appointment> findByIdAndAppointmentStartDateAndEndDate(@Param("id") Long professionalId,
@@ -34,5 +37,8 @@ public interface ProfessionalDAO extends CrudRepository<Professional, Long> {
 	@Modifying
 	@Query("UPDATE Professional p SET p.isActive =:isActive WHERE p.id =:id")
 	void updateStatus(@Param(value="id") Long id, @Param(value="isActive") Boolean isActive);
+	
+	@Query("SELECT p FROM Professional p JOIN  p.visitors v WHERE v.id =:id AND p.isActive = true")
+	Iterable<Professional> findByVisitorsId(@Param("id") Long id);
 	
 }

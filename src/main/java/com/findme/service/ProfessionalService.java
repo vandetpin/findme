@@ -9,6 +9,7 @@ import com.findme.domain.Appointment;
 import com.findme.domain.Professional;
 import com.findme.domain.Visitor;
 import com.findme.json.JAppointment;
+import com.findme.json.JProfessionalAppointment;
 import com.findme.json.JVisitorAppointment;
 
 public interface ProfessionalService {
@@ -29,4 +30,6 @@ public interface ProfessionalService {
 	Professional create(Professional professional);
 	
 	void updateStatus(Long id, Boolean isActive);
+	
+	Collection<JProfessionalAppointment> findProfessionalByVisitorId(Long id);
 }
