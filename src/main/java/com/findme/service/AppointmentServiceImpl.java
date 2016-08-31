@@ -1,5 +1,7 @@
 package com.findme.service;
 
+import java.util.Collection;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.findme.dao.AppointmentDAO;
 import com.findme.domain.Appointment;
+import com.findme.json.JAppointment;
+import com.findme.json.JVisitorAppointment;
+import com.findme.mapper.AppointmentMapper;
 
 @Service
 @Transactional

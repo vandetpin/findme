@@ -28,6 +28,8 @@ public interface ProfessionalService {
 	
 	Collection<JVisitorAppointment> findVisitorByIdAndFirstNameOrLastNameContaining(Long professionalId, String visitorFirstName, String visitorLastName);
 	
+	Collection<JVisitorAppointment> findVisitorByIdAndAppointmentNameContaining(Long professionalId, String appointmentName);
+	
 	Appointment findAppointmentByIdAndAppointmentId(Long id, Long appointmentId);
 
 	Professional create(Professional professional);

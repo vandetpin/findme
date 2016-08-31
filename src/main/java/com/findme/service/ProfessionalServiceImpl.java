@@ -154,4 +154,10 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 	public Iterable<Professional> findAll() {
 		return professionalDAO.findAll();
 	}
+
+	@Override
+	public Collection<JVisitorAppointment> findVisitorByIdAndAppointmentNameContaining(Long professionalId,
+			String appointmentName) {
+		return VisitorAppointmentMapper.map(professionalDAO.findVisitorByIdAndAppointmentNameContaining(professionalId, appointmentName));
+	}
 }
