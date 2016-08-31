@@ -38,12 +38,12 @@ public class AdminController {
 
 		professionalService.updateStatus(professionalId, isActive);
 		
-		return "redirect:/admin";
+		return "redirect:/admin/home";
 	}
 	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
     public String adminPage(ModelMap model) {		
-		Iterable<Professional> professionals = professionalService.findAll();
+		Iterable<Professional> professionals = professionalService.findByAllStatus();
         model.addAttribute("professionals", professionals);
         return "admin";
     }

@@ -21,4 +21,6 @@ public interface AppointmentDAO extends CrudRepository<Appointment, Long> {
 	@Query(nativeQuery=true, 
 		value ="UPDATE VisitorAppointment SET isApproved = 1 WHERE visitorId =:visitorId AND appointment_appid =:appointmentId")
 	void updateApprovalStatus(@Param("visitorId") Long visitorId, @Param("appointmentId") Long appointmentId);
+	
+
 }

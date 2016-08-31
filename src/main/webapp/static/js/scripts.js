@@ -63,12 +63,12 @@ $(function () {
                             $(JAppointment.appointments).each(function (index, appointments) {
                                 var jstatus1, jstatus2;
                                 if (appointments.appointment.status == 1) {
-                                    jstatus2 = "Active";
-                                    jstatus1 = '<a href="professional/appointment/' + JAppointment.id + '/' + JAppointment.status + '" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>';
+                                    jstatus2 = "Approved";
+                                    jstatus1 = '<a href="professionals/approve/' + JAppointment.visitor.id + '/' + appointments.appointment.id + '" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Disapprove</a>';
                                 }
                                 else if (appointments.appointment.status == 0) {
-                                    jstatus2 = "Cancel";
-                                    jstatus1 = '<a href="professional/appointment/' + JAppointment.id + '/' + JAppointment.status + '" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i>  Active</a>';
+                                    jstatus2 = "Disapprved";
+                                    jstatus1 = '<a href="professional/appointment/' + JAppointment.visitor.id + '/' + appointments.appointment.id + '" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i>  Approve</a>';
                                 }
                                 $('#scheduleListTable').append('<tr><th>' + appointments.appointment.name + '</th><th>' + JAppointment.visitor.firstName + ' ' + JAppointment.visitor.lastName + '</th><th>' + appointments.appointment.startDate + '</th><th>' + appointments.appointment.endDate + '</th><th>' + jstatus2 + '</th><th>' + jstatus1 + '</th> </tr>');
                             });
@@ -219,7 +219,9 @@ $(function () {
     //Search Client by Name
     $('#searchClientsProfBtn').click(function () {
         var name = $('#searchClientsProfText').val();
-        alert('Search Fields are Empty, Loading all Clients');
+        if (name == '') {
+            alert('Search Fields are Empty, Loading all Clients');
+        }
         $.ajax({
             url: homePath + 'professionals/api/visitors'
             , data: {
@@ -238,12 +240,12 @@ $(function () {
                         $(JAppointment.appointments).each(function (index, appointments) {
                             var jstatus1, jstatus2;
                             if (appointments.appointment.status == 1) {
-                                jstatus2 = "Active";
-                                jstatus1 = '<a href="professional/appointment/' + JAppointment.id + '/' + JAppointment.status + '" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>';
+                                jstatus2 = "Approved";
+                                jstatus1 = '<a href="professionals/approve/' + JAppointment.visitor.id + '/' + appointments.appointment.id + '" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Disapprove</a>';
                             }
                             else if (appointments.appointment.status == 0) {
-                                jstatus2 = "Cancel";
-                                jstatus1 = '<a href="professional/appointment/' + JAppointment.id + '/' + JAppointment.status + '" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i>  Active</a>';
+                                jstatus2 = "Disapprved";
+                                jstatus1 = '<a href="professional/appointment/' + JAppointment.visitor.id + '/' + appointments.appointment.id + '" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i>  Approve</a>';
                             }
                             $('#scheduleListTable').append('<tr><th>' + appointments.appointment.name + '</th><th>' + JAppointment.visitor.firstName + ' ' + JAppointment.visitor.lastName + '</th><th>' + appointments.appointment.startDate + '</th><th>' + appointments.appointment.endDate + '</th><th>' + jstatus2 + '</th><th>' + jstatus1 + '</th> </tr>');
                         });
@@ -295,14 +297,7 @@ $(function () {
                         else {
                             isApproved = "Pending";
                         }
-                        if (JAppointment.appointment.status == 1) {
-                            jstatus2 = "Active";
-                            jstatus1 = '<a href="visitors/appointment/' + JAppointment.appointment.id + '/' + JAppointment.appointment.status + '" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>';
-                        }
-                        else if (appointment.status == 0) {
-                            jstatus2 = "Cancel";
-                            jstatus1 = '<a href="visitors/appointment/' + JAppointment.id + '/' + JAppointment.appointment.status + '" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i>  Active</a>';
-                        }
+                        jstatus1 = '<a href="visitors/appointment/cancel/' + JAppointment.appointment.id + '" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>'
                         $('#clientScheduleListTable').append('<tr><th>' + JAppointment.appointment.name + '</th><th>' + JAppointment.appointment.professional.firstName + ' ' + JAppointment.appointment.professional.lastName + '</th><th>' + JAppointment.appointment.startDate + '</th><th>' + JAppointment.appointment.endDate + '</th><th>' + jstatus2 + '</th><th>' + isApproved + '</th><th>' + jstatus1 + '</th> </tr>');
                         $('#clientAppointmentList').append('<br /> <br />');
                     });
@@ -473,6 +468,21 @@ $(function () {
                 }
             }
         });
+    });
+    //*******************************************
+    // Make Appointment Goes here
+    $('#visitorMakeAppointmentbtn').click(function () {
+        if (($('#registerVisitorProfession').val() != '-') && ($('#registerVisitorProAppoint').val() != '-')) {
+            $.get(homePath + "visitors/register/" + $('#registerVisitorProAppoint').val()).done(function () {
+                alert("Making Appointment done successfully");
+                $(location).attr('href', homePath + 'visitors')
+            }).fail(function (jqXHR, exception) {
+                alert("error");
+            });
+        }
+        else {
+            alert('Sorry, please select profession and appointment, to make an appointment! ')
+        }
     });
     //*******************************************
     // Tab Function Goes Here

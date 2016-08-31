@@ -16,5 +16,4 @@ public interface VisitorDAO extends CrudRepository<Visitor, Long> {
 //	Visitor findByIdAndAppointmentStartDateAndEndDate(@Param("id") Long id,
 //			@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 	
-	
 }

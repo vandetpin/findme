@@ -38,10 +38,10 @@ INSERT INTO `Appointment` (`appid`,`appEndTime`,`appStartTime`,`capacity`,`descr
 INSERT INTO `Appointment` (`appid`,`appEndTime`,`appStartTime`,`capacity`,`description`,`name`,`status`,`owner_Id`) VALUES (8,'2019-10-10 12:00:00','2019-10-10 09:00:00',4,'Flu ','Flu',1,2);-- UserAccount ---
 
 -- Visitor Appointment ---
-INSERT INTO `findme_db`.`VisitorAppointment` (`createdDate`, `isApproved`, `visitorId`, `appointment_appid`) VALUES ('2019-11-10 12:00:00', '1', '3', '5');
-INSERT INTO `findme_db`.`VisitorAppointment` (`createdDate`, `isApproved`, `visitorId`, `appointment_appid`) VALUES ('2019-11-10 12:00:00', '0', '3', '7');
-INSERT INTO `findme_db`.`VisitorAppointment` (`createdDate`, `isApproved`, `visitorId`, `appointment_appid`) VALUES ('2019-11-10 12:00:00', '1', '4', '6');
-INSERT INTO `findme_db`.`VisitorAppointment` (`createdDate`, `isApproved`, `visitorId`, `appointment_appid`) VALUES ('2019-11-10 12:00:00', '0', '4', '8');
+INSERT INTO `findme_db`.`VisitorAppointment` (`createdDate`, `isApproved`, `visitorId`, `appointment_appid`) VALUES ('2019-11-10 12:00:00', 1, '3', '5');
+INSERT INTO `findme_db`.`VisitorAppointment` (`createdDate`, `isApproved`, `visitorId`, `appointment_appid`) VALUES ('2019-11-10 12:00:00', 0, '3', '7');
+INSERT INTO `findme_db`.`VisitorAppointment` (`createdDate`, `isApproved`, `visitorId`, `appointment_appid`) VALUES ('2019-11-10 12:00:00', 1, '4', '6');
+INSERT INTO `findme_db`.`VisitorAppointment` (`createdDate`, `isApproved`, `visitorId`, `appointment_appid`) VALUES ('2019-11-10 12:00:00', 0, '4', '8');
 
 -- Professional Visitor --
 INSERT INTO `findme_db`.`ProfessionalVisitor` (`professionalId`, `visitorId`) VALUES ('1', '3');

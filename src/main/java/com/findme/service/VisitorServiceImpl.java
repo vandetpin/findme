@@ -99,4 +99,11 @@ public class VisitorServiceImpl implements VisitorService {
 		//using @Asyn
 	}
 
+	@Override
+	public void deleteVisitorAppointmentByVisitorIdAndAppointmentId(Long visitorId, Long appointmentId) {
+		Appointment appointment = appointmentDAO.findOne(appointmentId);
+		Visitor visitor = visitorDAO.findOne(visitorId);
+		// need to be finished
+	}
+
 }

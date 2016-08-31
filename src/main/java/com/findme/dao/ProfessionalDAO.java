@@ -36,6 +36,9 @@ public interface ProfessionalDAO extends CrudRepository<Professional, Long> {
 	@Query("SELECT p FROM Professional p WHERE p.isActive = 1")
 	Iterable<Professional> findAll();
 	
+	@Query("SELECT p FROM Professional p")
+	Iterable<Professional> findAllByAllStatus();
+	
 	@Modifying
 	@Query("UPDATE Professional p SET p.isActive =:isActive WHERE p.id =:id")
 	void updateStatus(@Param(value="id") Long id, @Param(value="isActive") Boolean isActive);

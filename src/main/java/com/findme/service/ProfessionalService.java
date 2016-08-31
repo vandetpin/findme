@@ -15,6 +15,8 @@ import com.findme.json.JVisitorAppointment;
 
 public interface ProfessionalService {
 	Iterable<Professional> findAll();
+	
+	Iterable<Professional> findByAllStatus();
 
 	Iterable<Professional> findByFirstNameOrLastNameContaining(String firstName, String lastName);
 

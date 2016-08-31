@@ -46,8 +46,8 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 	private VisitorDAO visitorDAO;
 	
 	@Override
-	public Iterable<Professional> findAll() {
-		return professionalDAO.findAll();
+	public Iterable<Professional> findByAllStatus() {
+		return professionalDAO.findAllByAllStatus();
 	}
 
 	@Override
@@ -150,5 +150,8 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 		
 	}
 
-	
+	@Override
+	public Iterable<Professional> findAll() {
+		return professionalDAO.findAll();
+	}
 }

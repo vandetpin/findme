@@ -3,49 +3,47 @@
         <div id="addClientAppoint" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <form class="form-horizontal" method="post" action="professionals/appointment/add">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">Please Enter the Appointment Detail Information</h4> </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12">
-                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                                    <h5 class="text-info">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-info-circle"></i> Please choose Profession your looking for to make an appointment</h5>
-                                    <br />
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label">Looking Profession</label>
-                                        <div class="col-xs-5 col-sm-5">
-                                            <select id="registerVisitorProfession" name="profName" class="form-control"></select>
-                                        </div>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Please Enter the Appointment Detail Information</h4> </div>
+                    <div class="modal-body">
+                        <div class="row form-horizontal">
+                            <div class="col-xs-12 col-sm-12">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                <h5 class="text-info">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-info-circle"></i> Please choose Profession your looking for to make an appointment</h5>
+                                <br />
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Looking Profession</label>
+                                    <div class="col-xs-5 col-sm-5">
+                                        <select id="registerVisitorProfession" name="profName" class="form-control"></select>
                                     </div>
-                                    <hr />
-                                    <h5 class="text-info">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-info-circle"></i> Please choose an appointment here</h5>
-                                    <br />
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label">Looking Appointment</label>
-                                        <div class="col-xs-5 col-sm-5">
-                                            <select id="registerVisitorProAppoint" name="profName" class="form-control"></select>
-                                        </div>
+                                </div>
+                                <hr />
+                                <h5 class="text-info">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-info-circle"></i> Please choose an appointment here</h5>
+                                <br />
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Looking Appointment</label>
+                                    <div class="col-xs-5 col-sm-5">
+                                        <select id="registerVisitorProAppoint" name="profName" class="form-control"></select>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label">Appointment Start Date</label>
-                                        <div class="col-xs-5 col-sm-5">
-                                            <input id="startDateVisitorModal" readonly type="text" class="form-control" name="appStartTime" placeholder="Start Date/Time" required> </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label">Appointment End Date</label>
-                                        <div class="col-xs-5 col-sm-5">
-                                            <input id="endDateVisitorModal" readonly type="text" class="form-control" name="appEndTime" placeholder="End Date/Time" required> </div>
-                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Appointment Start Date</label>
+                                    <div class="col-xs-5 col-sm-5">
+                                        <input id="startDateVisitorModal" readonly type="text" class="form-control" name="appStartTime" placeholder="Start Date/Time" required> </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Appointment End Date</label>
+                                    <div class="col-xs-5 col-sm-5">
+                                        <input id="endDateVisitorModal" readonly type="text" class="form-control" name="appEndTime" placeholder="End Date/Time" required> </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Make New Appointment</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        </div>
-                    </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="visitorMakeAppointmentbtn" type="button" class="btn btn-success"><i class="fa fa-plus"></i> Make New Appointment</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                    </div>
                 </div>
                 <!-- /.modal-content -->
             </div>
