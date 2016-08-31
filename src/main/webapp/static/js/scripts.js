@@ -34,7 +34,7 @@ $(function () {
                 }
             }
             , error: function (jqXHR, exception) {
-                if (jqXHR.status != 403 && jqXHR.status == 404) {
+                if (jqXHR.status != 403 && jqXHR.status != 404) {
                     alert(jqXHR.status);
                     alert('Unable to get Information about professional From the Server, Something wrong happened ... ');
                     $(location).attr('href', 'login');
@@ -81,8 +81,7 @@ $(function () {
                 }
             }
             , error: function (jqXHR, exception) {
-                if (jqXHR.status != 403 && jqXHR.status == 404) {
-                	
+                if (jqXHR.status != 403 && jqXHR.status != 404) {
                     alert('Unable to get Information about client From the Server, Something wrong happened ... ');
                     $(location).attr('href', 'login');
                 }
@@ -290,12 +289,12 @@ $(function () {
                     $('#clientAppointmentList').append('<table id="clientScheduleListTable" class="table table-responsive table-hover"><tr><th>Appointment Name</th><th>Looking Professional</th><th>Start Date/Time</th><th>End Time/Date</th><th>Status</th><th>Approval Status</th><th></th></tr></table>');
                     $(data).each(function (index, JAppointment) {
                         var jstatus1, jstatus2, isApproved;
-                        if(JAppointment.isApproved) {
-                        	isApproved = "Approved";
-                        } else {
-                        	isApproved = "Pending";
+                        if (JAppointment.isApproved) {
+                            isApproved = "Approved";
                         }
-                        
+                        else {
+                            isApproved = "Pending";
+                        }
                         if (JAppointment.appointment.status == 1) {
                             jstatus2 = "Active";
                             jstatus1 = '<a href="visitors/appointment/' + JAppointment.appointment.id + '/' + JAppointment.appointment.status + '" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>';
@@ -314,7 +313,7 @@ $(function () {
                 }
             }
             , error: function (jqXHR, exception) {
-                if (jqXHR.status != 403 && jqXHR.status == 404) {
+                if (jqXHR.status != 403 && jqXHR.status != 404) {
                     alert('Unable to get Information about Visitor From the Server, Something wrong happened ... ');
                     $(location).attr('href', 'login');
                 }
@@ -388,6 +387,90 @@ $(function () {
             , error: function () {
                 alert('Unable to get Information about Visitor From the Server, Something wrong happened ... ');
                 $(location).attr('href', 'login');
+            }
+        });
+    });
+    $('#visitorMakeAppointment').click(function () {
+        $.ajax({
+            url: homePath + 'visitors/api/professionals'
+            , method: 'get'
+            , dataType: 'json'
+            , success: function (data) {
+                if (data.length > 0) {
+                    $('#registerVisitorProfession').children().remove();
+                    $('#registerVisitorProfession').append('<option value="-">Select Profession</option>');
+                    $('#registerVisitorProAppoint').append('<option value="-">Select Appointment</option>');
+                    $(data).each(function (index, data) {
+                        $('#registerVisitorProfession').append('<option value="' + data.professional.id + '">' + data.professional.lastName + ' ' + data.professional.firstName + '</option>');
+                    });
+                }
+                else {}
+            }
+            , error: function (jqXHR, exception) {
+                if (jqXHR.status != 403 && jqXHR.status != 404) {
+                    alert(jqXHR.status);
+                    alert('Unable to get Information about professional From the Server, Something wrong happened ... ');
+                    $(location).attr('href', 'login');
+                }
+            }
+        });
+    });
+    $('#registerVisitorProfession').change(function () {
+        $.ajax({
+            url: homePath + 'visitors/api/professionals'
+            , method: 'get'
+            , dataType: 'json'
+            , success: function (data) {
+                if (data.length > 0) {
+                    $('#registerVisitorProAppoint').children().remove();
+                    $('#registerVisitorProAppoint').append('<option value="-">Select Appointment</option>');
+                    $(data).each(function (index, data) {
+                        if (data.professional.id == $('#registerVisitorProfession').val()) {
+                            $(data.appointments).each(function (index, lists) {
+                                $('#registerVisitorProAppoint').append('<option value="' + lists.appointment.id + '">' + lists.appointment.name + '</option>');
+                            });
+                        }
+                        else {
+                            $('#startDateVisitorModal').removeAttr('readonly').val('').attr('readonly', true);
+                            $('#endDateVisitorModal').removeAttr('readonly').val('').attr('readonly', true);
+                        }
+                    });
+                }
+                else {}
+            }
+            , error: function (jqXHR, exception) {
+                if (jqXHR.status != 403 && jqXHR.status != 404) {
+                    alert(jqXHR.status);
+                    alert('Unable to get Information about professional From the Server, Something wrong happened ... ');
+                    $(location).attr('href', 'login');
+                }
+            }
+        });
+    });
+    $('#registerVisitorProAppoint').change(function () {
+        $.ajax({
+            url: homePath + 'visitors/api/professionals'
+            , method: 'get'
+            , dataType: 'json'
+            , success: function (data) {
+                if (data.length > 0) {
+                    $(data).each(function (index, data) {
+                        $(data.appointments).each(function (index, lists) {
+                            if (data.professional.id == $('#registerVisitorProfession').val() && lists.appointment.id == $('#registerVisitorProAppoint').val()) {
+                                $('#startDateVisitorModal').removeAttr('readonly').val(lists.appointment.startDate).attr('readonly', true);
+                                $('#endDateVisitorModal').removeAttr('readonly').val(lists.appointment.endDate).attr('readonly', true);
+                            }
+                        });
+                    });
+                }
+                else {}
+            }
+            , error: function (jqXHR, exception) {
+                if (jqXHR.status != 403 && jqXHR.status != 404) {
+                    alert(jqXHR.status);
+                    alert('Unable to get Information about professional From the Server, Something wrong happened ... ');
+                    $(location).attr('href', 'login');
+                }
             }
         });
     });

@@ -11,37 +11,38 @@
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12">
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                    <h5 class="text-info">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-info-circle"></i> Please choose Profession your looking for to make an appointment</h5>
+                                    <br />
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">Appointment Name</label>
-                                        <div class="col-xs-9 col-sm-5">
-                                            <input type="text" class="form-control" name="name" placeholder="Appointment name" required> </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Start Date</label>
-                                        <div class="col-xs-9 col-sm-5">
-                                            <input id="startDateModal" type="text" class="form-control" name="appStartTime" placeholder="Start Date/Time" required> </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">End Date</label>
-                                        <div class="col-xs-9 col-sm-5">
-                                            <input id="endDateModal" type="text" class="form-control" name="appEndTime" placeholder="End Date/Time" required> </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Capacity</label>
-                                        <div class="col-xs-6 col-sm-3">
-                                            <input type="number" min="1" class="form-control" name="capacity" placeholder="Capacity" required> </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Description</label>
-                                        <div class="col-xs-9 col-sm-5">
-                                            <textarea name="description" class="form-control" placeholder="Appointment description ...." rows="4" required></textarea>
+                                        <label class="col-md-4 control-label">Looking Profession</label>
+                                        <div class="col-xs-5 col-sm-5">
+                                            <select id="registerVisitorProfession" name="profName" class="form-control"></select>
                                         </div>
+                                    </div>
+                                    <hr />
+                                    <h5 class="text-info">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-info-circle"></i> Please choose an appointment here</h5>
+                                    <br />
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Looking Appointment</label>
+                                        <div class="col-xs-5 col-sm-5">
+                                            <select id="registerVisitorProAppoint" name="profName" class="form-control"></select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Appointment Start Date</label>
+                                        <div class="col-xs-5 col-sm-5">
+                                            <input id="startDateVisitorModal" readonly type="text" class="form-control" name="appStartTime" placeholder="Start Date/Time" required> </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Appointment End Date</label>
+                                        <div class="col-xs-5 col-sm-5">
+                                            <input id="endDateVisitorModal" readonly type="text" class="form-control" name="appEndTime" placeholder="End Date/Time" required> </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Add Appointment</button>
+                            <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Make New Appointment</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
                     </form>
@@ -66,7 +67,7 @@
                         </dl>
                     </div>
                     <div class="col-xs-6 col-sm-2">
-                        <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#addClientAppoint">New Appointment</button>
+                        <button id="visitorMakeAppointment" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addClientAppoint">Make Appointment</button>
                     </div>
                 </div>
             </div>
