@@ -19,7 +19,7 @@ import javax.persistence.TemporalType;
 public class VisitorAppointment implements java.io.Serializable {
 	@EmbeddedId
 	private VisitorAppointmentPK id = new VisitorAppointmentPK();
-	private Integer isApproved;
+	private Boolean isApproved;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdDate;
@@ -34,11 +34,11 @@ public class VisitorAppointment implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Integer getIsApproved() {
+	public Boolean getIsApproved() {
 		return isApproved;
 	}
 
-	public void setIsApproved(Integer isApproved) {
+	public void setIsApproved(Boolean isApproved) {
 		this.isApproved = isApproved;
 	}
 

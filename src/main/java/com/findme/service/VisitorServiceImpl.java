@@ -15,11 +15,12 @@ import com.findme.domain.UserAccount;
 import com.findme.domain.UserRole;
 import com.findme.domain.Visitor;
 import com.findme.domain.VisitorAppointment;
+import com.findme.exception.BusinessException;
+import com.findme.exception.ObjectNotFoundException;
 import com.findme.json.JAppointmentDetail;
-import com.findme.json.JVisitorAppointment;
 import com.findme.mapper.AppointmentDetailMapper;
-import com.findme.mapper.VisitorAppointmentMapper;
-import com.findme.utils.Formatter;
+import com.google.common.collect.Iterables;
+
 
 @Service
 @Transactional
@@ -27,6 +28,12 @@ public class VisitorServiceImpl implements VisitorService {
 	
 	@Autowired
 	private VisitorDAO visitorDAO;
+	
+	@Autowired
+	private AppointmentDAO appointmentDAO;
+	
+	@Autowired
+	private ProfessionalDAO professionalDAO;
 
 	@Override
 	public Iterable<Appointment> findByProfessional(Professional owner) {		
@@ -64,6 +71,32 @@ public class VisitorServiceImpl implements VisitorService {
 	@Override
 	public Visitor findById(Long id) {
 		return visitorDAO.findOne(id);
+	}
+
+	@Override
+	public void registerAppoinment(Long visitorId, Long appointmentId) throws ObjectNotFoundException, BusinessException {
+		// appointment
+		Appointment appointment = appointmentDAO.findOne(appointmentId);
+
+		// visitor
+		Visitor visitor = visitorDAO.findOne(visitorId);
+		
+		
+		VisitorAppointment visitorAppointment = new VisitorAppointment();
+		visitorAppointment.setAppointment(appointment);
+		visitorAppointment.setVisitor(visitor);
+		visitorAppointment.setCreatedDate(new Date());
+		
+		// the appointment need to be approved by the professional
+		visitorAppointment.setIsApproved(false);
+		
+		visitor.getVisitorAppointment().add(visitorAppointment);
+		
+		//save
+		visitorDAO.save(visitor);
+		
+		//TODO call send email to notify professional
+		//using @Asyn
 	}
 
 }

@@ -287,9 +287,15 @@ $(function () {
                     $('#clientAppointmentList').show();
                     $('#clientAppointmentList').children().remove();
                     $('#clientAppointmentList').append('<h3> List of Appointments </h3>');
-                    $('#clientAppointmentList').append('<table id="clientScheduleListTable" class="table table-responsive table-hover"><tr><th>Appointment Name</th><th>Looking Professional</th><th>Start Date/Time</th><th>End Time/Date</th><th>Status</th><th></th></tr></table>');
+                    $('#clientAppointmentList').append('<table id="clientScheduleListTable" class="table table-responsive table-hover"><tr><th>Appointment Name</th><th>Looking Professional</th><th>Start Date/Time</th><th>End Time/Date</th><th>Status</th><th>Approval Status</th><th></th></tr></table>');
                     $(data).each(function (index, JAppointment) {
-                        var jstatus1, jstatus2;
+                        var jstatus1, jstatus2, isApproved;
+                        if(JAppointment.isApproved) {
+                        	isApproved = "Approved";
+                        } else {
+                        	isApproved = "Pending";
+                        }
+                        
                         if (JAppointment.appointment.status == 1) {
                             jstatus2 = "Active";
                             jstatus1 = '<a href="visitors/appointment/' + JAppointment.appointment.id + '/' + JAppointment.appointment.status + '" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>';
@@ -298,7 +304,7 @@ $(function () {
                             jstatus2 = "Cancel";
                             jstatus1 = '<a href="visitors/appointment/' + JAppointment.id + '/' + JAppointment.appointment.status + '" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i>  Active</a>';
                         }
-                        $('#clientScheduleListTable').append('<tr><th>' + JAppointment.appointment.name + '</th><th>' + JAppointment.appointment.professional.firstName + ' ' + JAppointment.appointment.professional.lastName + '</th><th>' + JAppointment.appointment.startDate + '</th><th>' + JAppointment.appointment.endDate + '</th><th>' + jstatus2 + '</th><th>' + jstatus1 + '</th> </tr>');
+                        $('#clientScheduleListTable').append('<tr><th>' + JAppointment.appointment.name + '</th><th>' + JAppointment.appointment.professional.firstName + ' ' + JAppointment.appointment.professional.lastName + '</th><th>' + JAppointment.appointment.startDate + '</th><th>' + JAppointment.appointment.endDate + '</th><th>' + jstatus2 + '</th><th>' + isApproved + '</th><th>' + jstatus1 + '</th> </tr>');
                         $('#clientAppointmentList').append('<br /> <br />');
                     });
                 }

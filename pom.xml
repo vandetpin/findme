@@ -122,11 +122,13 @@
 	  </dependency>	  	 
 
 	 <!-- helper function -->	
-	  <dependency>
-	  	<groupId>commons-io</groupId>
-		<artifactId>commons-io</artifactId>
-		<version>${commons.io.version}</version>
-	  </dependency>
+	  <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+	<dependency>
+	    <groupId>com.google.guava</groupId>
+	    <artifactId>guava</artifactId>
+	    <version>19.0</version>
+	</dependency>
+		  
 	<dependency>
 	    <groupId>commons-collections</groupId>
 	    <artifactId>commons-collections</artifactId>
@@ -134,6 +136,11 @@
 	</dependency>
 	
 	<!-- File upload -->
+	  <dependency>
+	  	<groupId>commons-io</groupId>
+		<artifactId>commons-io</artifactId>
+		<version>${commons.io.version}</version>
+	  </dependency>
 	  <dependency>
 		<groupId>commons-fileupload</groupId>
 		<artifactId>commons-fileupload</artifactId>

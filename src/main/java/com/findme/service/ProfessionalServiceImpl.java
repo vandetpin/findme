@@ -12,27 +12,39 @@ import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.findme.dao.AppointmentDAO;
 import com.findme.dao.ProfessionalDAO;
+import com.findme.dao.VisitorDAO;
 import com.findme.domain.Appointment;
 import com.findme.domain.Professional;
 import com.findme.domain.ProfessionalType;
 import com.findme.domain.UserAccount;
 import com.findme.domain.UserRole;
 import com.findme.domain.Visitor;
+import com.findme.domain.VisitorAppointment;
+import com.findme.exception.BusinessException;
+import com.findme.exception.ObjectNotFoundException;
 import com.findme.json.JAppointment;
 import com.findme.json.JProfessionalAppointment;
 import com.findme.json.JVisitorAppointment;
 import com.findme.mapper.AppointmentMapper;
 import com.findme.mapper.ProfessionalAppointmentMapper;
 import com.findme.mapper.VisitorAppointmentMapper;
+import com.google.common.collect.Iterables;
 
 @Service
 @Transactional
 public class ProfessionalServiceImpl implements ProfessionalService {
 
 	@Autowired
-	private ProfessionalDAO professionalDAO;
-
+	private ProfessionalDAO professionalDAO; 
+	
+	@Autowired
+	private AppointmentDAO appointmentDAO;
+	
+	@Autowired
+	private VisitorDAO visitorDAO;
+	
 	@Override
 	public Iterable<Professional> findAll() {
 		return professionalDAO.findAll();
@@ -120,4 +132,14 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 		return null;
 	}
 
+	public void approveAppointment(Long visitorId, Long appointmentId) {
+		appointmentDAO.updateApprovalStatus(visitorId, appointmentId);
+	}
+	
+
+	@Override
+	public void acceptVisitorRequested(Long visitorId) {
+		// TODO Auto-generated method stub
+		
+	}
 }

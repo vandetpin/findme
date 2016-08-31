@@ -14,7 +14,6 @@ import com.findme.domain.ProfessionalType;
 import com.findme.domain.Visitor;
 
 import java.lang.Long;
-import java.util.List;
 
 @Repository
 public interface ProfessionalDAO extends CrudRepository<Professional, Long> {
@@ -72,5 +71,7 @@ public interface ProfessionalDAO extends CrudRepository<Professional, Long> {
 	@Query("SELECT p FROM Professional p WHERE p.isActive = 1 AND p.type=:type")
 	Iterable<Professional> findByType(@Param("type") ProfessionalType type);
 
+	@Query("SELECT DISTINCT p FROM Professional p JOIN p.visitors v WHERE v.id =:visitorId")
+	Iterable<Professional> findByVisitorId(@Param(value="visitorId") Long visitorId);
 	
 }

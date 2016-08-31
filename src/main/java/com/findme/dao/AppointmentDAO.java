@@ -7,7 +7,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.findme.domain.Appointment;
-import com.findme.domain.Professional;
 
 @Repository
 public interface AppointmentDAO extends CrudRepository<Appointment, Long> {
@@ -18,4 +17,8 @@ public interface AppointmentDAO extends CrudRepository<Appointment, Long> {
 	@Query("SELECT a FROM Appointment a JOIN a.owner p WHERE p.id =:id AND a.status =:status")
 	Iterable<Appointment> findByProfessionalIdANDAppointmentStatus(@Param("id") Long id, @Param("status") int status);
 	
+	@Modifying
+	@Query(nativeQuery=true, 
+		value ="UPDATE VisitorAppointment SET isApproved = 1 WHERE visitorId =:visitorId AND appointment_appid =:appointmentId")
+	void updateApprovalStatus(@Param("visitorId") Long visitorId, @Param("appointmentId") Long appointmentId);
 }

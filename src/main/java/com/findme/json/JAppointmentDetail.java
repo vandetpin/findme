@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class JAppointmentDetail implements Serializable{
     private JAppointment appointment;
-	private Integer isApproved;
+	private Boolean isApproved;
 	
 	public JAppointment getAppointment() {
 		return appointment;
@@ -12,10 +12,10 @@ public class JAppointmentDetail implements Serializable{
 	public void setAppointment(JAppointment appointment) {
 		this.appointment = appointment;
 	}
-	public Integer getIsApproved() {
+	public Boolean getIsApproved() {
 		return isApproved;
 	}
-	public void setIsApproved(Integer isApproved) {
+	public void setIsApproved(Boolean isApproved) {
 		this.isApproved = isApproved;
 	}
 	

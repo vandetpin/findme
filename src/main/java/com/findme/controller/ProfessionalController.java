@@ -28,6 +28,7 @@ import com.findme.domain.Status;
 import com.findme.domain.UserAccount;
 import com.findme.domain.Visitor;
 import com.findme.exception.BusinessException;
+import com.findme.exception.ObjectNotFoundException;
 import com.findme.service.AppointmentService;
 import com.findme.service.ProfessionalService;
 import com.findme.service.UploadService;
@@ -114,5 +115,13 @@ public class ProfessionalController {
 		professionalService.create(professional);
 		request.getSession().setAttribute(WebUtils.SUCCESS_MESSAGE, "Sign up successful, please login.");
 		return "redirect:/login";
+	}
+	
+	@RequestMapping(value="/approve/{visitorId}/{appointmentId}", method=RequestMethod.GET)
+	public String regsiterAppointment(@PathVariable("visitorId") Long visitorId, @PathVariable("appointmentId") Long appointmentId) throws ObjectNotFoundException, BusinessException {
+		
+		professionalService.approveAppointment(visitorId, appointmentId);
+		
+		return "redirect:/professionals";
 	}
 }
