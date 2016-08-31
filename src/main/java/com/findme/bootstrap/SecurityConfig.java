@@ -40,6 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/professionals/api/visitors").access("hasRole('ROLE_PROFESSIONAL')")
         .antMatchers("/visitors/api/appointments").access("hasRole('ROLE_VISITOR')")
         .antMatchers("/visitors/register/**").access("hasRole('ROLE_VISITOR')")
+        .antMatchers("/visitors/connect/**").access("hasRole('ROLE_VISITOR')")
         .antMatchers("/professionals/approve/**").access("hasRole('ROLE_PROFESSIONAL')")
 
         

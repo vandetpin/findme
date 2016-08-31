@@ -54,11 +54,19 @@
 				<div class="caption">
 					<h3>${professional.firstName}${professional.lastName}</h3>
 					<p>${professional.otherInfo}</p>
-					<p>
-						<a href="<c:url value='/home/details/${professional.id}'> </c:url> " class="btn btn-primary">Details</a>
-						<a href="<c:url value='/visitors/signup?id=${professional.id}'> </c:url>"
-							class="btn btn-default">Register</a>
-					</p>
+					<p> 
+                       	<a href="<c:url value='/home/details/${professional.id}'> 
+                       		</c:url> " class="btn btn-primary">Details
+                       	</a> 
+                       	<c:if test="${professional.connected}">
+                       		<span class="btn btn-success disabled-btn">Connected</span>
+		                </c:if>
+		                <c:if test="${not professional.connected}">
+                          		<a href="<c:url value='/visitors/connect/${professional.id}'> 
+                          		</c:url>" class="btn btn-default">Connect
+                          	</a> 
+		                </c:if>
+                   </p>
 				</div>
 			</div>
 		</div>

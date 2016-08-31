@@ -1,10 +1,7 @@
 package com.findme.service;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -20,17 +17,12 @@ import com.findme.domain.Professional;
 import com.findme.domain.ProfessionalType;
 import com.findme.domain.UserAccount;
 import com.findme.domain.UserRole;
-import com.findme.domain.Visitor;
-import com.findme.domain.VisitorAppointment;
-import com.findme.exception.BusinessException;
-import com.findme.exception.ObjectNotFoundException;
 import com.findme.json.JAppointment;
 import com.findme.json.JProfessionalAppointment;
 import com.findme.json.JVisitorAppointment;
 import com.findme.mapper.AppointmentMapper;
 import com.findme.mapper.ProfessionalAppointmentMapper;
 import com.findme.mapper.VisitorAppointmentMapper;
-import com.google.common.collect.Iterables;
 
 @Service
 @Transactional
@@ -110,7 +102,7 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 
 	@Override
 	public Collection<JProfessionalAppointment> findProfessionalByVisitorId(Long id) {
-		return ProfessionalAppointmentMapper.map(professionalDAO.findByVisitorsId(id));
+		return ProfessionalAppointmentMapper.map(professionalDAO.findByVisitorId(id));
 	}
 	
 	@Override
@@ -153,5 +145,15 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 	@Override
 	public Iterable<Professional> findAll() {
 		return professionalDAO.findAll();
+	}
+
+	public Iterable<Professional> findAllIncludedRelationshipWithVisitor(Long visitorId) {
+		return findAll();
+	}
+
+	@Override
+	public Iterable<Professional> advanceSearchIncludedRelationshipWithVisitor(Long visitorId, String byname,
+			String byphone, Integer bytype) {
+		return advanceSearch(byname, byphone, bytype);
 	}
 }

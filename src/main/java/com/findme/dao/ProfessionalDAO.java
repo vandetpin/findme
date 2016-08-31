@@ -44,7 +44,7 @@ public interface ProfessionalDAO extends CrudRepository<Professional, Long> {
 	void updateStatus(@Param(value="id") Long id, @Param(value="isActive") Boolean isActive);
 	
 	@Query("SELECT p FROM Professional p JOIN  p.visitors v WHERE v.id =:id AND p.isActive = true")
-	Iterable<Professional> findByVisitorsId(@Param("id") Long id);
+	Iterable<Professional> findByVisitorId(@Param("id") Long id);
 	
 	@Query("SELECT p FROM Professional p WHERE p.isActive = 1 AND (p.firstName LIKE %:firstName% OR p.lastName LIKE %:lastName% OR p.phoneNumber LIKE %:phone% )")
 	Iterable<Professional> findByFirstNameOrLastNameOrPhoneContaining(@Param("firstName") String firstName, @Param("lastName") String lastName, @Param("phone") String phone);
@@ -73,8 +73,5 @@ public interface ProfessionalDAO extends CrudRepository<Professional, Long> {
 	// Type
 	@Query("SELECT p FROM Professional p WHERE p.isActive = 1 AND p.type=:type")
 	Iterable<Professional> findByType(@Param("type") ProfessionalType type);
-
-	@Query("SELECT DISTINCT p FROM Professional p JOIN p.visitors v WHERE v.id =:visitorId")
-	Iterable<Professional> findByVisitorId(@Param(value="visitorId") Long visitorId);
 	
 }

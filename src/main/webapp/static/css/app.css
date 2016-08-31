@@ -47,3 +47,6 @@ footer {
 	overflow:auto;
 }
 
+.disabled-btn:hover {
+    cursor: default;
+}

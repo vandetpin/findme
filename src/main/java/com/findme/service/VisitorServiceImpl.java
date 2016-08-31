@@ -15,6 +15,7 @@ import com.findme.domain.UserAccount;
 import com.findme.domain.UserRole;
 import com.findme.domain.Visitor;
 import com.findme.domain.VisitorAppointment;
+import com.findme.exception.BusinessError;
 import com.findme.exception.BusinessException;
 import com.findme.exception.ObjectNotFoundException;
 import com.findme.json.JAppointmentDetail;
@@ -104,6 +105,31 @@ public class VisitorServiceImpl implements VisitorService {
 		Appointment appointment = appointmentDAO.findOne(appointmentId);
 		Visitor visitor = visitorDAO.findOne(visitorId);
 		// need to be finished
+	}
+	
+	public void connectProfessional(Long visitorId, Long professionalId) throws BusinessException {
+		
+		// check if valid professional
+		Professional prof = professionalDAO.findOne(professionalId);
+		if(prof == null) BusinessError.PROFESSIONAL_NOT_FOUND.throwException();
+
+		
+		// check if user already connect with professional
+		Iterable<Professional> professionals = professionalDAO.findByVisitorId(visitorId);
+		if(Iterables.contains(professionals, prof)) 
+			BusinessError.VISITOR_ALREADY_CONNECTED_TO_PROFESSIONAL.throwException();
+		
+		// visitor
+		Visitor visitor = visitorDAO.findOne(visitorId);
+		
+		prof.getVisitors().add(visitor);
+		
+		//save
+		professionalDAO.save(prof);
+				
+		//TODO call send email to notify visitor
+		//using @Asyn
+		
 	}
 
 }

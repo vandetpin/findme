@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.findme.domain.Professional;
 import com.findme.domain.User;
 import com.findme.service.ProfessionalService;
 import com.findme.service.UserAccountService;
@@ -28,15 +29,18 @@ public class HomeController {
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
     public String homePage(ModelMap model, HttpSession session) {
 		String username = WebUtils.getCurrentUserName();
+		Iterable<Professional> allProfs = professionalService.findAll();
+		
 		if(username != null){
 			if(username.equals("admin")) {
 				session.setAttribute("loggedAdmin", "admin");
 			}else{
 				User user = userAccountService.findUserByUsername(username);
 				session.setAttribute("loggedUser", user);
+				allProfs = professionalService.findAllIncludedRelationshipWithVisitor(user.getId());
 			}
 		}
-		model.addAttribute("professionals",professionalService.findAll());
+		model.addAttribute("professionals", allProfs);
         return "home";
     }
 	
