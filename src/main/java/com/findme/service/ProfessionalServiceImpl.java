@@ -154,6 +154,11 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 	@Override
 	public Iterable<Professional> advanceSearchIncludedRelationshipWithVisitor(Long visitorId, String byname,
 			String byphone, Integer bytype) {
-		return advanceSearch(byname, byphone, bytype);
+		return advanceSearch(byname, byphone, bytype); };
+	@Override
+	public Collection<JVisitorAppointment> findVisitorByIdAndAppointmentNameContaining(Long professionalId,
+			String appointmentName) {
+		return VisitorAppointmentMapper.map(professionalDAO.findVisitorByIdAndAppointmentNameContaining(professionalId, appointmentName));
+
 	}
 }

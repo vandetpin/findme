@@ -1,6 +1,10 @@
 package com.findme.service;
 
+import java.util.Collection;
+
 import com.findme.domain.Appointment;
+import com.findme.json.JAppointment;
+import com.findme.json.JVisitorAppointment;
 
 public interface AppointmentService {
 
