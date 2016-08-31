@@ -4,7 +4,7 @@ $(function () {
     // Auto Load Function
     $('#appointmentList').ready(function () {
         $.ajax({
-            url: 'professionals/api/appointments'
+            url: homePath + 'professionals/api/appointments'
             , method: 'get'
             , dataType: 'json'
             , success: function (data) {
@@ -44,7 +44,7 @@ $(function () {
     });
     $('#clientProfList').ready(function () {
         $.ajax({
-            url: 'professionals/api/visitors'
+            url: homePath + 'professionals/api/visitors'
             , data: {
                 firstName: ''
                 , lastName: ''
@@ -139,7 +139,7 @@ $(function () {
         if (startDate == '' && endDate == '') {
             alert('One of the dates fields are Empty, Loading all Appointments');
             $.ajax({
-                url: 'professionals/api/appointments'
+                url: homePath + 'professionals/api/appointments'
                 , method: 'get'
                 , dataType: 'json'
                 , success: function (data) {
@@ -222,7 +222,7 @@ $(function () {
         var name = $('#searchClientsProfText').val();
         alert('Search Fields are Empty, Loading all Clients');
         $.ajax({
-            url: 'professionals/api/visitors'
+            url: homePath + 'professionals/api/visitors'
             , data: {
                 firstName: name
                 , lastName: name
@@ -274,7 +274,7 @@ $(function () {
     // Autoload goes here 
     $('#clientAppointmentList').ready(function () {
         $.ajax({
-            url: 'visitors/api/appointments'
+            url: homePath + 'visitors/api/appointments'
             , data: {
                 startDate: ''
                 , endDate: ''
@@ -313,7 +313,7 @@ $(function () {
                     $('#clientAppointmentList').hide();
                 }
             }
-            , error: function () {
+            , error: function (jqXHR, exception) {
                 if (jqXHR.status != 403 && jqXHR.status == 404) {
                     alert('Unable to get Information about Visitor From the Server, Something wrong happened ... ');
                     $(location).attr('href', 'login');
@@ -352,7 +352,7 @@ $(function () {
             alert('Search Fields are Empty, Loading all Clients Appointments');
         }
         $.ajax({
-            url: 'visitors/api/appointments'
+            url: homePath + 'visitors/api/appointments'
             , data: {
                 startDate: startDate
                 , endDate: endDate

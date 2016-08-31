@@ -19,6 +19,9 @@
     <![endif]-->
 </head>
 <body>
+	<script type="text/javascript">
+		var homePath = '<c:url value='/'></c:url>';
+	</script>
 	<!-- Navigation -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
@@ -43,6 +46,7 @@
 					<li><a href="<c:url value='/search'></c:url>">Search</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
+				
 				<c:choose>
 					<c:when test="${loggedAdmin != null && loggedAdmin == 'admin'}">
 						<li><a class="" href="#login">Welcome Administrator!</a></li>
