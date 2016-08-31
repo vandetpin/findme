@@ -82,6 +82,7 @@ $(function () {
             }
             , error: function (jqXHR, exception) {
                 if (jqXHR.status != 403 && jqXHR.status == 404) {
+                	
                     alert('Unable to get Information about client From the Server, Something wrong happened ... ');
                     $(location).attr('href', 'login');
                 }

@@ -12,7 +12,7 @@
 <div class="row">
 
 <div class="col-lg-4">
-<form class="role" method="get" action="<c:url value='/search/advance/'></c:url>">
+<form class="role" method="get" action="<c:url value='/advance'></c:url>">
 	<div class="form-group">
 		<label>By Name</label>
 		<input class="form-control input-sm" name="byname">
