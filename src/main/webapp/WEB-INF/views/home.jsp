@@ -3,21 +3,7 @@
 
 
 
-<div class="container">
-	<div class="jumbotron">
-	    <div class="row">
-	        <div class="col-sm-8">
-	            <h2>An excellent way to make an appointment</h2>
-                <p class="text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.  </p>
-                <p><a class="btn btn-primary" href="#" role="button">Learn more <i class="fa fa-angle-double-right"></i> </a></p>
-	        </div>
-	        <div class="col-sm-4">
-	            <img style="width: 300px;" src="<c:url value='/static/img/calendar_icon.png'></c:url>" alt="calendar" />
-	        </div>
-	    </div>
-	  	
-	</div>
-</div>
+
 
 
 <div class="container">
@@ -54,7 +40,7 @@
                         <div class="caption">
                             <h3>${professional.firstName}${professional.lastName}</h3>
                             <p>${professional.otherInfo}</p>
-                            <p> <a href="<c:url value='/home/details/${professional.id}'> </c:url> " class="btn btn-primary">Details</a> <a href="<c:url value='/home/register/${professional.id}'> </c:url>" class="btn btn-default">Register</a> </p>
+                            <p> <a href="<c:url value='/home/details/${professional.id}'> </c:url> " class="btn btn-primary">Details</a> <a href="<c:url value='/visitors/signup?id=${professional.id}'> </c:url>" class="btn btn-default">Register</a> </p>
                         </div>
                     </div>
                 </div>
@@ -62,4 +48,4 @@
         </div>
     </div>
     <!DOCTYPE div PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-    <%@ include file="footer.jsp"%>
+    <%@ include file="footer_nojs.jsp"%>

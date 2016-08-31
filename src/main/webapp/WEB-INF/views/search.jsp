@@ -1,4 +1,16 @@
 <%@ include file="header.jsp"%>
+<div class="container">
+
+<form role="form" method="get" action="<c:url value='/search'></c:url>">
+	            <div class="input-group">
+	              	<input type="text" name="s" value="${param.s}" class="form-control input-lg" placeholder="Search ...">
+	              	<span class="input-group-btn">
+	                <button class="btn btn-primary btn-lg" type="submit"><i class="fa fa-search"></i> Search</button>
+	                <a href="<c:url value='/advance'></c:url>" class="btn btn-default btn-lg" type="button"><i class="fa fa-search-plus"></i> Advance</a>
+	              </span> </div>
+                    <!-- /input-group -->
+                </form>
+
 
 
 <div class="row">
@@ -20,7 +32,7 @@
 					<p>${professional.otherInfo}</p>
 					<p>
 						<a href="<c:url value='/home/details/${professional.id}'> </c:url>" class="btn btn-primary">Details</a>
-						<a href="<c:url value='/home/register/${professional.id}'> </c:url>"
+						<a href="<c:url value='/visitors/signup?id=${professional.id}'> </c:url>"
 							class="btn btn-default">Register</a>
 					</p>
 				</div>
@@ -32,4 +44,5 @@
 
 
 </div>
-<%@ include file="footer.jsp"%>
+</div>
+<%@ include file="footer_nojs.jsp"%>

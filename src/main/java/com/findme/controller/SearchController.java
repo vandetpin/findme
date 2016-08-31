@@ -18,7 +18,7 @@ public class SearchController {
 	ProfessionalService professionalService;
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-    public String homePage(ModelMap model, @RequestParam("s") String s) {	
+    public String homePage(ModelMap model, @RequestParam(value="s",required=false) String s) {	
 		
 		System.out.println(s);
 		model.addAttribute("professionals",professionalService.findByFirstNameOrLastNameContaining(s, s));

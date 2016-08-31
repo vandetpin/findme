@@ -1,6 +1,6 @@
 <%@ include file="header.jsp"%>
 
-
+<div class="container">
 
 
 <div class="row">
@@ -24,7 +24,15 @@
 			<c:forEach var="client" items="${totalClient}" end="5">
 				<div class="col-md-4"><h4>${client.name}</h4>
 					<p>Capacity: ${client.capacity } </p>
-					<a href="${client.id}" class="btn btn-success">Apply Appointment</a></div>
+					<c:choose>
+						<c:when test="${loggedUser != null}">
+							<a href="${client.id}" class="btn btn-success">Apply Appointment</a>
+						</c:when>
+						<c:otherwise>
+							<a href="<c:url value='/visitors/signup?id=${professional.id}'> </c:url>" class="btn btn-success">Register</a>
+						</c:otherwise>
+					</c:choose>
+					</div>
 			</c:forEach>
 		</div>
 	</div>
@@ -33,4 +41,5 @@
 
 
 </div>
-<%@ include file="footer.jsp"%>
+</div>
+<%@ include file="footer_nojs.jsp"%>

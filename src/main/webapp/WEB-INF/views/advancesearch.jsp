@@ -15,7 +15,7 @@
 <form class="role" method="get" action="<c:url value='/advance'></c:url>">
 	<div class="form-group">
 		<label>By Name</label>
-		<input class="form-control input-sm" name="byname">
+		<input class="form-control input-sm" name="byname" value="${param.byname }">
 	</div>
 	
 	
@@ -34,7 +34,7 @@
 	
 	<div class="form-group">
 		<label>By Phone</label>
-		<input class="form-control input-sm" name="byphone">
+		<input class="form-control input-sm" name="byphone" value="${param.byphone }">
 	</div>
 	
 	
@@ -46,7 +46,7 @@
 
 
 <div class="col-lg-8">
-<h1>Search Result</h1>
+<h3>Search Result</h3>
 <c:forEach var="professional" items="${professionals}" varStatus="i">
 		<div class="col-md-4  hero-feature">
 			<div class="thumbnail">
@@ -56,7 +56,7 @@
 					<p>${professional.otherInfo}</p>
 					<p>
 						<a href="<c:url value='/home/details/${professional.id}'> </c:url> " class="btn btn-primary">Details</a>
-						<a href="/home/register/${professional.id}"
+						<a href="<c:url value='/visitors/signup?id=${professional.id}'> </c:url>"
 							class="btn btn-default">Register</a>
 					</p>
 				</div>
@@ -68,4 +68,4 @@
 
 </div>
 </div>
-<%@ include file="footer.jsp"%>
+<%@ include file="footer_nojs.jsp"%>
