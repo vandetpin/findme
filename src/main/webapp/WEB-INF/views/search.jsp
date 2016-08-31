@@ -8,6 +8,7 @@
         </div>
 	
 
+
 <div class="row text-center">
 
 	<c:forEach var="professional" items="${professionals}" varStatus="i">

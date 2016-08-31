@@ -29,33 +29,34 @@ import com.findme.mapper.VisitorAppointmentMapper;
 @Service
 @Transactional
 public class ProfessionalServiceImpl implements ProfessionalService {
-	
+
 	@Autowired
-	private ProfessionalDAO professionalDAO; 
-	
+	private ProfessionalDAO professionalDAO;
+
 	@Override
 	public Iterable<Professional> findAll() {
 		return professionalDAO.findAll();
 	}
 
 	@Override
-	public Iterable<Professional> findByFirstNameOrLastNameContaining(String firstName, String lastName) {		
+	public Iterable<Professional> findByFirstNameOrLastNameContaining(String firstName, String lastName) {
 		return professionalDAO.findByFirstNameOrLastNameContaining(firstName, lastName);
 	}
 
 	@Override
 	public Collection<JAppointment> findByProfessional(Long professionalId) {
 		Professional prof = professionalDAO.findOne(professionalId);
-		if(prof != null && !CollectionUtils.isEmpty(prof.getAppointments()) ) {
+		if (prof != null && !CollectionUtils.isEmpty(prof.getAppointments())) {
 			return AppointmentMapper.map(prof.getAppointments());
 		}
-		
+
 		return CollectionUtils.EMPTY_COLLECTION;
 	}
 
 	@Override
 	public Collection<JAppointment> findByProfessional(Long professionalId, Date startDate, Date endDate) {
-		return AppointmentMapper.map(professionalDAO.findByIdAndAppointmentStartDateAndEndDate(professionalId, startDate, endDate));
+		return AppointmentMapper
+				.map(professionalDAO.findByIdAndAppointmentStartDateAndEndDate(professionalId, startDate, endDate));
 	}
 
 	@Override
@@ -66,15 +67,15 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 	@Override
 	public Collection<JVisitorAppointment> findVisitorByIdAndFirstNameOrLastNameContaining(Long professionalId,
 			String visitorFirstName, String visitorLastName) {
-		return VisitorAppointmentMapper.map(professionalDAO.findVisitorByIdAndFirstNameOrLastNameContaining(
-				professionalId, visitorFirstName, visitorLastName));
+		return VisitorAppointmentMapper.map(professionalDAO
+				.findVisitorByIdAndFirstNameOrLastNameContaining(professionalId, visitorFirstName, visitorLastName));
 	}
 
 	@Override
 	public Appointment findAppointmentByIdAndAppointmentId(Long id, Long appointmentId) {
 		return professionalDAO.findAppointmentByIdAndAppointmentId(id, appointmentId);
 	}
-	
+
 	@Override
 	public Professional create(Professional professional) {
 		// Assign roles to professional
@@ -82,14 +83,14 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 		user.addRole(new UserRole(user.getUsername(), UserRole.ROLE_USER));
 		user.addRole(new UserRole(user.getUsername(), UserRole.ROLE_PROFESSIONAL));
 		user.setActive(true);
-		
+
 		// professional should be verify and allow by Admin user
 		professional.setActive(false);
 		professional.setUserAccount(user);
-		
+
 		return professionalDAO.save(professional);
 	}
-	
+
 	@Override
 	public void updateStatus(Long id, Boolean isActive) {
 		professionalDAO.updateStatus(id, isActive);
@@ -99,6 +100,24 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 	public Collection<JProfessionalAppointment> findProfessionalByVisitorId(Long id) {
 		return ProfessionalAppointmentMapper.map(professionalDAO.findByVisitorsId(id));
 	}
-	
-	
+
+	public Iterable<Professional> advanceSearch(String byname, String byphone, ProfessionalType bytype) {
+		if (!byname.equals("") && byphone.equals("") && bytype.equals("")) {
+			System.out.println("Name Run");
+			return professionalDAO.findByFirstNameOrLastNameContaining(byname, byname);
+		} else if (!byname.equals("") && !byphone.equals("") && bytype.equals("")) {
+			return professionalDAO.findByFirstNameOrLastNameOrPhoneContaining(byname, byname, byphone);
+		} else if (!byname.equals("") && !byphone.equals("") && !bytype.equals("")) {
+			return professionalDAO.findByFirstNameOrLastNameOrPhoneOrTypeContaining(byname, byname, byphone, bytype);
+		} else if (byname.equals("") && !byphone.equals("") && bytype.equals("")) {
+			return professionalDAO.findByPhoneContaining(byphone);
+		} else if (byname.equals("") && !byphone.equals("") && !bytype.equals("")) {
+			return professionalDAO.findByPhoneOrTypeContaining(byphone, bytype);
+		} else if (byname.equals("") && byphone.equals("") && !bytype.equals("")) {
+			return professionalDAO.findByType(bytype);
+		}
+
+		return null;
+	}
+
 }

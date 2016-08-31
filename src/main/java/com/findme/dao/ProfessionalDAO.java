@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.findme.domain.Appointment;
 import com.findme.domain.Professional;
+import com.findme.domain.ProfessionalType;
 import com.findme.domain.Visitor;
 
 import java.lang.Long;
@@ -19,7 +20,7 @@ import java.util.List;
 public interface ProfessionalDAO extends CrudRepository<Professional, Long> {
 	
 	@Query("SELECT p FROM Professional p WHERE p.isActive = 1 AND (p.firstName LIKE %:firstName% OR p.lastName LIKE %:lastName% )")
-	Iterable<Professional> findByFirstNameOrLastNameContaining(String firstName, String lastName);
+	Iterable<Professional> findByFirstNameOrLastNameContaining(@Param("firstName") String firstName, @Param("lastName") String lastName);
 	
 	
 
@@ -42,5 +43,34 @@ public interface ProfessionalDAO extends CrudRepository<Professional, Long> {
 	
 	@Query("SELECT p FROM Professional p JOIN  p.visitors v WHERE v.id =:id AND p.isActive = true")
 	Iterable<Professional> findByVisitorsId(@Param("id") Long id);
+	
+	@Query("SELECT p FROM Professional p WHERE p.isActive = 1 AND (p.firstName LIKE %:firstName% OR p.lastName LIKE %:lastName% OR p.phoneNumber LIKE %:phone% )")
+	Iterable<Professional> findByFirstNameOrLastNameOrPhoneContaining(@Param("firstName") String firstName, @Param("lastName") String lastName, @Param("phone") String phone);
+
+
+	// First Name LastName Phone Type
+	@Query("SELECT p FROM Professional p WHERE p.isActive = 1 AND (p.firstName LIKE %:firstName% OR p.lastName LIKE %:lastName% OR p.phoneNumber LIKE %:phone%  OR p.type=:type)")
+	Iterable<Professional> findByFirstNameOrLastNameOrPhoneOrTypeContaining(@Param("firstName") String firstName, @Param("lastName") String lastName, @Param("phone") String phone, @Param("type") ProfessionalType type);
+
+
+	// First Name Last Name Type
+	@Query("SELECT p FROM Professional p WHERE p.isActive = 1 AND (p.firstName LIKE %:firstName% OR p.lastName LIKE %:lastName%   OR p.type=:type)")
+	Iterable<Professional> findByFirstNameOrLastNameOrTypeContaining(@Param("firstName") String firstName, @Param("lastName") String lastName,  @Param("type") ProfessionalType type);
+
+
+
+	// Phone
+	@Query("SELECT p FROM Professional p WHERE p.isActive = 1 AND (p.phoneNumber LIKE %:phone% )")
+	Iterable<Professional> findByPhoneContaining(@Param("phone") String phone);
+
+	// Phone Type
+	@Query("SELECT p FROM Professional p WHERE p.isActive = 1 AND (p.phoneNumber LIKE %:phone% OR p.type=:type)")
+	Iterable<Professional> findByPhoneOrTypeContaining(@Param("phone") String phone,@Param("type") ProfessionalType type);
+
+
+	// Type
+	@Query("SELECT p FROM Professional p WHERE p.isActive = 1 AND p.type=:type")
+	Iterable<Professional> findByType(@Param("type") ProfessionalType type);
+
 	
 }

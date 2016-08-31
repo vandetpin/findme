@@ -17,33 +17,26 @@
 		<label>By Name</label>
 		<input class="form-control input-sm" name="byname">
 	</div>
-	<div class="form-group">
-		<label>By City</label>
-		<input class="form-control input-sm" name="bycity">
-	</div>
+	
 	
 	<div class="form-group">
 		<label>By Type </label>
 		<select name="bytype" class="form-control input-sm">
 				<option value="">--ALL--</option>
-				<option value="DOCTOR">Doctor</option>
-				<option value="LAYER">Lawyer</option>
-				<option value="BARBER">Barber</option>
-				<option value="MUSIC_TEACHER">Music Teacher</option>
+				<option value="0">Doctor</option>
+				<option value="1">Lawyer</option>
+				<option value="2">Barber</option>
+				<option value="3">Music Teacher</option>
+				<option value="4">TM Teacher</option>
 			</select>
 	</div>
+	
+	
 	<div class="form-group">
 		<label>By Phone</label>
 		<input class="form-control input-sm" name="byphone">
 	</div>
-	<div class="form-group">
-		<label>Join</label>
-		<select name="join" class="form-control">
-					<option value="OR">OR</option>
-					<option value="AND">AND</option>
-					<option value="LIKE">Contains</option>
-				</select>
-	</div>
+	
 	
 	<button type="submit" class="btn btn-default">Submit</button>
 	
@@ -54,7 +47,22 @@
 
 <div class="col-lg-8">
 <h1>Search Result</h1>
-
+<c:forEach var="professional" items="${professionals}" varStatus="i">
+		<div class="col-md-3 col-sm-6 hero-feature">
+			<div class="thumbnail">
+				<img src="${professional.profilePicture}" alt="">
+				<div class="caption">
+					<h3>${professional.firstName}${professional.lastName}</h3>
+					<p>${professional.otherInfo}</p>
+					<p>
+						<a href="/home/details/${professional.id}" class="btn btn-primary">Details</a>
+						<a href="/home/register/${professional.id}"
+							class="btn btn-default">Register</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</c:forEach>
 </div>
 
 

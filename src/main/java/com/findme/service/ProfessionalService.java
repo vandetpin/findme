@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.findme.domain.Appointment;
 import com.findme.domain.Professional;
+import com.findme.domain.ProfessionalType;
 import com.findme.domain.Visitor;
 import com.findme.json.JAppointment;
 import com.findme.json.JProfessionalAppointment;
@@ -32,4 +33,5 @@ public interface ProfessionalService {
 	void updateStatus(Long id, Boolean isActive);
 	
 	Collection<JProfessionalAppointment> findProfessionalByVisitorId(Long id);
+	Iterable<Professional> advanceSearch(String byname,  String  byphone , ProfessionalType bytype);
 }
