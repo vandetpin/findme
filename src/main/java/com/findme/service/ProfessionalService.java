@@ -33,8 +33,9 @@ public interface ProfessionalService {
 	void updateStatus(Long id, Boolean isActive);
 	
 	Collection<JProfessionalAppointment> findProfessionalByVisitorId(Long id);
-	Iterable<Professional> advanceSearch(String byname,  String  byphone , ProfessionalType bytype);
+
 	void approveAppointment(Long visitorId, Long appointmentId) throws ObjectNotFoundException, BusinessException;
 	void acceptVisitorRequested(Long visitorId);
 
+	Iterable<Professional> advanceSearch(String byname,  String  byphone , Integer bytype);
 }

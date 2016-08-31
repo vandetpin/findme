@@ -19,8 +19,8 @@
 					<h3>${professional.firstName}${professional.lastName}</h3>
 					<p>${professional.otherInfo}</p>
 					<p>
-						<a href="/home/details/${professional.id}" class="btn btn-primary">Details</a>
-						<a href="/home/register/${professional.id}"
+						<a href="<c:url value='/home/details/${professional.id}'> </c:url>" class="btn btn-primary">Details</a>
+						<a href="<c:url value='/home/register/${professional.id}'> </c:url>"
 							class="btn btn-default">Register</a>
 					</p>
 				</div>

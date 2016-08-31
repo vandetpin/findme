@@ -28,7 +28,7 @@
 	              	<input type="text" name="s" class="form-control input-lg" placeholder="Search ...">
 	              	<span class="input-group-btn">
 	                <button class="btn btn-primary btn-lg" type="submit"><i class="fa fa-search"></i> Search</button>
-	                <a href="<c:url value='/search/advance'></c:url>" class="btn btn-default btn-lg" type="button"><i class="fa fa-search-plus"></i> Advance</a>
+	                <a href="<c:url value='/advance'></c:url>" class="btn btn-default btn-lg" type="button"><i class="fa fa-search-plus"></i> Advance</a>
 	              </span> </div>
                     <!-- /input-group -->
                 </form>
@@ -54,7 +54,7 @@
                         <div class="caption">
                             <h3>${professional.firstName}${professional.lastName}</h3>
                             <p>${professional.otherInfo}</p>
-                            <p> <a href="/home/details/${professional.id}" class="btn btn-primary">Details</a> <a href="/home/register/${professional.id}" class="btn btn-default">Register</a> </p>
+                            <p> <a href="<c:url value='/home/details/${professional.id}'> </c:url> " class="btn btn-primary">Details</a> <a href="<c:url value='/home/register/${professional.id}'> </c:url>" class="btn btn-default">Register</a> </p>
                         </div>
                     </div>
                 </div>

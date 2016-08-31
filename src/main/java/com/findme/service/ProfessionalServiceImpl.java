@@ -112,24 +112,31 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 	public Collection<JProfessionalAppointment> findProfessionalByVisitorId(Long id) {
 		return ProfessionalAppointmentMapper.map(professionalDAO.findByVisitorsId(id));
 	}
-
-	public Iterable<Professional> advanceSearch(String byname, String byphone, ProfessionalType bytype) {
-		if (!byname.equals("") && byphone.equals("") && bytype.equals("")) {
-			System.out.println("Name Run");
+	
+	@Override
+	public Iterable<Professional> advanceSearch(String byname, String byphone, Integer bytype) {
+		System.out.println(byname + byphone + bytype);
+		if (!byname.equals("") && byphone.equals("") && bytype<0) {
+			System.out.println("Working ... ");
+			
 			return professionalDAO.findByFirstNameOrLastNameContaining(byname, byname);
-		} else if (!byname.equals("") && !byphone.equals("") && bytype.equals("")) {
+		} else if (!byname.equals("") && !byphone.equals("") && bytype<0) {
 			return professionalDAO.findByFirstNameOrLastNameOrPhoneContaining(byname, byname, byphone);
-		} else if (!byname.equals("") && !byphone.equals("") && !bytype.equals("")) {
-			return professionalDAO.findByFirstNameOrLastNameOrPhoneOrTypeContaining(byname, byname, byphone, bytype);
-		} else if (byname.equals("") && !byphone.equals("") && bytype.equals("")) {
+		} else if (!byname.equals("") && !byphone.equals("") && bytype>=0) {
+			return professionalDAO.findByFirstNameOrLastNameOrPhoneOrTypeContaining(byname, byname, byphone, ProfessionalType.valueOf(bytype));
+		} else if (byname.equals("") && !byphone.equals("") && bytype<0) {
 			return professionalDAO.findByPhoneContaining(byphone);
-		} else if (byname.equals("") && !byphone.equals("") && !bytype.equals("")) {
-			return professionalDAO.findByPhoneOrTypeContaining(byphone, bytype);
-		} else if (byname.equals("") && byphone.equals("") && !bytype.equals("")) {
-			return professionalDAO.findByType(bytype);
+		} else if (byname.equals("") && !byphone.equals("") && bytype>=0) {
+			return professionalDAO.findByPhoneOrTypeContaining(byphone, ProfessionalType.valueOf(bytype));
+		} else if (byname.equals("") && byphone.equals("") && bytype>=0) {
+			System.out.println("Type wise data " );
+			return professionalDAO.findByType(ProfessionalType.valueOf(bytype));
+		} else if(!byname.equals("") && byphone.equals("") && bytype>=0) {
+			System.out.println("type and name" );
+			return professionalDAO.findByFirstNameOrLastNameOrTypeContaining(byname, byname, ProfessionalType.valueOf(bytype));
 		}
 
-		return null;
+		return professionalDAO.findAll();
 	}
 
 	public void approveAppointment(Long visitorId, Long appointmentId) {
@@ -142,4 +149,6 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 }

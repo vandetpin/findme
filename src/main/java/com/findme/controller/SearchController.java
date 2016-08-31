@@ -28,12 +28,12 @@ public class SearchController {
     }
 	
 	@RequestMapping(value="/advance", method=RequestMethod.GET) 
-	public String advanceSearch(ModelMap model, @RequestParam(value="byname",required=false,defaultValue="") String byname, @RequestParam(value="byphone", required=false, defaultValue="") String byphone, @RequestParam(value="bytype",required=false, defaultValue="0") Integer bytype) {			
+	public String advanceSearch(ModelMap model, @RequestParam(value="byname",required=false,defaultValue="") String byname, @RequestParam(value="byphone", required=false, defaultValue="") String byphone, @RequestParam(value="bytype",required=false, defaultValue="-1") Integer bytype) {			
 		
 		
 		if(!StringUtils.isEmpty(byname) || !StringUtils.isEmpty(byphone) || bytype>0) {	
 			System.out.println("code run");
-			model.addAttribute("professionals",professionalService.advanceSearch(byname, byphone, ProfessionalType.valueOf(bytype)));
+			model.addAttribute("professionals",professionalService.advanceSearch(byname, byphone, bytype));
 		} else {
 			System.out.println("hello");
 		}
