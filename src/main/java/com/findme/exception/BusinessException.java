@@ -1,8 +1,20 @@
 package com.findme.exception;
-public class BusinessException extends Exception {
-	private static final long serialVersionUID = 1L;
+@SuppressWarnings("serial")
+public class BusinessException extends RuntimeException {
 
-	public BusinessException(String message){
-		super(message);
+	private int errorCode;
+
+	public BusinessException(String msg) {
+		super(msg);
 	}
+
+	public BusinessException(String msg, int errorCode) {
+		super(msg);
+		this.errorCode = errorCode;
+	}
+
+	public int getErrorCode() {
+		return errorCode;
+	}
+
 }
