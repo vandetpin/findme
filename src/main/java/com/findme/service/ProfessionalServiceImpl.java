@@ -87,6 +87,7 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 		user.addRole(new UserRole(user.getUsername(), UserRole.ROLE_USER));
 		user.addRole(new UserRole(user.getUsername(), UserRole.ROLE_PROFESSIONAL));
 		user.setActive(true);
+		user.setUser(professional);
 
 		// professional should be verify and allow by Admin user
 		professional.setActive(false);
@@ -161,5 +162,11 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 	public Collection<JVisitorAppointment> findVisitorByIdAndAppointmentNameContaining(Long professionalId,
 			String appointmentName) {
 		return VisitorAppointmentMapper.map(professionalDAO.findVisitorByIdAndAppointmentNameContaining(professionalId, appointmentName));
+	}
+
+	@Override
+	public Iterable<Professional> findByFirstNameOrLastNameContainingIncludedRelationshipWithVisitor(Long visitorId,
+			String firstName, String lastName) {
+		return findByFirstNameOrLastNameContaining(firstName, lastName);
 	}
 }

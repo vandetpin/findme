@@ -58,6 +58,7 @@ public class VisitorServiceImpl implements VisitorService {
 		user.addRole(new UserRole(user.getUsername(), UserRole.ROLE_USER));
 		user.addRole(new UserRole(user.getUsername(), UserRole.ROLE_VISITOR));
 		user.setActive(true);
+		user.setUser(visitor);
 		visitor.setUserAccount(user);
 		
 		return visitorDAO.save(visitor);

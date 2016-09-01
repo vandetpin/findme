@@ -30,7 +30,7 @@ public class UserAccount {
 	@OneToMany(cascade=CascadeType.PERSIST)
 	private Set<UserRole> roles = new HashSet<>();
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.PERSIST)
 	private User user;
 
 	public UserAccount() {

@@ -23,8 +23,9 @@ public class ProfessionalAdvicer {
 	
 	@Transactional
 	@Around("execution(* com.findme.service.ProfessionalServiceImpl.findAllIncludedRelationshipWithVisitor(..)) || "
-			+ "execution(* com.findme.service.ProfessionalServiceImpl.advanceSearchIncludedRelationshipWithVisitor(..))")
-	public Iterable<Professional> addConnectionStatus(ProceedingJoinPoint pjp) throws Throwable {
+			+ "execution(* com.findme.service.ProfessionalServiceImpl.advanceSearchIncludedRelationshipWithVisitor(..)) ||" 
+			+ "execution(* com.findme.service.ProfessionalServiceImpl.findByFirstNameOrLastNameContainingIncludedRelationshipWithVisitor(..))")
+public Iterable<Professional> addConnectionStatus(ProceedingJoinPoint pjp) throws Throwable {
 		
 		LOG.info(">>>>>>>>>>> Start professional advicer >>>>>>>>>>>>>");
 		LOG.info(">>>>>>>>>>> addConnectionStatus advice >>>>>>>>>>>>>");

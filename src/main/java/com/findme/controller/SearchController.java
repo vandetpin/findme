@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.findme.domain.Comment;
 import com.findme.domain.Professional;
-import com.findme.domain.ProfessionalType;
 
 import com.findme.service.ProfessionalService;
 import com.findme.service.UserAccountService;
@@ -27,8 +25,19 @@ public class SearchController {
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
     public String homePage(ModelMap model, @RequestParam(value="s",required=false) String s) {			
-		System.out.println(s);
 		model.addAttribute("professionals",professionalService.findByFirstNameOrLastNameContaining(s, s));			
+		Iterable<Professional> profs = null;
+		String username = WebUtils.getCurrentUserName();
+
+		if(username == null) { // not login
+			profs = professionalService.findByFirstNameOrLastNameContaining(s, s);
+		} else { // logged in
+			Long visitorId = userAccountService.findUserByUsername(username).getId();
+			profs = professionalService.findByFirstNameOrLastNameContainingIncludedRelationshipWithVisitor(visitorId, s, s);
+		}
+		
+		model.addAttribute("professionals", profs);
+		
         return "search";
     }
 	

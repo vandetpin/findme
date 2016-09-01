@@ -20,6 +20,7 @@ public interface ProfessionalService {
 	Iterable<Professional> findAllIncludedRelationshipWithVisitor(Long visitorId);
 
 	Iterable<Professional> findByFirstNameOrLastNameContaining(String firstName, String lastName);
+	Iterable<Professional> findByFirstNameOrLastNameContainingIncludedRelationshipWithVisitor(Long visitorId, String firstName, String lastName);
 
 	Collection<JAppointment> findByProfessional(Long professionalId);
 
