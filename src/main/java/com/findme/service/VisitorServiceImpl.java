@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.findme.dao.*;
 import com.findme.domain.Appointment;
+import com.findme.domain.Email;
 import com.findme.domain.Professional;
 import com.findme.domain.UserAccount;
 import com.findme.domain.UserRole;
@@ -36,6 +37,10 @@ public class VisitorServiceImpl implements VisitorService {
 	@Autowired
 	private ProfessionalDAO professionalDAO;
 
+	@Autowired
+	private EmailService emailService;
+	
+	
 	@Override
 	public Iterable<Appointment> findByProfessional(Professional owner) {		
 		return null;
@@ -96,8 +101,14 @@ public class VisitorServiceImpl implements VisitorService {
 		//save
 		visitorDAO.save(visitor);
 		
-		//TODO call send email to notify professional
-		//using @Asyn
+		//send email to notify professional
+		Email email = new Email();
+		Professional professional = appointment.getOwner();
+		email.setToEmail(professional.getEmailAddress());
+		email.setSubject(String.format("Appointment[name=%s] registered request", appointment.getName()));
+		email.setBody(String.format("Dear %s,\n\nClient [name=%s %s] is looking for your approval on the Appointment[name=%s].", 
+				professional.getFirstName(), visitor.getFirstName(), visitor.getLastName(), appointment.getName()));
+		emailService.sendMail(email);
 	}
 
 	@Override
