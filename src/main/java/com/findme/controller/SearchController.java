@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.findme.domain.Comment;
 import com.findme.domain.ProfessionalType;
+
 import com.findme.service.ProfessionalService;
 
 @Controller
@@ -17,13 +19,11 @@ public class SearchController {
 	@Autowired
 	ProfessionalService professionalService;
 	
+	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-    public String homePage(ModelMap model, @RequestParam(value="s",required=false) String s) {	
-		
+    public String homePage(ModelMap model, @RequestParam(value="s",required=false) String s) {			
 		System.out.println(s);
-		model.addAttribute("professionals",professionalService.findByFirstNameOrLastNameContaining(s, s));
-		
-		
+		model.addAttribute("professionals",professionalService.findByFirstNameOrLastNameContaining(s, s));			
         return "search";
     }
 	
