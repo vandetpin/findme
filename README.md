@@ -7,7 +7,7 @@
 - JSP/Servlet
 - AOP
 - JMS integration
-- JSON response
+- RESTful Web service
 
 ### JMS Server configuration ###
 - go to config file
