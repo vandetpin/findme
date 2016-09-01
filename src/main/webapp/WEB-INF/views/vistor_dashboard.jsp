@@ -54,7 +54,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12">
                 <div class="row">
-                    <div class="col-xs-6 col-md-2"> <a href="#" class="thumbnail"><img src="<c:url value='/static/img/placeholder.png'></c:url>" alt="..."></a> </div>
+                    <div class="col-xs-6 col-md-2"> <a href="#" class="thumbnail"><img src="${visitor.profilePicture}" alt=""></a> </div>
                     <div class="col-xs-12 col-md-8">
                         <h3>&nbsp;&nbsp;&nbsp; ${visitor.lastName} ${visitor.firstName}</h3>
                         <dl class="row"> <dt class="col-sm-3 text-right">Email:</dt>
