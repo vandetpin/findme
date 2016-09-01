@@ -2,7 +2,6 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.findme</groupId>
-  <packaging>war</packaging>
   <version>1.0.0</version>
   <name>findme</name>
   <url>http://maven.apache.org</url>
@@ -71,7 +70,23 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>${spring.security.version}</version>
 		</dependency>
-			
+		
+		<!-- JMS client -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.hornetq</groupId>
+		    <artifactId>hornetq-jms-client</artifactId>
+		    <version>2.4.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>jboss</groupId>
+			<artifactId>jnp-client</artifactId>
+			<version>4.2.2.GA</version>
+		</dependency>
 		
 		<!-- AOP -->
 	   <dependency>
@@ -223,5 +238,6 @@
         <finalName>findme</finalName>
     </build>
    <artifactId>findme</artifactId>
+   <packaging>war</packaging>
 </project>
 	

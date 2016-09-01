@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.findme.domain.Appointment;
+import com.findme.domain.Visitor;
 
 @Repository
 public interface AppointmentDAO extends CrudRepository<Appointment, Long> {

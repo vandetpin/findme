@@ -6,7 +6,6 @@ import java.util.Date;
 
 import com.findme.domain.Appointment;
 import com.findme.domain.Professional;
-import com.findme.domain.ProfessionalType;
 import com.findme.exception.BusinessException;
 import com.findme.exception.ObjectNotFoundException;
 import com.findme.json.JAppointment;
@@ -15,6 +14,10 @@ import com.findme.json.JVisitorAppointment;
 
 public interface ProfessionalService {
 	Iterable<Professional> findAll();
+	
+	Iterable<Professional> findByAllStatus();
+	
+	Iterable<Professional> findAllIncludedRelationshipWithVisitor(Long visitorId);
 
 	Iterable<Professional> findByFirstNameOrLastNameContaining(String firstName, String lastName);
 
@@ -25,6 +28,8 @@ public interface ProfessionalService {
 	Professional findById(Long id);
 	
 	Collection<JVisitorAppointment> findVisitorByIdAndFirstNameOrLastNameContaining(Long professionalId, String visitorFirstName, String visitorLastName);
+	
+	Collection<JVisitorAppointment> findVisitorByIdAndAppointmentNameContaining(Long professionalId, String appointmentName);
 	
 	Appointment findAppointmentByIdAndAppointmentId(Long id, Long appointmentId);
 
@@ -38,4 +43,6 @@ public interface ProfessionalService {
 	void acceptVisitorRequested(Long visitorId);
 
 	Iterable<Professional> advanceSearch(String byname,  String  byphone , Integer bytype);
+	
+	Iterable<Professional> advanceSearchIncludedRelationshipWithVisitor(Long visitorId, String byname,  String  byphone , Integer bytype);
 }

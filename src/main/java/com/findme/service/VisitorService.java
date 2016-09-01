@@ -19,4 +19,6 @@ public interface VisitorService {
 	Collection<JAppointmentDetail> findByVisitor(Long id, Date startDate, Date endDate);
 	Visitor findById(Long id);
 	void registerAppoinment(Long visitorId, Long appointmentId) throws ObjectNotFoundException, BusinessException;
+	void deleteVisitorAppointmentByVisitorIdAndAppointmentId(Long visitorId, Long appointmentId);
+	void connectProfessional(Long visitorId, Long professionalId) throws BusinessException;
 }

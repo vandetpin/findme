@@ -31,13 +31,13 @@
                                                     <td>
                                                         <c:choose>
                                                             <c:when test="${professional.active == true}"> Active </c:when>
-                                                            <c:otherwise> <a class="btn btn-success"> Inactive </c:otherwise>
+                                                            <c:otherwise> Inactive </c:otherwise>
                                                 </c:choose>
                                             </td>
                                             <td>
                                                 <c:choose>
-                                                    <c:when test="${professional.active == true}"> <a class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Disable</a> </c:when>
-                            <c:otherwise> <a class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Active</a> </c:otherwise>
+                                                    <c:when test="${professional.active == true}"> <a class="btn btn-danger" href="<c:url value='/admin/professionals/${professional.id}/0'></c:url>"><i class="fa fa-times" aria-hidden="true"></i> Disable</a> </c:when>
+                            <c:otherwise> <a class="btn btn-success" href="<c:url value='/admin/professionals/${professional.id}/1'></c:url>"><i class="fa fa-check" aria-hidden="true"></i> Active</a> </c:otherwise>
                             </c:choose>
                             </td>
                             </tr>

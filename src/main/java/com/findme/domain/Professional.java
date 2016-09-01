@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
 @DiscriminatorValue("PROFESSIONAL")
@@ -29,6 +30,9 @@ public class Professional extends User{
 	
 	@OneToMany(mappedBy="owner")
 	private List<Appointment> appointments;
+	
+	@Transient
+	private Boolean connected;
 	
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -77,6 +81,14 @@ public class Professional extends User{
 
 	public void setVisitors(List<Visitor> visitors) {
 		this.visitors = visitors;
+	}
+
+	public Boolean getConnected() {
+		return connected;
+	}
+
+	public void setConnected(Boolean connected) {
+		this.connected = connected;
 	}
 	
 }

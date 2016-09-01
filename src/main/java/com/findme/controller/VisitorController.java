@@ -81,4 +81,24 @@ public class VisitorController {
 		
 		return "redirect:/visitors";
 	}
+	
+	@RequestMapping(value="/appointment/cancel/{visitorId}/{appointmentId}", method=RequestMethod.GET)
+	public String cancelAppointment(@PathVariable("appointmentId") Long appointmentId) throws ObjectNotFoundException, BusinessException {
+		String username = WebUtils.getCurrentUserName();
+		Long visitorId = userAccountService.findUserByUsername(username).getId();
+		
+		visitorService.deleteVisitorAppointmentByVisitorIdAndAppointmentId(visitorId, appointmentId);
+		
+		return "redirect:/visitors";
+	}
+	
+	@RequestMapping(value="/connect/{professionalId}", method=RequestMethod.GET)
+	public String connectProfessional(@PathVariable("professionalId") Long professionalId) throws BusinessException {
+		String username = WebUtils.getCurrentUserName();
+		Long visitorId = userAccountService.findUserByUsername(username).getId();
+		
+		visitorService.connectProfessional(visitorId, professionalId);
+		
+		return "redirect:/home/details/" + professionalId ;
+	}
 }

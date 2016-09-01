@@ -20,14 +20,14 @@ INSERT INTO `UserRole` (`id`,`role`,`username`) VALUES (10,'ROLE_USER','user2');
 INSERT INTO `UserRole` (`id`,`role`,`username`) VALUES (11,'ROLE_VISITOR','user2');
 
 -- Profesional ---
-INSERT INTO `User` (`userType`,`Id`,`city`,`state`,`street`,`zip`,`dateOfBirth`,`emailAddress`,`firstName`,`gender`,`lastName`,`otherInfo`,`phoneNumber`,`profilePicture`,`isActive`,`type`,`userAccount_id`) VALUES ('PROFESSIONAL',1,'Fairfield','Iowa','4th Street','52557','1960-10-10','prof@gg.com','TM teacher','F','1','short info','902387023','https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg', 1, 4 ,3);
-INSERT INTO `User` (`userType`,`Id`,`city`,`state`,`street`,`zip`,`dateOfBirth`,`emailAddress`,`firstName`,`gender`,`lastName`,`otherInfo`,`phoneNumber`,`profilePicture`,`isActive`,`type`,`userAccount_id`) VALUES ('PROFESSIONAL',2,'Fairfield','Iowa','4th Street','52557','1960-10-10','prof@gg.com','Doctor','M','1','short info','902387023','https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg', 1, 0, 4);
+INSERT INTO `User` (`userType`,`Id`,`city`,`state`,`street`,`zip`,`dateOfBirth`,`emailAddress`,`firstName`,`gender`,`lastName`,`otherInfo`,`phoneNumber`,`profilePicture`,`isActive`,`type`,`userAccount_id`) VALUES ('PROFESSIONAL',1,'Fairfield','Iowa','4th Street','52557','1960-10-10','vandetpin@gmail.com','TM teacher','F','1','short info','902387023','https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg', 1, 4 ,3);
+INSERT INTO `User` (`userType`,`Id`,`city`,`state`,`street`,`zip`,`dateOfBirth`,`emailAddress`,`firstName`,`gender`,`lastName`,`otherInfo`,`phoneNumber`,`profilePicture`,`isActive`,`type`,`userAccount_id`) VALUES ('PROFESSIONAL',2,'Fairfield','Iowa','4th Street','52557','1960-10-10','vandetpin@gmail.com','Doctor','M','1','short info','902387023','https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg', 1, 0, 4);
 UPDATE UserAccount SET user_id = 1 WHERE id = 3;
 UPDATE UserAccount SET user_id = 2 WHERE id = 4;
 
 -- Visitor ----
-INSERT INTO `User` (`userType`,`Id`,`city`,`state`,`street`,`zip`,`dateOfBirth`,`emailAddress`,`firstName`,`gender`,`lastName`,`otherInfo`,`phoneNumber`,`profilePicture`,`isActive`,`userAccount_id`) VALUES ('VISITOR',3,'Fairfield','Iowa','4th Street','52557','1960-10-10','prof@gg.com','User','F','1','short info','902387023','https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg', 1,3);
-INSERT INTO `User` (`userType`,`Id`,`city`,`state`,`street`,`zip`,`dateOfBirth`,`emailAddress`,`firstName`,`gender`,`lastName`,`otherInfo`,`phoneNumber`,`profilePicture`,`isActive`,`userAccount_id`) VALUES ('VISITOR',4,'Fairfield','Iowa','4th Street','52557','1960-10-10','prof@gg.com','User','M','2','short info','902387023','https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg', 1,4);
+INSERT INTO `User` (`userType`,`Id`,`city`,`state`,`street`,`zip`,`dateOfBirth`,`emailAddress`,`firstName`,`gender`,`lastName`,`otherInfo`,`phoneNumber`,`profilePicture`,`isActive`,`userAccount_id`) VALUES ('VISITOR',3,'Fairfield','Iowa','4th Street','52557','1960-10-10','vandetpin@gmail.com','User','F','1','short info','902387023','https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg', 1,3);
+INSERT INTO `User` (`userType`,`Id`,`city`,`state`,`street`,`zip`,`dateOfBirth`,`emailAddress`,`firstName`,`gender`,`lastName`,`otherInfo`,`phoneNumber`,`profilePicture`,`isActive`,`userAccount_id`) VALUES ('VISITOR',4,'Fairfield','Iowa','4th Street','52557','1960-10-10','vandetpin@gmail.com','User','M','2','short info','902387023','https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg', 1,4);
 UPDATE UserAccount SET user_id = 3 WHERE id = 5;
 UPDATE UserAccount SET user_id = 4 WHERE id = 6;
 
@@ -38,10 +38,10 @@ INSERT INTO `Appointment` (`appid`,`appEndTime`,`appStartTime`,`capacity`,`descr
 INSERT INTO `Appointment` (`appid`,`appEndTime`,`appStartTime`,`capacity`,`description`,`name`,`status`,`owner_Id`) VALUES (8,'2019-10-10 12:00:00','2019-10-10 09:00:00',4,'Flu ','Flu',1,2);-- UserAccount ---
 
 -- Visitor Appointment ---
-INSERT INTO `findme_db`.`VisitorAppointment` (`createdDate`, `isApproved`, `visitorId`, `appointment_appid`) VALUES ('2019-11-10 12:00:00', '1', '3', '5');
-INSERT INTO `findme_db`.`VisitorAppointment` (`createdDate`, `isApproved`, `visitorId`, `appointment_appid`) VALUES ('2019-11-10 12:00:00', '0', '3', '7');
-INSERT INTO `findme_db`.`VisitorAppointment` (`createdDate`, `isApproved`, `visitorId`, `appointment_appid`) VALUES ('2019-11-10 12:00:00', '1', '4', '6');
-INSERT INTO `findme_db`.`VisitorAppointment` (`createdDate`, `isApproved`, `visitorId`, `appointment_appid`) VALUES ('2019-11-10 12:00:00', '0', '4', '8');
+INSERT INTO `findme_db`.`VisitorAppointment` (`createdDate`, `isApproved`, `visitorId`, `appointment_appid`) VALUES ('2019-11-10 12:00:00', 1, '3', '5');
+INSERT INTO `findme_db`.`VisitorAppointment` (`createdDate`, `isApproved`, `visitorId`, `appointment_appid`) VALUES ('2019-11-10 12:00:00', 0, '3', '7');
+INSERT INTO `findme_db`.`VisitorAppointment` (`createdDate`, `isApproved`, `visitorId`, `appointment_appid`) VALUES ('2019-11-10 12:00:00', 1, '4', '6');
+INSERT INTO `findme_db`.`VisitorAppointment` (`createdDate`, `isApproved`, `visitorId`, `appointment_appid`) VALUES ('2019-11-10 12:00:00', 0, '4', '8');
 
 -- Professional Visitor --
 INSERT INTO `findme_db`.`ProfessionalVisitor` (`professionalId`, `visitorId`) VALUES ('1', '3');
