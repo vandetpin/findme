@@ -346,7 +346,14 @@ $(function () {
                         else {
                             isApproved = "Pending";
                         }
-                        jstatus1 = '<a href="visitors/appointment/cancel/' + JAppointment.appointment.id + '" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>'
+                        if (JAppointment.appointment.status) {
+                            jstatus2 = 'Active';
+                            jstatus1 = '<a href="visitors/appointment/cancel/' + JAppointment.appointment.id + '" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancel</a>';
+                        }
+                        else {
+                            jstatus2 = 'Inactive';
+                            jstatus1 = '<a href="visitors/appointment/cancel/' + JAppointment.appointment.id + '" class="btn btn-success"><i class="fa fa-times" aria-hidden="true"></i> Active</a>'
+                        }
                         $('#clientScheduleListTable').append('<tr><th>' + JAppointment.appointment.name + '</th><th>' + JAppointment.appointment.professional.firstName + ' ' + JAppointment.appointment.professional.lastName + '</th><th>' + JAppointment.appointment.startDate + '</th><th>' + JAppointment.appointment.endDate + '</th><th>' + jstatus2 + '</th><th>' + isApproved + '</th><th>' + jstatus1 + '</th> </tr>');
                         $('#clientAppointmentList').append('<br /> <br />');
                     });
@@ -525,8 +532,10 @@ $(function () {
             $.get(homePath + "visitors/register/" + $('#registerVisitorProAppoint').val()).done(function () {
                 alert("Making Appointment done successfully");
                 $(location).attr('href', homePath + 'visitors')
-            }).fail(function (jqXHR, exception) {
-                alert("error");
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                if (jqXHR.status == 500) {
+                    alert('Sorry, unable to make appointment due to unavailability of free slot!')
+                }
             });
         }
         else {

@@ -27,8 +27,4 @@ public class JMSEmailSender {
         LOG.info(String.format("To email=%s, subject=%s", email.getToEmail(), email.getSubject()));
     }
 
-    public void setJmsTemplate(JmsTemplate jmsTemplate) {
-        this.jmsTemplate = jmsTemplate;
-    }
-
 }

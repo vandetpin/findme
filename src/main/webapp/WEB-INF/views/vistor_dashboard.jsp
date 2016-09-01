@@ -115,7 +115,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="professionalListTab" class="tab-pane fade in active" role="tabpanel"> Ts=est</div>
+                            <div id="professionalListTab" class="tab-pane fade in" role="tabpanel"></div>
                         </div>
                     </div>
                 </div>

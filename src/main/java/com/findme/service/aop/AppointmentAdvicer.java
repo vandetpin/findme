@@ -46,7 +46,6 @@ public class AppointmentAdvicer {
 		Appointment appointment = appointmentDAO.findOne(appointmentId);
 		if(appointment != null && appointment.getCapacity() <= appointment.getVisitorAppointment().size() ) 
 			BusinessError.APPOINTMENT_REACH_LIMIT.throwException();
-
 	}
 	
 	
