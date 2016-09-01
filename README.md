@@ -1,18 +1,35 @@
-### feature
+# Findme #
+
+## feature
 - Spring Security
 - SpringMVC 
 - Hibernate  + Spring Data JPA
 - JSP/Servlet
 - AOP
+- JMS integration
 - JSON response
 
-### build project
-$mvn clean install 
+### JMS Server configuration ###
+- go to config file
+  <pre>
+  hornetq-2.4.0.Final/config/stand-alone/non-clustered/hornetq-jms.xml 
+  </pre>
+- add below text to the follow the config file
+   <br />
+   ```
+   <queue name="emailQueue">
+      <entry name="/queue/emailQueue"/>
+   </queue>
+   ```
 
-### start server in local
-$mvn clean install tomcat7:run
+http://hornetq.jboss.org/downloads.html
 
-go to browser  localhost:8080
+### start the jms service ###
+<pre>
+$cd hornetq-2.4.0.Final/bin
+$sh run.sh
+</pre>
+
 
 ### import user
 run sql/import.sql
